@@ -49,7 +49,7 @@
                 <a href="\index.php" class="me-4 text-sm md:text-lg xl:text:2xl">
                     Home
                 </a>
-                <a href="\event\all_events.php" class="me-4 text-sm md:text-lg xl:text:2xl">
+                <a href="\All_Events\index.php" class="me-4 text-sm md:text-lg xl:text:2xl">
                     Events
                 </a>
                 <a href="\Achievements\index.php" class="me-4 text-sm md:text-lg xl:text:2xl">
@@ -89,7 +89,7 @@
                 Home
                 <hr class="w-full h-[2px] mt-[26px] hover:text-primary">
             </a>
-            <a href="\event\all_events.php"
+            <a href="\All_Events\index.php"
                 class="w-full text-center text-sm font-sans font-medium px-[50px] hover:text-primary text-gray">
                 Events
                 <hr class="w-full h-[2px] mt-[26px] hover:text-primary">

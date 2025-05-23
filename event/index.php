@@ -13,16 +13,17 @@ include_once '../_settings/config.php';
     <?php include ABSPATH . '_includes/header.php'; ?>
 
     <section class="w-[85%] max-w-[1440px] mx-auto mt-20 flex flex-col items-center sm:flex-row gap-8">
-        <div class="w-full sm:w-1/2">
-            <svg viewBox="0 0 629 372" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <use xlink:href="#special_placeholder" />
-            </svg>
+        <div class="w-full sm:w-1/2 rounded-xl">
+            <img class="rounded-xl w-full h-[400px] object-cover"
+                src="https://scontent.fdac11-1.fna.fbcdn.net/v/t39.30808-6/484729646_677325414961168_8702768972533058128_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=75d36f&_nc_eui2=AeHJKrRBMaIfReqk84C8pOPJguQ4XsOdQheC5Dhew51CF54U1bHqSoSu8RmZVsUFUcHS7KSz2Ao01gEzi_RF9v8i&_nc_ohc=Mi0Stj5xgVMQ7kNvwFQ7nuV&_nc_oc=AdlryV5xdkCSuGeTj9utNalVKWr9ZOIUrDTQtp_4PVMCjRI1PpVxvzzUVxRSfyxRcPQ&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-1.fna&_nc_gid=1Rk2HC8urE15DhYDl_Czlg&oh=00_AfJn4a_BXCj4D-lC4OWSl7V08s_UKG70wYqFNUKVSeoOnw&oe=68363DAC"
+                alt="Banner">
         </div>
         <div class="w-full sm:w-1/2 flex flex-col">
             <div class="my-6">
-                <h1 class="text-2xl lg:text-4xl xl:text-[3.25rem] text-primary font-semibold">Event Name</h1>
-                <p class="text-sm">Event Details: Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi,
-                    excepturi.</p>
+                <h1 class="text-2xl lg:text-4xl xl:text-[3.25rem] text-primary font-semibold">Research 101</h1>
+                <p class="text-lg">Join us for Research 101, a comprehensive workshop designed to
+                    introduce students to the fundamentals of research methodologies, data analysis techniques, and
+                    effective presentation skills, empowering them to excel in their academic pursuits.</p>
             </div>
             <div class="mt-2 flex flex-row items-center gap-1">
                 <svg fill="var(--color-primary)" xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem"
@@ -30,7 +31,7 @@ include_once '../_settings/config.php';
                     <use xlink:href="#location"></use>
                 </svg>
                 <p class="text-sm lg:text-lg xl:text-2xl">
-                    Event Location
+                    Room 126
                 </p>
             </div>
             <div class="mt-2 flex flex-row items-center gap-1">
@@ -39,7 +40,7 @@ include_once '../_settings/config.php';
                     <use xlink:href="#clock"></use>
                 </svg>
                 <p class="text-sm lg:text-lg xl:text-2xl">
-                    Event Time
+                    Oct 9th, 2024
                 </p>
             </div>
             <div class="mt-2 flex flex-row items-center gap-1 sm:mt-4 lg:mt-6 xl:mt-8">
@@ -137,39 +138,10 @@ include_once '../_settings/config.php';
 
         <div class="flex flex-row flex-wrap items-center justify-center mt-10">
             <div class="flex flex-col max-w-[200px] mt-4">
-                <img class="mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl border border-3"
-                    src="https://gravatar.com/userimage/145763310/6ad858b0b9a703098fe1afe3154fa386.jpeg?size=124">
-                <p class="text-center text-3xl px-2 mb-2">Prof. Dr. MD. Abrar Jahin</p>
-                <p class="text-center text-md px-2">Designation & Details Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit.</p>
-            </div>
-            <div class="flex flex-col max-w-[200px] mt-4">
-                <img class="mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl border border-3"
-                    src="https://gravatar.com/userimage/145763310/6ad858b0b9a703098fe1afe3154fa386.jpeg?size=124">
-                <p class="text-center text-3xl px-2 mb-2">Prof. Dr. MD. Abrar Jahin</p>
-                <p class="text-center text-md px-2">Designation & Details Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit.</p>
-            </div>
-            <div class="flex flex-col max-w-[200px] mt-4">
-                <img class="mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl border border-3"
-                    src="https://gravatar.com/userimage/145763310/6ad858b0b9a703098fe1afe3154fa386.jpeg?size=124">
-                <p class="text-center text-3xl px-2 mb-2">Prof. Dr. MD. Abrar Jahin</p>
-                <p class="text-center text-md px-2">Designation & Details Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit.</p>
-            </div>
-            <div class="flex flex-col max-w-[200px] mt-4">
-                <img class="mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl border border-3"
-                    src="https://gravatar.com/userimage/145763310/6ad858b0b9a703098fe1afe3154fa386.jpeg?size=124">
-                <p class="text-center text-3xl px-2 mb-2">Prof. Dr. MD. Abrar Jahin</p>
-                <p class="text-center text-md px-2">Designation & Details Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit.</p>
-            </div>
-            <div class="flex flex-col max-w-[200px] mt-4">
-                <img class="mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl border border-3"
-                    src="https://gravatar.com/userimage/145763310/6ad858b0b9a703098fe1afe3154fa386.jpeg?size=124">
-                <p class="text-center text-3xl px-2 mb-2">Prof. Dr. MD. Abrar Jahin</p>
-                <p class="text-center text-md px-2">Designation & Details Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit.</p>
+                <img class="mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl border border-3 object-cover"
+                    src="https://cse.uiu.ac.bd/wp-content/uploads/sites/3/2023/11/Md.-Tarek-Hasan-240x300.jpg">
+                <p class="text-center text-3xl px-2 mb-2">MD. Tarek Hasam</p>
+                <p class="text-center text-md px-2">Lecturer, Dept. of CSE</p>
             </div>
         </div>
     </section>
@@ -200,7 +172,8 @@ include_once '../_settings/config.php';
             </div>
             <div
                 class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img src="/assets/img/companies/bd.jpg">
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Government_Seal_of_Bangladesh.svg/2048px-Government_Seal_of_Bangladesh.svg.png">
             </div>
             <div
                 class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">

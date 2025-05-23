@@ -8,25 +8,66 @@ include_once '_settings/config.php';
 <head>
     <?php include ABSPATH . '_includes/head.php'; ?>
     <style>
+    .nav-arrow {
+        display: block;
+        /* Ensure base visibility */
+        z-index: 10;
+        /* Prevent overlap with other elements */
+    }
+
+    /* Left arrow (unchanged, for reference) */
+    .nav-arrow-left {
+        /* Inherits from .nav-arrow, no additional styles needed */
+    }
+
+    /* Right arrow: match left arrow in mobile view */
+    .nav-arrow-right {
+        display: block;
+        /* Ensure visibility */
+    }
+
+    /* Ensure SVGs are styled consistently */
+    .nav-arrow-right .arrow-content svg,
+    .nav-arrow-right .ellipsis-content svg,
+    .nav-arrow-left svg {
+        width: 24px;
+        /* Consistent size */
+        height: 24px;
+    }
+
+    /* Center ellipsis SVG */
     .nav-arrow-right .ellipsis-content {
-        font-size: 1.5rem;
-        /* Adjust to match arrow size */
-        font-weight: bold;
-        color: currentColor;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 24px;
-        /* Match SVG size */
-        height: 24px;
-        /* Match SVG size */
-        line-height: 24px;
-        /* Ensure vertical centering */
     }
 
+    /* Hide elements as needed */
     .nav-arrow-right .arrow-content.hidden,
     .nav-arrow-right .ellipsis-content.hidden {
         display: none;
+    }
+
+    /* Mobile-specific styles (apply at <=640px) */
+    @media (max-width: 640px) {
+
+        .nav-arrow-right,
+        .nav-arrow-left {
+            background: rgba(0, 0, 0, 0.4) !important;
+            /* Black with 20% transparency */
+            border-radius: 50% !important;
+            /* Complete circle */
+            width: 32px !important;
+            /* Fixed size for circular shape */
+            height: 32px !important;
+            /* Fixed size for circular shape */
+            padding: 4px;
+            /* Center SVG within circle */
+            display: flex;
+            /* Center SVG content */
+            align-items: center;
+            justify-content: center;
+        }
     }
     </style>
 </head>
@@ -34,10 +75,11 @@ include_once '_settings/config.php';
 <body>
     <?php include ABSPATH . '_includes/header.php'; ?>
 
-    <section class="w-[95%] max-w-[1600px] mx-auto mt-20 px-4 sm:px-5 mb-16 flex flex-col-reverse sm:flex-row gap-8">
-        <div class="w-full sm:w-1/2 flex-1 pl-20 self-start flex-col justify-center items-center">
+    <section class="w-[90%] max-w-[1440px] mx-auto mt-20 mb-16 flex flex-col-reverse sm:flex-row gap-8 justify-center">
+        <div class="w-full sm:w-1/2 sm:max-w-[600px] sm:pl-8 self-start flex flex-col justify-start items-start">
             <svg class="w-full sm:w-[400px] md:w-[500px] lg:w-[550px] max-w-full" viewBox="0 0 610 206" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
+                <!-- SVG paths unchanged for brevity -->
                 <path
                     d="M48.6 156.3L47.8 159.6H41.8L39.5 169.1H45.5L44.6 172.4H38.5L34.6 188.1H31.2L35.1 172.4H28.8L24.9 188.1H21.5L25.4 172.4H19.1L20 169.1H26.3L28.6 159.6H22.1L22.9 156.3H29.4L33.3 140.6H36.7L32.8 156.3H39.1L43 140.6H46.4L42.5 156.3H48.4H48.6ZM38.4 159.6H32.1L29.7 169.1H36L38.3 159.6H38.4Z"
                     fill="#FF3215" />
@@ -134,7 +176,7 @@ include_once '_settings/config.php';
                     <p class="text-xl font-bold text-gray-800">Explore more</p>
                 </span>
                 <span>
-                    <a href="#"
+                    <a href=""
                         class="flex justify-center items-center rounded-full bg-primary text-white font-bold text-[18px] w-[2rem] h-[2rem] cursor-pointer hover:bg-[#0E1E2D] transition duration-300 ease-in-out">
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">
                             <path fill="currentColor"
@@ -143,13 +185,11 @@ include_once '_settings/config.php';
                     </a>
                 </span>
             </div>
-
         </div>
         <div class="w-full sm:w-1/2 rounded-xl overflow-hidden" style="aspect-ratio: 4/3; max-width: 600px;">
             <img src="https://scontent.fdac11-1.fna.fbcdn.net/v/t39.30808-6/486164674_681504481209928_4526373125618018447_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFzRzYazoaNc5oVPS8DyvLCxOGkVUd9dBvE4aRVR310Gxek7IUsXFqPX7gbc_djfAMECb7rfYMdZcvoW_VWH2OM&_nc_ohc=ILVWHMj3rVgQ7kNvwFtWTL3&_nc_oc=Adke_vafMtUbAdXZOjaTJFxw6eRvX9HTsw0zt7232Jx38iBxQ0sI5CLmsXt0Gw5yxNs&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-1.fna&_nc_gid=VyClRV533GdlIRPYEw9uFw&oh=00_AfJu85uldHcr46JzLozp7j0b9ffjCm7kl-MQibOKZGQj7A&oe=683644C7"
                 alt="Group Photo" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
-
     </section>
 
     <section class="w-[85%] max-w-[1440px] mx-auto mt-20 px-5">
@@ -179,21 +219,17 @@ include_once '_settings/config.php';
                 <button id="right-arrow"
                     class="nav-arrow nav-arrow-right absolute right-0 top-1/2 transform -translate-y-1/2">
                     <span class="arrow-content">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                            class="w-6 h-6">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                     </span>
                     <span class="ellipsis-content hidden">
-                        <svg fill="#ffffff" height="800px" width="800px" version="1.1" id="Capa_1"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            viewBox="0 0 32.055 32.055" xml:space="preserve">
-                            <g>
-                                <path d="M3.968,12.061C1.775,12.061,0,13.835,0,16.027c0,2.192,1.773,3.967,3.968,3.967c2.189,0,3.966-1.772,3.966-3.967
-		C7.934,13.835,6.157,12.061,3.968,12.061z M16.233,12.061c-2.188,0-3.968,1.773-3.968,3.965c0,2.192,1.778,3.967,3.968,3.967
-		s3.97-1.772,3.97-3.967C20.201,13.835,18.423,12.061,16.233,12.061z M28.09,12.061c-2.192,0-3.969,1.774-3.969,3.967
-		c0,2.19,1.774,3.965,3.969,3.965c2.188,0,3.965-1.772,3.965-3.965S30.278,12.061,28.09,12.061z" />
-                            </g>
+                        <svg fill="currentColor" viewBox="0 0 32.055 32.055" class="w-6 h-6">
+                            <path
+                                d="M3.968,12.061C1.775,12.061,0,13.835,0,16.027c0,2.192,1.773,3.967,3.968,3.967c2.189,0,3.966-1.772,3.966-3.967
+                                C7.934,13.835,6.157,12.061,3.968,12.061z M16.233,12.061c-2.188,0-3.968,1.773-3.968,3.965c0,2.192,1.778,3.967,3.968,3.967
+                                s3.97-1.772,3.97-3.967C20.201,13.835,18.423,12.061,16.233,12.061z M28.09,12.061c-2.192,0-3.969,1.774-3.969,3.967
+                                c0,2.19,1.774,3.965,3.969,3.965c2.188,0,3.965-1.772,3.965-3.965S30.278,12.061,28.09,12.061z" />
                         </svg>
                     </span>
                 </button>
@@ -305,36 +341,29 @@ include_once '_settings/config.php';
             const cardWidth = 304; // Width of each card including margin
             const isMobile = window.innerWidth <= 640;
             const numCards = staticEvents.length;
-            const maxIndex = isMobile && numCards > 1 ? numCards : numCards - 1;
+            const maxIndex = numCards > 1 ? numCards : numCards - 1;
             let isScrolling = false;
 
             function updateArrows() {
                 const scrollLeft = eventsContainer.scrollLeft;
                 const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
 
-                if (!isMobile || numCards <= 1) {
-                    // Finite scrolling for desktop or single card
-                    leftArrow.style.display = scrollLeft <= 5 ? 'none' : 'block';
-                    leftArrow.disabled = scrollLeft <= 5;
+                // Handle left arrow visibility
+                leftArrow.style.display = scrollLeft <= 5 ? 'none' : 'block';
+                leftArrow.disabled = scrollLeft <= 5;
 
-                    if (scrollLeft >= maxScroll - 5) {
-                        // Show ellipsis at rightmost position
-                        rightArrowContent.classList.add('hidden');
-                        rightEllipsisContent.classList.remove('hidden');
-                        rightArrow.disabled = false; // Allow clicking ellipsis for navigation
-                    } else {
-                        // Show right arrow when not at rightmost position
-                        rightArrowContent.classList.remove('hidden');
-                        rightEllipsisContent.classList.add('hidden');
-                        rightArrow.disabled = false;
-                    }
+                // Ensure right arrow is always visible
+                rightArrow.style.display = 'block';
+                rightArrow.disabled = false;
+
+                if (scrollLeft >= maxScroll - 5) {
+                    // Show ellipsis at rightmost position
+                    rightArrowContent.classList.add('hidden');
+                    rightEllipsisContent.classList.remove('hidden');
                 } else {
-                    // Infinite scrolling: arrows always visible in mobile
-                    leftArrow.style.display = 'block';
-                    leftArrow.disabled = false;
+                    // Show right arrow when not at rightmost position
                     rightArrowContent.classList.remove('hidden');
                     rightEllipsisContent.classList.add('hidden');
-                    rightArrow.disabled = false;
                 }
             }
 
@@ -342,30 +371,34 @@ include_once '_settings/config.php';
                 if (isScrolling) return;
                 isScrolling = true;
 
-                if (isMobile && numCards > 1) {
+                if (numCards > 1) {
                     // Handle infinite scrolling
                     if (index < 0) {
                         index = numCards - 1;
                         eventsContainer.scrollTo({
                             left: index * cardWidth,
-                            behavior: 'auto'
+                            behavior: instant ? 'auto' : 'smooth'
                         });
                     } else if (index > numCards) {
                         index = 1;
                         eventsContainer.scrollTo({
                             left: index * cardWidth,
-                            behavior: 'auto'
+                            behavior: instant ? 'auto' : 'smooth'
+                        });
+                    } else {
+                        eventsContainer.scrollTo({
+                            left: index * cardWidth,
+                            behavior: instant ? 'auto' : 'smooth'
                         });
                     }
                 } else {
-                    // Clamp index for non-mobile
+                    // Clamp index for single card
                     index = Math.max(0, Math.min(index, maxIndex));
+                    eventsContainer.scrollTo({
+                        left: index * cardWidth,
+                        behavior: instant ? 'auto' : 'smooth'
+                    });
                 }
-
-                eventsContainer.scrollTo({
-                    left: index * cardWidth,
-                    behavior: instant ? 'auto' : 'smooth'
-                });
 
                 setTimeout(() => {
                     isScrolling = false;
@@ -374,14 +407,15 @@ include_once '_settings/config.php';
             }
 
             function handleInfiniteScroll() {
-                if (!isMobile || numCards <= 1) return;
+                if (numCards <= 1) return;
                 const scrollLeft = eventsContainer.scrollLeft;
                 const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
 
                 if (scrollLeft <= 0) {
-                    scrollToIndex(numCards - 1, true);
+                    scrollToIndex(numCards - 1, true); // Instant jump to last real card
                 } else if (scrollLeft >= maxScroll - 5) {
-                    scrollToIndex(1, true);
+                    // Don't jump to first card; show ellipsis
+                    updateArrows();
                 }
             }
 
@@ -394,14 +428,11 @@ include_once '_settings/config.php';
             rightArrow.addEventListener('click', () => {
                 if (rightArrow.disabled || isScrolling) return;
                 const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                if (!isMobile && !rightEllipsisContent.classList.contains('hidden')) {
+                if (!rightEllipsisContent.classList.contains('hidden')) {
                     // Ellipsis: navigate to all_events.php
-                    window.location.href = "/event/all_events.php";
-                } else if (!isMobile) {
-                    // Right arrow: scroll right
-                    scrollToIndex(currentIndex + 1);
+                    window.location.href = '/All_Events/index.php';
                 } else {
-                    // Mobile: always scroll right
+                    // Right arrow: scroll right
                     scrollToIndex(currentIndex + 1);
                 }
             });
@@ -441,8 +472,8 @@ include_once '_settings/config.php';
                 }
             });
 
-            if (isMobile && numCards > 1) {
-                scrollToIndex(1, true);
+            if (numCards > 1) {
+                scrollToIndex(1, true); // Start at first real card
             } else {
                 updateArrows();
             }
