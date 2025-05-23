@@ -140,7 +140,7 @@ include_once '../_settings/config.php';
             <div class="flex flex-col max-w-[200px] mt-4">
                 <img class="mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl border border-3 object-cover"
                     src="https://cse.uiu.ac.bd/wp-content/uploads/sites/3/2023/11/Md.-Tarek-Hasan-240x300.jpg">
-                <p class="text-center text-3xl px-2 mb-2">MD. Tarek Hasam</p>
+                <p class="text-center text-3xl px-2 mb-2">MD. Tarek Hasan</p>
                 <p class="text-center text-md px-2">Lecturer, Dept. of CSE</p>
             </div>
         </div>

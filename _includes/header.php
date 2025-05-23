@@ -1,16 +1,20 @@
-<?php include ABSPATH . '_includes/svg.php'; ?>
+<?php include ABSPATH . '_includes\svg.php'; ?>
 
 <header class="w-full h-[100px] bg-grey-100 relative flex justify-between">
     <div class="logo-slab w-full max-w-[315px] flex items-center justify-center">
-        <a href="/index.php" class="logo-slab__link">
-            <img src="/assets/img/logo/Icon.png" alt="UIU Robotics Club Logo" class="logo-slab__img" />
+        <a href="">
+            <img src="/assets/img/logo/Icon.png" alt="UIU Robotics Club Logo" class="logo-slab__img cursor-pointer"
+                onclick="window.location.href='/index.php'" />
         </a>
     </div>
-    <div class="logo-slab_tail">
+
+
+    <div class="logo-slab_tail cursor-pointer" onclick="window.location.href='/index.php'">
         <span class="hidden">
             <?= SITE_NAME ?? 'UIURC' ?>
         </span>
     </div>
+
     <hr class="hidden sm:block w-full -z-10 bg-black h-[2px] absolute top-[47px] -translate-y-1/2">
     <div class="navbar-slab flex flex-col items-top justify-start">
         <div class="h-[47px] flex items-center justify-end">
@@ -81,55 +85,60 @@
 </header>
 
 <div id="sidebar-slab"
-    class="fixed top-0 right-0 bottom-0 left-0 w-full h-full bg-[#404040] text-white z-10 transform transition-transform duration-700 translate-x-full overflow-y-auto">
-    <div class="flex flex-col justify-center h-full mt-[100px]">
-        <nav class="h-full flex flex-col justify-center  items-center  xs:gap-[30px] gap-[50px]">
-            <a href="\index.php"
-                class="w-full text-center text-sm font-sans font-medium px-[50px] hover:text-primary text-gray">
+    class="fixed top-0 right-0 bottom-0 left-0 w-full h-full bg-[#404040] text-white z-10 transform transition-transform duration-700 translate-x-full overflow-hidden flex items-center justify-center">
+
+    <nav class="flex flex-col items-center gap-[40px] w-full px-[50px]">
+        <div class="w-full text-center">
+            <a href="\index.php" class="text-sm font-sans font-medium text-gray hover:text-primary">
                 Home
-                <hr class="w-full h-[2px] mt-[26px] hover:text-primary">
             </a>
-            <a href="\All_Events\index.php"
-                class="w-full text-center text-sm font-sans font-medium px-[50px] hover:text-primary text-gray">
+            <hr class="w-full h-[2px] mt-[10px] bg-white">
+        </div>
+        <div class="w-full text-center">
+            <a href="\All_Events\index.php" class="text-sm font-sans font-medium text-gray hover:text-primary">
                 Events
-                <hr class="w-full h-[2px] mt-[26px] hover:text-primary">
             </a>
-            <a href="\Achievements\index.php"
-                class="w-full text-center text-sm font-sans font-medium px-[50px] hover:text-primary text-gray">
+            <hr class="w-full h-[2px] mt-[10px] bg-white">
+        </div>
+        <div class="w-full text-center">
+            <a href="\Achievements\index.php" class="text-sm font-sans font-medium text-gray hover:text-primary">
                 Achievements
-                <hr class="w-full h-[2px] mt-[26px] hover:text-primary">
             </a>
-            <a href="\AboutUs\index.php"
-                class="w-full text-center text-sm font-sans font-medium px-[50px] hover:text-primary text-gray">
+            <hr class="w-full h-[2px] mt-[10px] bg-white">
+        </div>
+        <div class="w-full text-center">
+            <a href="\AboutUs\index.php" class="text-sm font-sans font-medium text-gray hover:text-primary">
                 About us
-                <hr class="w-full h-[2px] mt-[26px] hover:text-primary">
             </a>
-        </nav>
-    </div>
+            <hr class="w-full h-[2px] mt-[10px] bg-white">
+        </div>
+    </nav>
+
 </div>
 
+
 <script>
-const body = document.querySelector('body');
-const sidebarButton = document.getElementById('sidebar-button');
-const sidebarSlab = document.getElementById('sidebar-slab');
-sidebarButton.addEventListener('click', () => {
-    const sidebarStatus = sidebarButton.getAttribute('data-sidebar-status');
-    if (sidebarStatus === 'close') {
-        sidebarSlab.classList.remove('translate-x-full');
-        sidebarSlab.classList.add('translate-x-0');
-        body.classList.add('overflow-hidden');
-        // href link change to close
-        sidebarButton.children[0].children[0].setAttribute('xlink:href', '#close');
-        sidebarButton.setAttribute('data-sidebar-status', 'open');
-    }
-    if (sidebarStatus === 'open') {
-        console.log('close');
-        sidebarSlab.classList.add('translate-x-full');
-        sidebarSlab.classList.remove('translate-x-0');
-        body.classList.remove('overflow-hidden');
-        // href link change to open
-        sidebarButton.children[0].children[0].setAttribute('xlink:href', '#hamburger');
-        sidebarButton.setAttribute('data-sidebar-status', 'close');
-    }
-});
+    const body = document.querySelector('body');
+    const sidebarButton = document.getElementById('sidebar-button');
+    const sidebarSlab = document.getElementById('sidebar-slab');
+    sidebarButton.addEventListener('click', () => {
+        const sidebarStatus = sidebarButton.getAttribute('data-sidebar-status');
+        if (sidebarStatus === 'close') {
+            sidebarSlab.classList.remove('translate-x-full');
+            sidebarSlab.classList.add('translate-x-0');
+            body.classList.add('overflow-hidden');
+            // href link change to close
+            sidebarButton.children[0].children[0].setAttribute('xlink:href', '#close');
+            sidebarButton.setAttribute('data-sidebar-status', 'open');
+        }
+        if (sidebarStatus === 'open') {
+            console.log('close');
+            sidebarSlab.classList.add('translate-x-full');
+            sidebarSlab.classList.remove('translate-x-0');
+            body.classList.remove('overflow-hidden');
+            // href link change to open
+            sidebarButton.children[0].children[0].setAttribute('xlink:href', '#hamburger');
+            sidebarButton.setAttribute('data-sidebar-status', 'close');
+        }
+    });
 </script>

@@ -12,9 +12,11 @@ include_once '../_settings/config.php';
 <body>
     <?php include ABSPATH . '_includes/header.php'; ?>
     <div class="flex items-center justify-start pr-15 pl-15 pt-15 gap-4 text-primary">
-        <span class="font-display text-md sm:text-xl md:text-2xl lg:text-4xl font-semibold uppercase whitespace-nowrap">
+        <span
+            class="font-display text-2xl sm:text-4xl md:text-2xl lg:text-4xl font-semibold uppercase whitespace-nowrap">
             Our Achievements
         </span>
+
         <span class="inline-block px-2.5 py-1 text-xs font-semibold text-white bg-[#ff3215] rounded-full">
             32
         </span>
@@ -24,7 +26,7 @@ include_once '../_settings/config.php';
         <!-- Card 1: University Rover Challenge 2022 -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://scontent.fdac11-2.fna.fbcdn.net/v/t39.30808-6/480592606_2354562978249670_4253763383696035648_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHd59tOoyUajeCR-w0STleDO4r5unm35W87ivm6ebflbzdGOsjPc2wfydMi1pxbf7lpeKjBmowLzmbzc3wvJxXl&_nc_ohc=l0P47TKHjtgQ7kNvwFeaLOe&_nc_oc=AdmpWvZrpW8L2fRxDVUsa4p826kwctAxjTz36NK9COjTgoYVsLsLCnML59BzkvPTL1I&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-2.fna&_nc_gid=dhRC5Rpq_0ng-PId73XtKA&oh=00_AfJ9Bb-bCGB698aKGv2zYQB4eWiqo-egAAwEEvnH0MDIqg&oe=68369BA7"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -44,7 +46,7 @@ include_once '../_settings/config.php';
         <!-- Card 2: EEE Day 2021 -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://scontent.fdac11-1.fna.fbcdn.net/v/t39.30808-6/474797623_2335380370167931_2420689576885442710_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGgqBvSR3s8Msk_KT5m5XDar_XAjAOMMm2v9cCMA4wybV0kICLjvTmE6OYRnTR0vbe9JnRfn-RQrtKtaDWQDpeO&_nc_ohc=Up-_YBvRFZsQ7kNvwEgFF1G&_nc_oc=AdmzAwdQQEoAZ158hDjJgS-q1iUfg2-JimVHcMxDljUP1VVWWOMcuauNg-B3cPAFtnM&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-1.fna&_nc_gid=X4D7fVmhZ4oWJ_1lZysbgQ&oh=00_AfKavws97Sa3kLuROIZ6JwYeiOzyXJ5dmU_Q0i8hQRsjMg&oe=6836A3D1"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -64,7 +66,7 @@ include_once '../_settings/config.php';
         <!-- Card 3: EEE Award 2019 -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://scontent.fdac11-1.fna.fbcdn.net/v/t1.6435-9/75111937_946185872420728_7706235239667859456_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHq0SDaN7YEHNfXNKqrbbyo3C4Rjra8Br_cLhGOtrwGv8kW0VtdbFSoNK3g84EThhYLsuE5k4z0WxamPv6crUXs&_nc_ohc=RznQwwSt3DgQ7kNvwFqpfv5&_nc_oc=AdltSv7lEqznpZ4TMvV8TEgLiqLBopuAHy9zXjKlzyuqpxrlTKSHJZieEMjPeDw19wA&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-1.fna&_nc_gid=Cp9K8gNAW4vFpWSLevPYoA&oh=00_AfJz_CySzvDBlFo9-gRY2qip-6wSeZEkzDUuS6kSgAKe9g&oe=68582F0C"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
