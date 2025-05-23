@@ -19,6 +19,9 @@ include_once '_settings/config.php';
         width: 24px;
         /* Match SVG size */
         height: 24px;
+        /* Match SVG size */
+        line-height: 24px;
+        /* Ensure vertical centering */
     }
 
     .nav-arrow-right .arrow-content.hidden,
@@ -142,7 +145,7 @@ include_once '_settings/config.php';
             </div>
 
         </div>
-        <div class="w-full sm:w-1/2 rounded-xl overflow-hidden" style="aspect-ratio: 4/3; max-width: 700px;">
+        <div class="w-full sm:w-1/2 rounded-xl overflow-hidden" style="aspect-ratio: 4/3; max-width: 600px;">
             <img src="https://scontent.fdac11-1.fna.fbcdn.net/v/t39.30808-6/486164674_681504481209928_4526373125618018447_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFzRzYazoaNc5oVPS8DyvLCxOGkVUd9dBvE4aRVR310Gxek7IUsXFqPX7gbc_djfAMECb7rfYMdZcvoW_VWH2OM&_nc_ohc=ILVWHMj3rVgQ7kNvwFtWTL3&_nc_oc=Adke_vafMtUbAdXZOjaTJFxw6eRvX9HTsw0zt7232Jx38iBxQ0sI5CLmsXt0Gw5yxNs&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-1.fna&_nc_gid=VyClRV533GdlIRPYEw9uFw&oh=00_AfJu85uldHcr46JzLozp7j0b9ffjCm7kl-MQibOKZGQj7A&oe=683644C7"
                 alt="Group Photo" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
@@ -181,7 +184,18 @@ include_once '_settings/config.php';
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                     </span>
-                    <span class="ellipsis-content hidden">...</span>
+                    <span class="ellipsis-content hidden">
+                        <svg fill="#ffffff" height="800px" width="800px" version="1.1" id="Capa_1"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 32.055 32.055" xml:space="preserve">
+                            <g>
+                                <path d="M3.968,12.061C1.775,12.061,0,13.835,0,16.027c0,2.192,1.773,3.967,3.968,3.967c2.189,0,3.966-1.772,3.966-3.967
+		C7.934,13.835,6.157,12.061,3.968,12.061z M16.233,12.061c-2.188,0-3.968,1.773-3.968,3.965c0,2.192,1.778,3.967,3.968,3.967
+		s3.97-1.772,3.97-3.967C20.201,13.835,18.423,12.061,16.233,12.061z M28.09,12.061c-2.192,0-3.969,1.774-3.969,3.967
+		c0,2.19,1.774,3.965,3.969,3.965c2.188,0,3.965-1.772,3.965-3.965S30.278,12.061,28.09,12.061z" />
+                            </g>
+                        </svg>
+                    </span>
                 </button>
 
                 <!-- Event Cards Container -->
@@ -286,144 +300,6 @@ include_once '_settings/config.php';
             const eventsContainer = document.getElementById('events-container');
             const leftArrow = document.getElementById('left-arrow');
             const rightArrow = document.getElementById('right-arrow');
-            const cardWidth = 304; // Width of each card including margin
-            const isMobile = window.innerWidth <= 640;
-            const numCards = staticEvents.length;
-            const maxIndex = isMobile && numCards > 1 ? numCards : numCards - 1;
-            let isScrolling = false;
-
-            function updateArrows() {
-                const scrollLeft = eventsContainer.scrollLeft;
-                const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
-
-                if (!isMobile || numCards <= 1) {
-                    // Finite scrolling for desktop or single card
-                    leftArrow.style.display = scrollLeft <= 5 ? 'none' : 'block';
-                    leftArrow.disabled = scrollLeft <= 5;
-                    rightArrow.style.display = scrollLeft >= maxScroll - 5 ? 'none' : 'block';
-                    rightArrow.disabled = scrollLeft >= maxScroll - 5;
-                } else {
-                    // Infinite scrolling: arrows always visible in mobile
-                    leftArrow.style.display = 'block';
-                    leftArrow.disabled = false;
-                    rightArrow.style.display = 'block';
-                    rightArrow.disabled = false;
-                }
-            }
-
-            function scrollToIndex(index, instant = false) {
-                if (isScrolling) return;
-                isScrolling = true;
-
-                if (isMobile && numCards > 1) {
-                    // Handle infinite scrolling
-                    if (index < 0) {
-                        // Jump to the real last card (before duplicate first card)
-                        index = numCards - 1;
-                        eventsContainer.scrollTo({
-                            left: index * cardWidth,
-                            behavior: 'auto'
-                        });
-                    } else if (index > numCards) {
-                        // Jump to the real first card (after duplicate last card)
-                        index = 1;
-                        eventsContainer.scrollTo({
-                            left: index * cardWidth,
-                            behavior: 'auto'
-                        });
-                    }
-                } else {
-                    // Clamp index for non-mobile
-                    index = Math.max(0, Math.min(index, maxIndex));
-                }
-
-                eventsContainer.scrollTo({
-                    left: index * cardWidth,
-                    behavior: instant ? 'auto' : 'smooth'
-                });
-
-                setTimeout(() => {
-                    isScrolling = false;
-                    updateArrows();
-                }, instant ? 0 : 600);
-            }
-
-            function handleInfiniteScroll() {
-                if (!isMobile || numCards <= 1) return;
-                const scrollLeft = eventsContainer.scrollLeft;
-                const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
-
-                if (scrollLeft <= 0) {
-                    // At duplicate last card: jump to real last card
-                    scrollToIndex(numCards - 1, true);
-                } else if (scrollLeft >= maxScroll - 5) {
-                    // At duplicate first card: jump to real first card
-                    scrollToIndex(1, true);
-                }
-            }
-
-            leftArrow.addEventListener('click', () => {
-                if (leftArrow.disabled || isScrolling) return;
-                const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                scrollToIndex(currentIndex - 1);
-            });
-
-            rightArrow.addEventListener('click', () => {
-                if (rightArrow.disabled || isScrolling) return;
-                const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                scrollToIndex(currentIndex + 1);
-            });
-
-            // Handle touch scrolling
-            let startX, isDragging = false;
-            eventsContainer.addEventListener('touchstart', (e) => {
-                if (isScrolling) return;
-                startX = e.touches[0].clientX;
-                isDragging = true;
-            });
-
-            eventsContainer.addEventListener('touchmove', (e) => {
-                if (!isDragging || isScrolling) return;
-                const currentX = e.touches[0].clientX;
-                const diffX = startX - currentX;
-                const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                if (Math.abs(diffX) > 50) {
-                    if (diffX > 0) {
-                        // Swipe left: scroll to next card
-                        scrollToIndex(currentIndex + 1);
-                    } else if (diffX < 0) {
-                        // Swipe right: scroll to previous card
-                        scrollToIndex(currentIndex - 1);
-                    }
-                    isDragging = false;
-                }
-            });
-
-            eventsContainer.addEventListener('touchend', () => {
-                isDragging = false;
-                if (!isScrolling) handleInfiniteScroll();
-            });
-
-            // Update arrows and check for infinite scroll on scroll
-            eventsContainer.addEventListener('scroll', () => {
-                if (!isScrolling) {
-                    updateArrows();
-                    handleInfiniteScroll();
-                }
-            });
-
-            // Initial scroll position for mobile infinite scroll
-            if (isMobile && numCards > 1) {
-                scrollToIndex(1, true); // Start at first real card
-            } else {
-                updateArrows();
-            }
-        }
-
-        function initializeCarousel() {
-            const eventsContainer = document.getElementById('events-container');
-            const leftArrow = document.getElementById('left-arrow');
-            const rightArrow = document.getElementById('right-arrow');
             const rightArrowContent = rightArrow.querySelector('.arrow-content');
             const rightEllipsisContent = rightArrow.querySelector('.ellipsis-content');
             const cardWidth = 304; // Width of each card including margin
@@ -445,7 +321,7 @@ include_once '_settings/config.php';
                         // Show ellipsis at rightmost position
                         rightArrowContent.classList.add('hidden');
                         rightEllipsisContent.classList.remove('hidden');
-                        rightArrow.disabled = false; // Allow clicking ellipsis to scroll left
+                        rightArrow.disabled = false; // Allow clicking ellipsis for navigation
                     } else {
                         // Show right arrow when not at rightmost position
                         rightArrowContent.classList.remove('hidden');
@@ -518,12 +394,12 @@ include_once '_settings/config.php';
             rightArrow.addEventListener('click', () => {
                 if (rightArrow.disabled || isScrolling) return;
                 const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                if (!isMobile && rightEllipsisContent.classList.contains('hidden')) {
+                if (!isMobile && !rightEllipsisContent.classList.contains('hidden')) {
+                    // Ellipsis: navigate to all_events.php
+                    window.location.href = "/event/all_events.php";
+                } else if (!isMobile) {
                     // Right arrow: scroll right
                     scrollToIndex(currentIndex + 1);
-                } else if (!isMobile) {
-                    // Ellipsis: scroll left
-                    scrollToIndex(currentIndex - 1);
                 } else {
                     // Mobile: always scroll right
                     scrollToIndex(currentIndex + 1);
