@@ -8,31 +8,108 @@ include_once '_settings/config.php';
 <head>
     <?php include ABSPATH . '_includes/head.php'; ?>
     <style>
-        .nav-arrow-right .ellipsis-content {
-            font-size: 1.5rem;
-            /* Adjust to match arrow size */
-            font-weight: bold;
-            color: currentColor;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            /* Match SVG size */
-            height: 24px;
-        }
+    .nav-arrow-right .ellipsis-content {
+        font-size: 1.5rem;
+        /* Adjust to match arrow size */
+        font-weight: bold;
+        color: currentColor;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        /* Match SVG size */
+        height: 24px;
+    }
 
-        .nav-arrow-right .arrow-content.hidden,
-        .nav-arrow-right .ellipsis-content.hidden {
-            display: none;
-        }
+    .nav-arrow-right .arrow-content.hidden,
+    .nav-arrow-right .ellipsis-content.hidden {
+        display: none;
+    }
+    </style>
+    <style>
+    /* Styling the scroll-to-top button */
+    .scroll-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: none;
+        /* Hidden by default */
+        justify-content: center;
+        align-items: center;
+        width: 2.5rem;
+        /* Increased from 2rem for larger button */
+        height: 2.5rem;
+        /* Increased from 2rem for larger button */
+        background-color: #ff0303;
+        /* Primary color, adjust as needed */
+        color: white;
+        border-radius: 50%;
+        font-weight: bold;
+        font-size: 18px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        z-index: 1000;
+        /* Ensures button stays on top */
+    }
+
+    .scroll-to-top:hover {
+        background-color: #0E1E2D;
+        /* Hover color */
+    }
+
+    .scroll-to-top.visible {
+        display: flex;
+        /* Show when scrolled */
+    }
     </style>
 </head>
 
 <body>
+    <a id="scrollToTop" class="scroll-to-top" title="Go to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 15 15">
+            <path fill="currentColor"
+                d="M8.293 2.293a1 1 0 0 1 1.414 0l4.5 4.5a1 1 0 0 1 0 1.414l-4.5 4.5a1 1 0 0 1-1.414-1.414L11 8.5H1.5a1 1 0 0 1 0-2H11L8.293 3.707a1 1 0 0 1 0-1.414"
+                transform="rotate(270 7.5 7.5)" />
+        </svg>
+    </a>
+
+    <script>
+    // Get the scroll-to-top button
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    // Function to check scroll position and toggle button visibility
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) { // Show button after scrolling 100px
+            scrollToTopBtn.classList.add('visible');
+        } else {
+            scrollToTopBtn.classList.remove('visible');
+        }
+    });
+
+    // Smooth scroll to top when button is clicked
+    scrollToTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Accessibility: Allow Enter or Space key to trigger scroll
+    scrollToTopBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    });
+    </script>
     <?php include ABSPATH . '_includes/header.php'; ?>
 
     <section
-        class="w-full max-w-[1440px] mx-auto mt-20 px-2 sm:px-10 mb-16 py-10 flex flex-col sm:flex-row gap-4 justify-center">
+        class="w-full max-w-[1440px] mx-auto mt-20 px-2 sm:px-10 mb-16 py-10 flex flex-col sm:flex-row gap-4 justify-center p-2">
         <!-- Text and SVG Container -->
         <div class="w-full sm:w-1/2 flex-1 self-start flex flex-col justify-start items-start">
             <svg class="w-full sm:w-[400px] md:w-[500px] lg:w-[550px] max-w-full" viewBox="0 0 610 206" fill="none"
@@ -132,7 +209,7 @@ include_once '_settings/config.php';
                     <p class="text-xl font-bold text-gray-800">Explore more</p>
                 </span>
                 <span>
-                    <a href="#"
+                    <a href="AboutUs\index.php"
                         class="flex justify-center items-center rounded-full bg-primary text-white font-bold text-[18px] w-[2rem] h-[2rem] cursor-pointer hover:bg-[#0E1E2D] transition duration-300 ease-in-out">
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">
                             <path fill="currentColor"
@@ -143,7 +220,7 @@ include_once '_settings/config.php';
             </div>
         </div>
         <!-- Carousel Container -->
-        <div class="w-full sm:w-1/2 rounded-xl overflow-hidden relative mx-auto"
+        <div class="w-full sm:w-1/2 rounded-xl overflow-hidden relative mx-2"
             style="aspect-ratio: 5/3; max-width: 800px;">
             <div id="photo-carousel" class="relative w-full h-full">
                 <div id="carousel-images" class="flex h-full transition-transform duration-500 ease-in-out"></div>
@@ -169,68 +246,68 @@ include_once '_settings/config.php';
         </div>
 
         <script>
-            const images = [
-                "assets/img/Group/1.jpg",
-                "assets/img/Group/2.jpg",
-                "assets/img/Group/3.jpg"
-            ];
+        const images = [
+            "assets/img/Group/1.jpg",
+            "assets/img/Group/2.jpg",
+            "assets/img/Group/3.jpg"
+        ];
 
-            let currentIndex = 0;
+        let currentIndex = 0;
 
-            function initializeCarousel() {
-                const carouselImages = document.getElementById('carousel-images');
-                const carouselDots = document.getElementById('carousel-dots');
-                const prevButton = document.getElementById('prev-button');
-                const nextButton = document.getElementById('next-button');
+        function initializeCarousel() {
+            const carouselImages = document.getElementById('carousel-images');
+            const carouselDots = document.getElementById('carousel-dots');
+            const prevButton = document.getElementById('prev-button');
+            const nextButton = document.getElementById('next-button');
 
-                // Populate images
-                images.forEach((src, index) => {
-                    const imgDiv = document.createElement('div');
-                    imgDiv.className = 'w-full h-full flex-shrink-0';
-                    imgDiv.innerHTML =
-                        `<img src="${src}" alt="Carousel image ${index + 1}" class="w-full h-full object-cover" />`;
-                    carouselImages.appendChild(imgDiv);
+            // Populate images
+            images.forEach((src, index) => {
+                const imgDiv = document.createElement('div');
+                imgDiv.className = 'w-full h-full flex-shrink-0';
+                imgDiv.innerHTML =
+                    `<img src="${src}" alt="Carousel image ${index + 1}" class="w-full h-full object-cover" />`;
+                carouselImages.appendChild(imgDiv);
 
-                    // Populate dots
-                    const dot = document.createElement('button');
-                    dot.className =
-                        `w-3 h-3 rounded-full ${index === 0 ? 'bg-white/50 backdrop-blur-md' : 'bg-white/20 backdrop-blur-sm'} focus:outline-none`;
-                    dot.setAttribute('aria-label', `Go to image ${index + 1}`);
-                    dot.addEventListener('click', () => goToImage(index));
-                    carouselDots.appendChild(dot);
-                });
+                // Populate dots
+                const dot = document.createElement('button');
+                dot.className =
+                    `w-3 h-3 rounded-full ${index === 0 ? 'bg-white/50 backdrop-blur-md' : 'bg-white/20 backdrop-blur-sm'} focus:outline-none`;
+                dot.setAttribute('aria-label', `Go to image ${index + 1}`);
+                dot.addEventListener('click', () => goToImage(index));
+                carouselDots.appendChild(dot);
+            });
 
-                function updateCarousel() {
-                    carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
-                    const dots = carouselDots.children;
-                    for (let i = 0; i < dots.length; i++) {
-                        dots[i].className =
-                            `w-3 h-3 rounded-full ${i === currentIndex ? 'bg-white/50 backdrop-blur-md' : 'bg-white/20 backdrop-blur-sm'} focus:outline-none`;
-                    }
+            function updateCarousel() {
+                carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+                const dots = carouselDots.children;
+                for (let i = 0; i < dots.length; i++) {
+                    dots[i].className =
+                        `w-3 h-3 rounded-full ${i === currentIndex ? 'bg-white/50 backdrop-blur-md' : 'bg-white/20 backdrop-blur-sm'} focus:outline-none`;
                 }
+            }
 
-                function goToImage(index) {
-                    currentIndex = (index + images.length) % images.length;
-                    updateCarousel();
-                }
-
-                prevButton.addEventListener('click', () => {
-                    goToImage(currentIndex - 1);
-                });
-
-                nextButton.addEventListener('click', () => {
-                    goToImage(currentIndex + 1);
-                });
-
-                document.getElementById('photo-carousel').addEventListener('keydown', (e) => {
-                    if (e.key === 'ArrowLeft') goToImage(currentIndex - 1);
-                    if (e.key === 'ArrowRight') goToImage(currentIndex + 1);
-                });
-
+            function goToImage(index) {
+                currentIndex = (index + images.length) % images.length;
                 updateCarousel();
             }
 
-            window.addEventListener('load', initializeCarousel);
+            prevButton.addEventListener('click', () => {
+                goToImage(currentIndex - 1);
+            });
+
+            nextButton.addEventListener('click', () => {
+                goToImage(currentIndex + 1);
+            });
+
+            document.getElementById('photo-carousel').addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') goToImage(currentIndex - 1);
+                if (e.key === 'ArrowRight') goToImage(currentIndex + 1);
+            });
+
+            updateCarousel();
+        }
+
+        window.addEventListener('load', initializeCarousel);
         </script>
     </section>
     <!-- Events -->
@@ -258,7 +335,6 @@ include_once '_settings/config.php';
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                     </svg>
                 </button>
-                <!-- Inside the carousel-container -->
                 <!-- Right Arrow (hidden on mobile, shown on md and up) -->
                 <button id="right-arrow"
                     class="nav-arrow nav-arrow-right hidden md:flex absolute right-0 top-1/2 transform -translate-y-1/2">
@@ -268,104 +344,116 @@ include_once '_settings/config.php';
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                     </span>
-                    <span id="more" class="ellipsis-content hidden"><svg fill="#ffffff" version="1.1" id="Capa_1"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            viewBox="0 0 32.055 32.055" xml:space="preserve">
+                    <span id="more" class="ellipsis-content hidden">
+                        <svg fill="#ffffff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32.055 32.055" xml:space="preserve">
                             <g>
-                                <path
-                                    d="M3.968,12.061C1.775,12.061,0,13.835,0,16.027c0,2.192,1.773,3.967,3.968,3.967c2.189,0,3.966-1.772,3.966-3.967
-                                C7.934,13.835,6.157,12.061,3.968,12.061z M16.233,12.061c-2.188,0-3.968,1.773-3.968,3.965c0,2.192,1.778,3.967,3.968,3.967
-                                s3.97-1.772,3.97-3.967C20.201,13.835,18.423,12.061,16.233,12.061z M28.09,12.061c-2.192,0-3.969,1.774-3.969,3.967
-                                c0,2.19,1.774,3.965,3.969,3.965c2.188,0,3.965-1.772,3.965-3.965S30.278,12.061,28.09,12.061z" />
+                                <path d="M3.968,12.061C1.775,12.061,0,13.835,0,16.027c0,2.192,1წ
+
+1.773,3.967,3.968,3.967c2.189,0,3.966-1.772,3.966-3.967
+                    C7.934,13.835,6.157,12.061,3.968,12.061z M16.233,12.061c-2.188,0-3.968,1.773-3.968,3.965c0,2.192,1.778,3.967,3.968,3.967
+                    s3.97-1.772,3.97-3.967C20.201,13.835,18.423,12.061,16.233,12.061z M28.09,12.061c-2.192,0-3.969,1.774-3.969,3.967
+                    c0,2.19,1.774,3.965,3.969,3.965c2.188,0,3.965-1.772,3.965-3.965S30.278,12.061,28.09,12.061z" />
                             </g>
-                        </svg></span>
+                        </svg>
+                    </span>
                 </button>
-                <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        const moreSpan = document.getElementById('more');
-                        const moreSvg = moreSpan.querySelector('svg');
-
-                        moreSvg.addEventListener('click', function(event) {
-                            // Prevent the click from bubbling up to parent elements if needed
-                            event.stopPropagation();
-
-                            // Check if the more span is visible
-                            if (!moreSpan.classList.contains('hidden')) {
-                                // Replace 'https://example.com' with your desired URL
-                                window.location.href = 'https://example.com';
-                                // Alternatively, use window.open('https://example.com', '_blank') to open in a new tab
-                            }
-                        });
-                    });
-                </script>
 
                 <!-- Event Cards Container -->
                 <div id="events-container" class="scroll-container space-x-4 overflow-x-auto snap-x snap-mandatory">
                     <!-- Event cards or no events message will be inserted here -->
                 </div>
             </div>
+
+            <style>
+            /* Fallback CSS to ensure buttons are hidden on mobile */
+            @media (max-width: 767px) {
+                .nav-arrow {
+                    display: none !important;
+                }
+            }
+            </style>
+
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const moreSpan = document.getElementById('more');
+                const moreSvg = moreSpan.querySelector('svg');
+
+                moreSvg.addEventListener('click', function(event) {
+                    // Prevent the click from bubbling up to parent elements if needed
+                    event.stopPropagation();
+
+                    // Check if the more span is visible
+                    if (!moreSpan.classList.contains('hidden')) {
+                        // Replace 'https://example.com' with your desired URL
+                        window.location.href = 'https://example.com';
+                        // Alternatively, use window.open('https://example.com', '_blank') to open in a new tab
+                    }
+                });
+            });
+            </script>
         </div>
 
         <script defer>
-            const placeholderImage = "/assets/img/svg/banner.svg";
+        const placeholderImage = "/assets/img/svg/banner.svg";
 
-            const staticEvents = [{
-                    heading: "Majlish-e-Ifter",
-                    time: "March 17, 2025",
-                    location: "UIU Cafeteria",
-                    image: "assets/img/Events/Iftar.jpg",
-                    link: "#"
-                },
-                {
-                    heading: "UIU CSE Fest",
-                    time: "June 17-18, 2025",
-                    location: "United International University",
-                    image: "assets/img/Events/CSE_fest.jpg",
-                    link: "#"
-                },
-                {
-                    heading: "Rush Hour",
-                    time: "December 4, 2024",
-                    location: "UIU Gallery",
-                    image: "assets/img/Events/Rush_hour.jpg",
-                    link: "#"
-                },
-                {
-                    heading: "Research 101",
-                    time: "Oct 9th, 2024",
-                    location: "Room 126",
-                    image: "assets/img/Events/Research 101.jpg",
-                    link: "/Research101/index.php"
-                },
-                {
-                    heading: "TechTrove",
-                    time: "July 6-9, 2024",
-                    location: "Lobby Area",
-                    image: "assets/img/Events/Techtrove.jpg",
-                    link: "#"
-                }
-            ];
+        const staticEvents = [{
+                heading: "Majlish-e-Ifter",
+                time: "March 17, 2025",
+                location: "UIU Cafeteria",
+                image: "assets/img/Events/Iftar.jpg",
+                link: "Iftar/index.php"
+            },
+            {
+                heading: "UIU CSE Fest",
+                time: "June 17-18, 2025",
+                location: "United International University",
+                image: "assets/img/Events/CSE_fest.jpg",
+                link: "#"
+            },
+            {
+                heading: "Rush Hour",
+                time: "December 4, 2024",
+                location: "UIU Gallery",
+                image: "assets/img/Events/Rush_hour.jpg",
+                link: "#"
+            },
+            {
+                heading: "Research 101",
+                time: "Oct 9th, 2024",
+                location: "Room 126",
+                image: "assets/img/Events/Research 101.jpg",
+                link: "/Research101/index.php"
+            },
+            {
+                heading: "TechTrove",
+                time: "July 6-9, 2024",
+                location: "Lobby Area",
+                image: "assets/img/Events/Techtrove.jpg",
+                link: "#"
+            }
+        ];
 
-            function renderEvents(events) {
-                const eventsContainer = document.getElementById('events-container');
-                eventsContainer.innerHTML = '';
+        function renderEvents(events) {
+            const eventsContainer = document.getElementById('events-container');
+            eventsContainer.innerHTML = '';
 
-                if (events.length === 0) {
-                    const noEventsMessage = document.createElement('div');
-                    noEventsMessage.className = 'w-full text-center py-10';
-                    noEventsMessage.innerHTML = `
+            if (events.length === 0) {
+                const noEventsMessage = document.createElement('div');
+                noEventsMessage.className = 'w-full text-center py-10';
+                noEventsMessage.innerHTML = `
                 <p class="text-2xl text-orange-500">No events are happening right now</p>
             `;
-                    eventsContainer.appendChild(noEventsMessage);
-                } else {
-                    const isMobile = window.innerWidth <= 640; // Tailwind 'sm' breakpoint
-                    const eventCards = [];
+                eventsContainer.appendChild(noEventsMessage);
+            } else {
+                const isMobile = window.innerWidth <= 640; // Tailwind 'sm' breakpoint
+                const eventCards = [];
 
-                    // Create event cards
-                    events.forEach(event => {
-                        const eventCard = document.createElement('div');
-                        eventCard.className = 'event-card rounded-lg w-full sm:w-72 inline-block snap-center';
-                        eventCard.innerHTML = `
+                // Create event cards
+                events.forEach(event => {
+                    const eventCard = document.createElement('div');
+                    eventCard.className = 'event-card rounded-lg w-full sm:w-72 inline-block snap-center';
+                    eventCard.innerHTML = `
                     <img src="${event.image || placeholderImage}" alt="Event" class="w-full h-48 object-cover rounded-t-lg">
                     <div class="event-details m-4">
                         <h2 class="text-sm sm:text-base font-bold text-gray-900">${event.heading}</h2>
@@ -378,316 +466,316 @@ include_once '_settings/config.php';
                         </button>
                     </div>
                 `;
-                        eventCards.push(eventCard);
-                    });
-
-                    if (isMobile && events.length > 1) {
-                        // Add duplicate cards for infinite scrolling
-                        const lastCardClone = eventCards[eventCards.length - 1].cloneNode(true);
-                        const firstCardClone = eventCards[0].cloneNode(true);
-                        eventsContainer.appendChild(lastCardClone); // Prepend last card
-                        eventCards.forEach(card => eventsContainer.appendChild(card)); // Main cards
-                        eventsContainer.appendChild(firstCardClone); // Append first card
-                    } else {
-                        // Non-mobile or single event: no duplicates
-                        eventCards.forEach(card => eventsContainer.appendChild(card));
-                    }
-
-                    initializeCarousel();
-                }
-            }
-
-            function initializeCarousel() {
-                const eventsContainer = document.getElementById('events-container');
-                const leftArrow = document.getElementById('left-arrow');
-                const rightArrow = document.getElementById('right-arrow');
-                const cardWidth = 304; // Width of each card including margin
-                const isMobile = window.innerWidth <= 640;
-                const numCards = staticEvents.length;
-                const maxIndex = isMobile && numCards > 1 ? numCards : numCards - 1;
-                let isScrolling = false;
-
-                function updateArrows() {
-                    const scrollLeft = eventsContainer.scrollLeft;
-                    const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
-
-                    if (!isMobile || numCards <= 1) {
-                        // Finite scrolling for desktop or single card
-                        leftArrow.style.display = scrollLeft <= 5 ? 'none' : 'block';
-                        leftArrow.disabled = scrollLeft <= 5;
-                        rightArrow.style.display = scrollLeft >= maxScroll - 5 ? 'none' : 'block';
-                        rightArrow.disabled = scrollLeft >= maxScroll - 5;
-                    } else {
-                        // Infinite scrolling: arrows always visible in mobile
-                        leftArrow.style.display = 'block';
-                        leftArrow.disabled = false;
-                        rightArrow.style.display = 'block';
-                        rightArrow.disabled = false;
-                    }
-                }
-
-                function scrollToIndex(index, instant = false) {
-                    if (isScrolling) return;
-                    isScrolling = true;
-
-                    if (isMobile && numCards > 1) {
-                        // Handle infinite scrolling
-                        if (index < 0) {
-                            // Jump to the real last card (before duplicate first card)
-                            index = numCards - 1;
-                            eventsContainer.scrollTo({
-                                left: index * cardWidth,
-                                behavior: 'auto'
-                            });
-                        } else if (index > numCards) {
-                            // Jump to the real first card (after duplicate last card)
-                            index = 1;
-                            eventsContainer.scrollTo({
-                                left: index * cardWidth,
-                                behavior: 'auto'
-                            });
-                        }
-                    } else {
-                        // Clamp index for non-mobile
-                        index = Math.max(0, Math.min(index, maxIndex));
-                    }
-
-                    eventsContainer.scrollTo({
-                        left: index * cardWidth,
-                        behavior: instant ? 'auto' : 'smooth'
-                    });
-
-                    setTimeout(() => {
-                        isScrolling = false;
-                        updateArrows();
-                    }, instant ? 0 : 600);
-                }
-
-                function handleInfiniteScroll() {
-                    if (!isMobile || numCards <= 1) return;
-                    const scrollLeft = eventsContainer.scrollLeft;
-                    const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
-
-                    if (scrollLeft <= 0) {
-                        // At duplicate last card: jump to real last card
-                        scrollToIndex(numCards - 1, true);
-                    } else if (scrollLeft >= maxScroll - 5) {
-                        // At duplicate first card: jump to real first card
-                        scrollToIndex(1, true);
-                    }
-                }
-
-                leftArrow.addEventListener('click', () => {
-                    if (leftArrow.disabled || isScrolling) return;
-                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                    scrollToIndex(currentIndex - 1);
+                    eventCards.push(eventCard);
                 });
 
-                rightArrow.addEventListener('click', () => {
-                    if (rightArrow.disabled || isScrolling) return;
-                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                    scrollToIndex(currentIndex + 1);
-                });
-
-                // Handle touch scrolling
-                let startX, isDragging = false;
-                eventsContainer.addEventListener('touchstart', (e) => {
-                    if (isScrolling) return;
-                    startX = e.touches[0].clientX;
-                    isDragging = true;
-                });
-
-                eventsContainer.addEventListener('touchmove', (e) => {
-                    if (!isDragging || isScrolling) return;
-                    const currentX = e.touches[0].clientX;
-                    const diffX = startX - currentX;
-                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                    if (Math.abs(diffX) > 50) {
-                        if (diffX > 0) {
-                            // Swipe left: scroll to next card
-                            scrollToIndex(currentIndex + 1);
-                        } else if (diffX < 0) {
-                            // Swipe right: scroll to previous card
-                            scrollToIndex(currentIndex - 1);
-                        }
-                        isDragging = false;
-                    }
-                });
-
-                eventsContainer.addEventListener('touchend', () => {
-                    isDragging = false;
-                    if (!isScrolling) handleInfiniteScroll();
-                });
-
-                // Update arrows and check for infinite scroll on scroll
-                eventsContainer.addEventListener('scroll', () => {
-                    if (!isScrolling) {
-                        updateArrows();
-                        handleInfiniteScroll();
-                    }
-                });
-
-                // Initial scroll position for mobile infinite scroll
-                if (isMobile && numCards > 1) {
-                    scrollToIndex(1, true); // Start at first real card
+                if (isMobile && events.length > 1) {
+                    // Add duplicate cards for infinite scrolling
+                    const lastCardClone = eventCards[eventCards.length - 1].cloneNode(true);
+                    const firstCardClone = eventCards[0].cloneNode(true);
+                    eventsContainer.appendChild(lastCardClone); // Prepend last card
+                    eventCards.forEach(card => eventsContainer.appendChild(card)); // Main cards
+                    eventsContainer.appendChild(firstCardClone); // Append first card
                 } else {
-                    updateArrows();
+                    // Non-mobile or single event: no duplicates
+                    eventCards.forEach(card => eventsContainer.appendChild(card));
+                }
+
+                initializeCarousel();
+            }
+        }
+
+        function initializeCarousel() {
+            const eventsContainer = document.getElementById('events-container');
+            const leftArrow = document.getElementById('left-arrow');
+            const rightArrow = document.getElementById('right-arrow');
+            const cardWidth = 304; // Width of each card including margin
+            const isMobile = window.innerWidth <= 640;
+            const numCards = staticEvents.length;
+            const maxIndex = isMobile && numCards > 1 ? numCards : numCards - 1;
+            let isScrolling = false;
+
+            function updateArrows() {
+                const scrollLeft = eventsContainer.scrollLeft;
+                const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
+
+                if (!isMobile || numCards <= 1) {
+                    // Finite scrolling for desktop or single card
+                    leftArrow.style.display = scrollLeft <= 5 ? 'none' : 'block';
+                    leftArrow.disabled = scrollLeft <= 5;
+                    rightArrow.style.display = scrollLeft >= maxScroll - 5 ? 'none' : 'block';
+                    rightArrow.disabled = scrollLeft >= maxScroll - 5;
+                } else {
+                    // Infinite scrolling: arrows always visible in mobile
+                    leftArrow.style.display = 'block';
+                    leftArrow.disabled = false;
+                    rightArrow.style.display = 'block';
+                    rightArrow.disabled = false;
                 }
             }
 
-            function initializeCarousel() {
-                const eventsContainer = document.getElementById('events-container');
-                const leftArrow = document.getElementById('left-arrow');
-                const rightArrow = document.getElementById('right-arrow');
-                const rightArrowContent = rightArrow.querySelector('.arrow-content');
-                const rightEllipsisContent = rightArrow.querySelector('.ellipsis-content');
-                const cardWidth = 304; // Width of each card including margin
-                const isMobile = window.innerWidth <= 640;
-                const numCards = staticEvents.length;
-                const maxIndex = isMobile && numCards > 1 ? numCards : numCards - 1;
-                let isScrolling = false;
+            function scrollToIndex(index, instant = false) {
+                if (isScrolling) return;
+                isScrolling = true;
 
-                function updateArrows() {
-                    const scrollLeft = eventsContainer.scrollLeft;
-                    const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
+                if (isMobile && numCards > 1) {
+                    // Handle infinite scrolling
+                    if (index < 0) {
+                        // Jump to the real last card (before duplicate first card)
+                        index = numCards - 1;
+                        eventsContainer.scrollTo({
+                            left: index * cardWidth,
+                            behavior: 'auto'
+                        });
+                    } else if (index > numCards) {
+                        // Jump to the real first card (after duplicate last card)
+                        index = 1;
+                        eventsContainer.scrollTo({
+                            left: index * cardWidth,
+                            behavior: 'auto'
+                        });
+                    }
+                } else {
+                    // Clamp index for non-mobile
+                    index = Math.max(0, Math.min(index, maxIndex));
+                }
 
-                    if (!isMobile || numCards <= 1) {
-                        // Finite scrolling for desktop or single card
-                        leftArrow.style.display = scrollLeft <= 5 ? 'none' : 'block';
-                        leftArrow.disabled = scrollLeft <= 5;
+                eventsContainer.scrollTo({
+                    left: index * cardWidth,
+                    behavior: instant ? 'auto' : 'smooth'
+                });
 
-                        if (scrollLeft >= maxScroll - 5) {
-                            // Show ellipsis at rightmost position
-                            rightArrowContent.classList.add('hidden');
-                            rightEllipsisContent.classList.remove('hidden');
-                            rightArrow.disabled = false; // Allow clicking ellipsis to scroll left
-                        } else {
-                            // Show right arrow when not at rightmost position
-                            rightArrowContent.classList.remove('hidden');
-                            rightEllipsisContent.classList.add('hidden');
-                            rightArrow.disabled = false;
-                        }
+                setTimeout(() => {
+                    isScrolling = false;
+                    updateArrows();
+                }, instant ? 0 : 600);
+            }
+
+            function handleInfiniteScroll() {
+                if (!isMobile || numCards <= 1) return;
+                const scrollLeft = eventsContainer.scrollLeft;
+                const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
+
+                if (scrollLeft <= 0) {
+                    // At duplicate last card: jump to real last card
+                    scrollToIndex(numCards - 1, true);
+                } else if (scrollLeft >= maxScroll - 5) {
+                    // At duplicate first card: jump to real first card
+                    scrollToIndex(1, true);
+                }
+            }
+
+            leftArrow.addEventListener('click', () => {
+                if (leftArrow.disabled || isScrolling) return;
+                const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                scrollToIndex(currentIndex - 1);
+            });
+
+            rightArrow.addEventListener('click', () => {
+                if (rightArrow.disabled || isScrolling) return;
+                const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                scrollToIndex(currentIndex + 1);
+            });
+
+            // Handle touch scrolling
+            let startX, isDragging = false;
+            eventsContainer.addEventListener('touchstart', (e) => {
+                if (isScrolling) return;
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            });
+
+            eventsContainer.addEventListener('touchmove', (e) => {
+                if (!isDragging || isScrolling) return;
+                const currentX = e.touches[0].clientX;
+                const diffX = startX - currentX;
+                const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                if (Math.abs(diffX) > 50) {
+                    if (diffX > 0) {
+                        // Swipe left: scroll to next card
+                        scrollToIndex(currentIndex + 1);
+                    } else if (diffX < 0) {
+                        // Swipe right: scroll to previous card
+                        scrollToIndex(currentIndex - 1);
+                    }
+                    isDragging = false;
+                }
+            });
+
+            eventsContainer.addEventListener('touchend', () => {
+                isDragging = false;
+                if (!isScrolling) handleInfiniteScroll();
+            });
+
+            // Update arrows and check for infinite scroll on scroll
+            eventsContainer.addEventListener('scroll', () => {
+                if (!isScrolling) {
+                    updateArrows();
+                    handleInfiniteScroll();
+                }
+            });
+
+            // Initial scroll position for mobile infinite scroll
+            if (isMobile && numCards > 1) {
+                scrollToIndex(1, true); // Start at first real card
+            } else {
+                updateArrows();
+            }
+        }
+
+        function initializeCarousel() {
+            const eventsContainer = document.getElementById('events-container');
+            const leftArrow = document.getElementById('left-arrow');
+            const rightArrow = document.getElementById('right-arrow');
+            const rightArrowContent = rightArrow.querySelector('.arrow-content');
+            const rightEllipsisContent = rightArrow.querySelector('.ellipsis-content');
+            const cardWidth = 304; // Width of each card including margin
+            const isMobile = window.innerWidth <= 640;
+            const numCards = staticEvents.length;
+            const maxIndex = isMobile && numCards > 1 ? numCards : numCards - 1;
+            let isScrolling = false;
+
+            function updateArrows() {
+                const scrollLeft = eventsContainer.scrollLeft;
+                const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
+
+                if (!isMobile || numCards <= 1) {
+                    // Finite scrolling for desktop or single card
+                    leftArrow.style.display = scrollLeft <= 5 ? 'none' : 'block';
+                    leftArrow.disabled = scrollLeft <= 5;
+
+                    if (scrollLeft >= maxScroll - 5) {
+                        // Show ellipsis at rightmost position
+                        rightArrowContent.classList.add('hidden');
+                        rightEllipsisContent.classList.remove('hidden');
+                        rightArrow.disabled = false; // Allow clicking ellipsis to scroll left
                     } else {
-                        // Infinite scrolling: arrows always visible in mobile
-                        leftArrow.style.display = 'block';
-                        leftArrow.disabled = false;
+                        // Show right arrow when not at rightmost position
                         rightArrowContent.classList.remove('hidden');
                         rightEllipsisContent.classList.add('hidden');
                         rightArrow.disabled = false;
                     }
-                }
-
-                function scrollToIndex(index, instant = false) {
-                    if (isScrolling) return;
-                    isScrolling = true;
-
-                    if (isMobile && numCards > 1) {
-                        // Handle infinite scrolling
-                        if (index < 0) {
-                            index = numCards - 1;
-                            eventsContainer.scrollTo({
-                                left: index * cardWidth,
-                                behavior: 'auto'
-                            });
-                        } else if (index > numCards) {
-                            index = 1;
-                            eventsContainer.scrollTo({
-                                left: index * cardWidth,
-                                behavior: 'auto'
-                            });
-                        }
-                    } else {
-                        // Clamp index for non-mobile
-                        index = Math.max(0, Math.min(index, maxIndex));
-                    }
-
-                    eventsContainer.scrollTo({
-                        left: index * cardWidth,
-                        behavior: instant ? 'auto' : 'smooth'
-                    });
-
-                    setTimeout(() => {
-                        isScrolling = false;
-                        updateArrows();
-                    }, instant ? 0 : 600);
-                }
-
-                function handleInfiniteScroll() {
-                    if (!isMobile || numCards <= 1) return;
-                    const scrollLeft = eventsContainer.scrollLeft;
-                    const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
-
-                    if (scrollLeft <= 0) {
-                        scrollToIndex(numCards - 1, true);
-                    } else if (scrollLeft >= maxScroll - 5) {
-                        scrollToIndex(1, true);
-                    }
-                }
-
-                leftArrow.addEventListener('click', () => {
-                    if (leftArrow.disabled || isScrolling) return;
-                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                    scrollToIndex(currentIndex - 1);
-                });
-
-                rightArrow.addEventListener('click', () => {
-                    if (rightArrow.disabled || isScrolling) return;
-                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                    if (!isMobile && rightEllipsisContent.classList.contains('hidden')) {
-                        // Right arrow: scroll right
-                        scrollToIndex(currentIndex + 1);
-                    } else if (!isMobile) {
-                        // Ellipsis: scroll left
-                        scrollToIndex(currentIndex - 1);
-                    } else {
-                        // Mobile: always scroll right
-                        scrollToIndex(currentIndex + 1);
-                    }
-                });
-
-                // Handle touch scrolling
-                let startX, isDragging = false;
-                eventsContainer.addEventListener('touchstart', (e) => {
-                    if (isScrolling) return;
-                    startX = e.touches[0].clientX;
-                    isDragging = true;
-                });
-
-                eventsContainer.addEventListener('touchmove', (e) => {
-                    if (!isDragging || isScrolling) return;
-                    const currentX = e.touches[0].clientX;
-                    const diffX = startX - currentX;
-                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                    if (Math.abs(diffX) > 50) {
-                        if (diffX > 0) {
-                            scrollToIndex(currentIndex + 1);
-                        } else if (diffX < 0) {
-                            scrollToIndex(currentIndex - 1);
-                        }
-                        isDragging = false;
-                    }
-                });
-
-                eventsContainer.addEventListener('touchend', () => {
-                    isDragging = false;
-                    if (!isScrolling) handleInfiniteScroll();
-                });
-
-                eventsContainer.addEventListener('scroll', () => {
-                    if (!isScrolling) {
-                        updateArrows();
-                        handleInfiniteScroll();
-                    }
-                });
-
-                if (isMobile && numCards > 1) {
-                    scrollToIndex(1, true);
                 } else {
-                    updateArrows();
+                    // Infinite scrolling: arrows always visible in mobile
+                    leftArrow.style.display = 'block';
+                    leftArrow.disabled = false;
+                    rightArrowContent.classList.remove('hidden');
+                    rightEllipsisContent.classList.add('hidden');
+                    rightArrow.disabled = false;
                 }
             }
 
-            window.onload = () => renderEvents(staticEvents);
+            function scrollToIndex(index, instant = false) {
+                if (isScrolling) return;
+                isScrolling = true;
+
+                if (isMobile && numCards > 1) {
+                    // Handle infinite scrolling
+                    if (index < 0) {
+                        index = numCards - 1;
+                        eventsContainer.scrollTo({
+                            left: index * cardWidth,
+                            behavior: 'auto'
+                        });
+                    } else if (index > numCards) {
+                        index = 1;
+                        eventsContainer.scrollTo({
+                            left: index * cardWidth,
+                            behavior: 'auto'
+                        });
+                    }
+                } else {
+                    // Clamp index for non-mobile
+                    index = Math.max(0, Math.min(index, maxIndex));
+                }
+
+                eventsContainer.scrollTo({
+                    left: index * cardWidth,
+                    behavior: instant ? 'auto' : 'smooth'
+                });
+
+                setTimeout(() => {
+                    isScrolling = false;
+                    updateArrows();
+                }, instant ? 0 : 600);
+            }
+
+            function handleInfiniteScroll() {
+                if (!isMobile || numCards <= 1) return;
+                const scrollLeft = eventsContainer.scrollLeft;
+                const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
+
+                if (scrollLeft <= 0) {
+                    scrollToIndex(numCards - 1, true);
+                } else if (scrollLeft >= maxScroll - 5) {
+                    scrollToIndex(1, true);
+                }
+            }
+
+            leftArrow.addEventListener('click', () => {
+                if (leftArrow.disabled || isScrolling) return;
+                const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                scrollToIndex(currentIndex - 1);
+            });
+
+            rightArrow.addEventListener('click', () => {
+                if (rightArrow.disabled || isScrolling) return;
+                const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                if (!isMobile && rightEllipsisContent.classList.contains('hidden')) {
+                    // Right arrow: scroll right
+                    scrollToIndex(currentIndex + 1);
+                } else if (!isMobile) {
+                    // Ellipsis: scroll left
+                    scrollToIndex(currentIndex - 1);
+                } else {
+                    // Mobile: always scroll right
+                    scrollToIndex(currentIndex + 1);
+                }
+            });
+
+            // Handle touch scrolling
+            let startX, isDragging = false;
+            eventsContainer.addEventListener('touchstart', (e) => {
+                if (isScrolling) return;
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            });
+
+            eventsContainer.addEventListener('touchmove', (e) => {
+                if (!isDragging || isScrolling) return;
+                const currentX = e.touches[0].clientX;
+                const diffX = startX - currentX;
+                const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                if (Math.abs(diffX) > 50) {
+                    if (diffX > 0) {
+                        scrollToIndex(currentIndex + 1);
+                    } else if (diffX < 0) {
+                        scrollToIndex(currentIndex - 1);
+                    }
+                    isDragging = false;
+                }
+            });
+
+            eventsContainer.addEventListener('touchend', () => {
+                isDragging = false;
+                if (!isScrolling) handleInfiniteScroll();
+            });
+
+            eventsContainer.addEventListener('scroll', () => {
+                if (!isScrolling) {
+                    updateArrows();
+                    handleInfiniteScroll();
+                }
+            });
+
+            if (isMobile && numCards > 1) {
+                scrollToIndex(1, true);
+            } else {
+                updateArrows();
+            }
+        }
+
+        window.onload = () => renderEvents(staticEvents);
         </script>
     </section>
     <!-- What we do -->

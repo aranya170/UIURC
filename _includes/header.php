@@ -176,7 +176,7 @@
 
     <!-- Sidebar Panel -->
     <div id="sidebar-slab"
-        class="fixed top-0 right-0 bottom-0 left-0 w-full h-full bg-[#0c1723] text-white z-10 transform transition-transform duration-700 translate-x-full overflow-hidden flex items-center justify-center">
+        class="fixed top-0 right-0 bottom-0 left-0 w-full h-full bg-[#1e2939] text-white z-10 transform transition-transform duration-700 translate-x-full overflow-hidden flex items-center justify-center">
 
         <nav class="flex flex-col items-center gap-[40px] w-full px-[50px]">
             <!-- Link Group -->

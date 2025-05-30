@@ -143,7 +143,7 @@ include_once '../_settings/config.php';
                 location: "UIU Cafeteria",
                 details: "The UIU Robotics Club cordially invites you to Majlish-e-Iftar, a special evening of togetherness, reflection, and celebration of the holy month of Ramadan! 🕌✨",
                 image: "/assets/img/Events/Iftar.jpg",
-                link: "#"
+                link: "/Iftar/index.php"
             },
             {
                 heading: "UIU CSE Fest",
