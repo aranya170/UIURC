@@ -7,80 +7,80 @@
     <title>Modern Club Achievements</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-    .timeline-dot {
-        width: 12px;
-        height: 12px;
-        background-color: #fb6b6b;
-        border-radius: 50%;
-        transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-
-    .timeline-dot.active {
-        transform: scale(1.6);
-        background-color: #ff0303;
-    }
-
-    .timeline-item {
-        transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    .timeline-item:hover {
-        color: #ff0303;
-        transform: translateX(5px);
-        cursor: pointer;
-    }
-
-    .card-shadow {
-        box-shadow: 0 6px 15px rgba(255, 3, 3, 0.08);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card-shadow:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(255, 3, 3, 0.12);
-    }
-
-    .gradient-bg {
-        background: linear-gradient(135deg, #ffeaea 0%, #ffd2d2 100%);
-    }
-
-    .timeline-container {
-        overflow-x: auto;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .timeline-container::-webkit-scrollbar {
-        height: 4px;
-    }
-
-    .timeline-container::-webkit-scrollbar-track {
-        background: #f3f4f6;
-        border-radius: 10px;
-    }
-
-    .timeline-container::-webkit-scrollbar-thumb {
-        background-color: #fb6b6b;
-        border-radius: 10px;
-        background-clip: padding-box;
-        border: 1px solid #f3f4f6;
-    }
-
-    .fade-in {
-        animation: fadeIn 0.5s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-            transform: scale(0.95);
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #fb6b6b;
+            border-radius: 50%;
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
-        100% {
-            opacity: 1;
-            transform: scale(1);
+        .timeline-dot.active {
+            transform: scale(1.6);
+            background-color: #ff0303;
         }
-    }
+
+        .timeline-item {
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            color: #ff0303;
+            transform: translateX(5px);
+            cursor: pointer;
+        }
+
+        .card-shadow {
+            box-shadow: 0 6px 15px rgba(255, 3, 3, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-shadow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 3, 3, 0.12);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #ffeaea 0%, #ffd2d2 100%);
+        }
+
+        .timeline-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .timeline-container::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .timeline-container::-webkit-scrollbar-track {
+            background: #f3f4f6;
+            border-radius: 10px;
+        }
+
+        .timeline-container::-webkit-scrollbar-thumb {
+            background-color: #fb6b6b;
+            border-radius: 10px;
+            background-clip: padding-box;
+            border: 1px solid #f3f4f6;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 
@@ -226,14 +226,14 @@
 
                 <div class="col-span-1 md:col-span-2 flex justify-between mt-4">
                     <button
-                        class="bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition-all duration-300 flex items-center space-x-2">
+                        class="bg-red-600 text-white px-5 py-2 rounded-md hover:bg-red-700 transition-all duration-300 flex items-center space-x-2">
                         <span>See Executives</span>
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                     </button>
                     <button
-                        class="bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition-all duration-300 flex items-center space-x-2">
+                        class="bg-red-600 text-white px-5 py-2 rounded-md hover:bg-red-700 transition-all duration-300 flex items-center space-x-2">
                         <span>Explore Developers</span>
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -245,73 +245,73 @@
     </section>
 
     <script>
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    const prevYearBtn = document.getElementById('prevYear');
-    const nextYearBtn = document.getElementById('nextYear');
-    const currentYear = document.getElementById('currentYear');
-    const contentItems = document.querySelectorAll('.content-item');
-    const currentImage = document.getElementById('current-image');
-    const timelineContainer = document.getElementById('timeline');
-    let currentIndex = 0;
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const prevYearBtn = document.getElementById('prevYear');
+        const nextYearBtn = document.getElementById('nextYear');
+        const currentYear = document.getElementById('currentYear');
+        const contentItems = document.querySelectorAll('.content-item');
+        const currentImage = document.getElementById('current-image');
+        const timelineContainer = document.getElementById('timeline');
+        let currentIndex = 0;
 
-    const imageMap = {
-        '2023-06-15': 'assets/img/Group/1.jpg',
-        '2023-04-03': 'assets/img/Group/2.jpg',
-        '2023-05-15': 'assets/img/Group/3.jpg',
-        '2019-08-09': 'assets/img/Group/1.jpg',
-        '2018-11-23': 'assets/img/Group/3.jpg'
-    };
+        const imageMap = {
+            '2023-06-15': 'assets/img/Group/1.jpg',
+            '2023-04-03': 'assets/img/Group/2.jpg',
+            '2023-05-15': 'assets/img/Group/3.jpg',
+            '2019-08-09': 'assets/img/Group/1.jpg',
+            '2018-11-23': 'assets/img/Group/3.jpg'
+        };
 
-    function updateTimeline() {
-        timelineItems.forEach((item, index) => {
-            const dot = item.querySelector('.timeline-dot');
-            const year = item.dataset.year;
-            if (index === currentIndex) {
-                dot.classList.add('active');
-                currentYear.textContent = item.querySelector('span').textContent;
-                contentItems.forEach(content => content.classList.add('hidden'));
-                document.getElementById(`content-${year}`).classList.remove('hidden');
-                currentImage.src = imageMap[year];
-                currentImage.classList.remove('fade-in');
-                void currentImage.offsetWidth;
-                currentImage.classList.add('fade-in');
+        function updateTimeline() {
+            timelineItems.forEach((item, index) => {
+                const dot = item.querySelector('.timeline-dot');
+                const year = item.dataset.year;
+                if (index === currentIndex) {
+                    dot.classList.add('active');
+                    currentYear.textContent = item.querySelector('span').textContent;
+                    contentItems.forEach(content => content.classList.add('hidden'));
+                    document.getElementById(`content-${year}`).classList.remove('hidden');
+                    currentImage.src = imageMap[year];
+                    currentImage.classList.remove('fade-in');
+                    void currentImage.offsetWidth;
+                    currentImage.classList.add('fade-in');
 
-                const itemRect = item.getBoundingClientRect();
-                const containerRect = timelineContainer.getBoundingClientRect();
-                if (itemRect.left < containerRect.left || itemRect.right > containerRect.right) {
-                    item.scrollIntoView({
-                        behavior: 'smooth',
-                        inline: 'center'
-                    });
+                    const itemRect = item.getBoundingClientRect();
+                    const containerRect = timelineContainer.getBoundingClientRect();
+                    if (itemRect.left < containerRect.left || itemRect.right > containerRect.right) {
+                        item.scrollIntoView({
+                            behavior: 'smooth',
+                            inline: 'center'
+                        });
+                    }
+                } else {
+                    dot.classList.remove('active');
                 }
-            } else {
-                dot.classList.remove('active');
+            });
+        }
+
+        prevYearBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateTimeline();
             }
         });
-    }
 
-    prevYearBtn.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateTimeline();
-        }
-    });
-
-    nextYearBtn.addEventListener('click', () => {
-        if (currentIndex < timelineItems.length - 1) {
-            currentIndex++;
-            updateTimeline();
-        }
-    });
-
-    timelineItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-            currentIndex = index;
-            updateTimeline();
+        nextYearBtn.addEventListener('click', () => {
+            if (currentIndex < timelineItems.length - 1) {
+                currentIndex++;
+                updateTimeline();
+            }
         });
-    });
 
-    updateTimeline();
+        timelineItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentIndex = index;
+                updateTimeline();
+            });
+        });
+
+        updateTimeline();
     </script>
 </body>
 
