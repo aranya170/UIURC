@@ -144,7 +144,7 @@ include_once '_settings/config.php';
         </div>
         <!-- Carousel Container -->
         <div class="w-full sm:w-1/2 rounded-xl overflow-hidden relative mx-auto"
-            style="aspect-ratio: 4/3; max-width: 800px;">
+            style="aspect-ratio: 5/3; max-width: 800px;">
             <div id="photo-carousel" class="relative w-full h-full">
                 <div id="carousel-images" class="flex h-full transition-transform duration-500 ease-in-out"></div>
                 <button id="prev-button"
@@ -335,7 +335,7 @@ include_once '_settings/config.php';
                     time: "Oct 9th, 2024",
                     location: "Room 126",
                     image: "assets/img/Events/Research 101.jpg",
-                    link: "/event/"
+                    link: "/Research101/index.php"
                 },
                 {
                     heading: "TechTrove",
