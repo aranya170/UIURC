@@ -94,22 +94,27 @@ include_once '../_settings/config.php';
     </style>
 </head>
 
-<body>
-    <?php include ABSPATH . '_includes/header.php'; ?>
 
+<?php include ABSPATH . '_includes/header.php'; ?>
+
+<body class="sm:mt-5 mt-[160px] sm:pt-5 pt-[10px]">
     <!-- Upcoming Events Section -->
-    <section class="w-[95%] max-w-[1600px] mx-auto mt-20 px-4">
-        <div class="flex items-center justify-start gap-4 text-primary">
-            <span
-                class="font-display text-md sm:text-xl md:text-2xl lg:text-4xl font-semibold uppercase whitespace-nowrap p-4">
-                Upcoming Events
-            </span>
-        </div>
-        <div class="container mx-auto p-4">
-            <div id="upcoming-events-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                <!-- Event cards or no events message will be inserted here -->
+    <section class="sm:mt-5 mt-[160px] sm:pt-5 pt-[10px]">
+        <section class="w-[95%] max-w-[1600px] mx-auto px-4">
+            <div class="flex items-center justify-start gap-4 text-primary">
+                <span
+                    class="font-display text-md sm:text-xl md:text-2xl lg:text-4xl font-semibold uppercase whitespace-nowrap p-4">
+                    Upcoming Events
+                </span>
             </div>
-        </div>
+            <div class="container mx-auto p-4">
+                <div id="upcoming-events-container"
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                    <!-- Event cards or no events message will be inserted here -->
+                </div>
+            </div>
+        </section>
+
     </section>
 
     <!-- Our Events Section -->

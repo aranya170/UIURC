@@ -11,7 +11,7 @@ include_once '../_settings/config.php';
 
 <body>
     <?php include ABSPATH . '_includes/header.php'; ?>
-    <div class="container mx-auto px-4 py-8">
+    <div class="container mx-auto px-4 py-8 sm:mt-5 mt-[160px] sm:pt-5 pt-[10px]">
         <!-- Header Section -->
         <header class="text-center mb-12">
             <h1 class="text-4xl font-bold text-gray-800 mb-4">About UIU Robotics Club</h1>

@@ -7,69 +7,24 @@ include_once '_settings/config.php';
 
 <head>
     <?php include ABSPATH . '_includes/head.php'; ?>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <style>
-    .nav-arrow {
-        display: block;
-        /* Ensure base visibility */
-        z-index: 10;
-        /* Prevent overlap with other elements */
-    }
-
-    /* Left arrow (unchanged, for reference) */
-    .nav-arrow-left {
-        /* Inherits from .nav-arrow, no additional styles needed */
-    }
-
-    /* Right arrow: match left arrow in mobile view */
-    .nav-arrow-right {
-        display: block;
-        /* Ensure visibility */
-    }
-
-    /* Ensure SVGs are styled consistently */
-    .nav-arrow-right .arrow-content svg,
-    .nav-arrow-right .ellipsis-content svg,
-    .nav-arrow-left svg {
-        width: 24px;
-        /* Consistent size */
-        height: 24px;
-    }
-
-    /* Center ellipsis SVG */
-    .nav-arrow-right .ellipsis-content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    /* Hide elements as needed */
-    .nav-arrow-right .arrow-content.hidden,
-    .nav-arrow-right .ellipsis-content.hidden {
-        display: none;
-    }
-
-    /* Mobile-specific styles (apply at <=640px) */
-    @media (max-width: 640px) {
-
-        .nav-arrow-right,
-        .nav-arrow-left {
-            background: rgba(0, 0, 0, 0.4) !important;
-            /* Black with 20% transparency */
-            border-radius: 50% !important;
-            /* Complete circle */
-            width: 32px !important;
-            /* Fixed size for circular shape */
-            height: 32px !important;
-            /* Fixed size for circular shape */
-            padding: 4px;
-            /* Center SVG within circle */
+        .nav-arrow-right .ellipsis-content {
+            font-size: 1.5rem;
+            /* Adjust to match arrow size */
+            font-weight: bold;
+            color: currentColor;
             display: flex;
-            /* Center SVG content */
             align-items: center;
             justify-content: center;
+            width: 24px;
+            /* Match SVG size */
+            height: 24px;
         }
-    }
+
+        .nav-arrow-right .arrow-content.hidden,
+        .nav-arrow-right .ellipsis-content.hidden {
+            display: none;
+        }
     </style>
 </head>
 
@@ -77,165 +32,8 @@ include_once '_settings/config.php';
     <?php include ABSPATH . '_includes/header.php'; ?>
 
     <section
-        class="relative w-[90%] max-w-[1440px] mx-auto mt-20 mb-16 flex flex-col sm:flex-row gap-8 justify-start overflow-hidden">
-
-        <div class="absolute inset-0 z-0 flex justify-center items-center pointer-events-none overflow-hidden">
-            <svg class="blur-[2px] opacity-80 w-auto h-auto max-w-full max-h-full" viewBox="0 0 610 206" fill="none"
-                preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-                <!-- your SVG content here -->
-                <defs>
-                    <style>
-                    .st0 {
-                        fill: #ff4d29;
-                    }
-
-                    .st1 {
-                        opacity: .2;
-                    }
-
-                    .st2 {
-                        fill: none;
-                        stroke: #ff4d29;
-                        stroke-miterlimit: 10;
-                    }
-                    </style>
-                </defs>
-                <g class="st1">
-                    <polygon class="st2"
-                        points="571 69.9 983.9 69.9 983.9 83.8 959.9 83.8 948.9 94.8 629.3 94.8 629.3 82.3 571 82.3 571 69.9" />
-                    <g>
-                        <path class="st2"
-                            d="M567,187.1c-5.4,0-9.8,4.4-9.8,9.8s4.4,9.8,9.8,9.8,9.8-4.4,9.8-9.8-4.4-9.8-9.8-9.8ZM567,203.7c-3.8,0-6.9-3.1-6.9-6.9s3.1-6.9,6.9-6.9,6.9,3.1,6.9,6.9-3.1,6.9-6.9,6.9Z" />
-                        <path class="st2"
-                            d="M450.9,187.1c-5.4,0-9.8,4.4-9.8,9.8s4.4,9.8,9.8,9.8,9.8-4.4,9.8-9.8-4.4-9.8-9.8-9.8ZM450.9,203.7c-3.8,0-6.9-3.1-6.9-6.9s3.1-6.9,6.9-6.9,6.9,3.1,6.9,6.9-3.1,6.9-6.9,6.9Z" />
-                        <path class="st2"
-                            d="M528.3,187.1c-5.4,0-9.8,4.4-9.8,9.8s4.4,9.8,9.8,9.8,9.8-4.4,9.8-9.8-4.4-9.8-9.8-9.8ZM528.3,203.7c-3.8,0-6.9-3.1-6.9-6.9s3.1-6.9,6.9-6.9,6.9,3.1,6.9,6.9-3.1,6.9-6.9,6.9Z" />
-                        <path class="st2"
-                            d="M605.7,187.1c-5.4,0-9.8,4.4-9.8,9.8s4.4,9.8,9.8,9.8,9.8-4.4,9.8-9.8-4.4-9.8-9.8-9.8ZM605.7,203.7c-3.8,0-6.9-3.1-6.9-6.9s3.1-6.9,6.9-6.9,6.9,3.1,6.9,6.9-3.1,6.9-6.9,6.9Z" />
-                        <path class="st2"
-                            d="M1330.5,157.8h-125.2l-20,20h-116.8v13.3h-427.3v-17.1h-210.8v43.6h194.2v10.3h509.3v-9.9h125.5v-29.4h55.9l71.9,71.9v17.7h34.1v-29.8l-90.7-90.7ZM450.9,209.3c-6.9,0-12.5-5.6-12.5-12.5s5.6-12.5,12.5-12.5,12.5,5.6,12.5,12.5-5.6,12.5-12.5,12.5ZM489.6,209.3c-6.9,0-12.5-5.6-12.5-12.5s5.6-12.5,12.5-12.5,12.5,5.6,12.5,12.5-5.6,12.5-12.5,12.5ZM528.3,209.3c-6.9,0-12.5-5.6-12.5-12.5s5.6-12.5,12.5-12.5,12.5,5.6,12.5,12.5-5.6,12.5-12.5,12.5ZM567,209.3c-6.9,0-12.5-5.6-12.5-12.5s5.6-12.5,12.5-12.5,12.5,5.6,12.5,12.5-5.6,12.5-12.5,12.5ZM605.7,209.3c-6.9,0-12.5-5.6-12.5-12.5s5.6-12.5,12.5-12.5,12.5,5.6,12.5,12.5-5.6,12.5-12.5,12.5ZM1240.6,201.7h-116.1v-9.8h116.1v9.8Z" />
-                        <path class="st2"
-                            d="M489.6,187.1c-5.4,0-9.8,4.4-9.8,9.8s4.4,9.8,9.8,9.8,9.8-4.4,9.8-9.8-4.4-9.8-9.8-9.8ZM489.6,203.7c-3.8,0-6.9-3.1-6.9-6.9s3.1-6.9,6.9-6.9,6.9,3.1,6.9,6.9-3.1,6.9-6.9,6.9Z" />
-                    </g>
-                    <g>
-                        <rect class="st2" x="1483.1" y="78.2" width="7.2" height="66.4"
-                            transform="translate(356.7 1083.9) rotate(-45)" />
-                        <polygon class="st2" points="1455.3 91.4 1445.1 91.4 1506.4 152.7 1506.4 142.4 1455.3 91.4" />
-                        <polygon class="st2"
-                            points="1506.4 169.2 1506.4 159 1438.8 91.4 1432.9 91.4 1411.5 69.9 1407.2 69.9 1506.4 169.2" />
-                        <polygon class="st2" points="1522.6 86.3 1522.6 76 1512.4 76 1522.6 86.3" />
-                        <polygon class="st2" points="1506.1 76 1495.9 76 1522.6 102.8 1522.6 92.6 1506.1 76" />
-                        <rect class="st2" x="1491.4" y="69.9" width="7.2" height="66.4"
-                            transform="translate(365 1087.3) rotate(-45)" />
-                        <polygon class="st2"
-                            points="1506.4 181.2 1506.4 175.5 1400.9 69.9 1363.4 69.9 1363.4 118.6 1407.5 162.7 1433.3 162.7 1492.9 222.2 1492.9 248.6 1522.6 278.3 1520.5 195.3 1506.4 181.2" />
-                        <polygon class="st2" points="1489.6 76 1479.3 76 1522.6 119.3 1522.6 109.1 1489.6 76" />
-                    </g>
-                    <polygon class="st2"
-                        points="1019.8 690 588.8 690 588.8 676.1 612.9 676.1 623.9 665.1 961.5 665.1 961.5 677.6 1019.8 677.6 1019.8 690" />
-                    <g>
-                        <path class="st2"
-                            d="M1023.8,572.8c5.4,0,9.8-4.4,9.8-9.8,0-5.4-4.4-9.8-9.8-9.8-5.4,0-9.8,4.4-9.8,9.8,0,5.4,4.4,9.8,9.8,9.8ZM1023.8,556.2c3.8,0,6.9,3.1,6.9,6.9s-3.1,6.9-6.9,6.9-6.9-3.1-6.9-6.9,3.1-6.9,6.9-6.9Z" />
-                        <path class="st2"
-                            d="M1139.9,572.8c5.4,0,9.8-4.4,9.8-9.8s-4.4-9.8-9.8-9.8-9.8,4.4-9.8,9.8c0,5.4,4.4,9.8,9.8,9.8ZM1139.9,556.2c3.8,0,6.9,3.1,6.9,6.9,0,3.8-3.1,6.9-6.9,6.9-3.8,0-6.9-3.1-6.9-6.9s3.1-6.9,6.9-6.9Z" />
-                        <path class="st2"
-                            d="M1062.5,572.8c5.4,0,9.8-4.4,9.8-9.8,0-5.4-4.4-9.8-9.8-9.8-5.4,0-9.8,4.4-9.8,9.8,0,5.4,4.4,9.8,9.8,9.8ZM1062.5,556.2c3.8,0,6.9,3.1,6.9,6.9s-3.1,6.9-6.9,6.9c-3.8,0-6.9-3.1-6.9-6.9s3.1-6.9,6.9-6.9Z" />
-                        <path class="st2"
-                            d="M985.1,572.8c5.4,0,9.8-4.4,9.8-9.8,0-5.4-4.4-9.8-9.8-9.8s-9.8,4.4-9.8,9.8c0,5.4,4.4,9.8,9.8,9.8ZM985.1,556.2c3.8,0,6.9,3.1,6.9,6.9s-3.1,6.9-6.9,6.9c-3.8,0-6.9-3.1-6.9-6.9s3.1-6.9,6.9-6.9Z" />
-                        <path class="st2"
-                            d="M242.3,602.1h125.2s20-20,20-20h116.8s0-13.3,0-13.3h445.3v17.1s210.8,0,210.8,0v-43.6s-194.2,0-194.2,0v-10.3s-527.3,0-527.3,0v9.9h-125.5s0,29.4,0,29.4h-55.9s-71.9-71.9-71.9-71.9v-17.7s-34.1,0-34.1,0v29.8s90.7,90.7,90.7,90.7ZM1139.9,550.6c6.9,0,12.5,5.6,12.5,12.5,0,6.9-5.6,12.5-12.5,12.5s-12.5-5.6-12.5-12.5c0-6.9,5.6-12.5,12.5-12.5ZM1101.2,550.6c6.9,0,12.5,5.6,12.5,12.5,0,6.9-5.6,12.5-12.5,12.5s-12.5-5.6-12.5-12.5,5.6-12.5,12.5-12.5ZM1062.5,550.6c6.9,0,12.5,5.6,12.5,12.5,0,6.9-5.6,12.5-12.5,12.5-6.9,0-12.5-5.6-12.5-12.5,0-6.9,5.6-12.5,12.5-12.5ZM1023.8,550.6c6.9,0,12.5,5.6,12.5,12.5,0,6.9-5.6,12.5-12.5,12.5s-12.5-5.6-12.5-12.5c0-6.9,5.6-12.5,12.5-12.5ZM985.1,550.6c6.9,0,12.5,5.6,12.5,12.5,0,6.9-5.6,12.5-12.5,12.5s-12.5-5.6-12.5-12.5c0-6.9,5.6-12.5,12.5-12.5ZM332.1,558.2h116.1v9.8h-116.1v-9.8Z" />
-                        <path class="st2"
-                            d="M1101.2,572.8c5.4,0,9.8-4.4,9.8-9.8,0-5.4-4.4-9.8-9.8-9.8s-9.8,4.4-9.8,9.8c0,5.4,4.4,9.8,9.8,9.8ZM1101.2,556.2c3.8,0,6.9,3.1,6.9,6.9s-3.1,6.9-6.9,6.9c-3.8,0-6.9-3.1-6.9-6.9s3.1-6.9,6.9-6.9Z" />
-                    </g>
-                    <g>
-                        <rect class="st2" x="82.4" y="615.3" width="7.2" height="66.4"
-                            transform="translate(-433.4 250.8) rotate(-45)" />
-                        <polygon class="st2" points="117.4 668.5 127.7 668.5 66.3 607.2 66.3 617.5 117.4 668.5" />
-                        <polygon class="st2"
-                            points="66.3 590.7 66.3 600.9 134 668.5 139.9 668.5 161.3 690 165.6 690 66.3 590.7" />
-                        <polygon class="st2" points="50.1 673.6 50.1 683.8 60.4 683.8 50.1 673.6" />
-                        <polygon class="st2" points="66.7 683.8 76.9 683.8 50.1 657.1 50.1 667.3 66.7 683.8" />
-                        <rect class="st2" x="74.1" y="623.6" width="7.2" height="66.4"
-                            transform="translate(-441.6 247.3) rotate(-45)" />
-                        <polygon class="st2"
-                            points="66.3 578.7 66.3 584.4 171.9 690 209.4 690 209.4 641.3 165.3 597.2 139.4 597.2 79.9 537.7 79.9 511.3 50.1 481.6 52.2 564.6 66.3 578.7" />
-                        <polygon class="st2" points="83.2 683.8 93.4 683.8 50.1 640.6 50.1 650.8 83.2 683.8" />
-                    </g>
-                </g>
-                <g class="st1">
-                    <polygon class="st2"
-                        points="1043.8 132 1065 132 1101.4 95.6 1131.8 95.6 1131.8 91.8 1187.6 91.8 1187.6 95.6 1326.7 95.6 1301.1 69.9 1043.8 69.9 1043.8 132" />
-                    <path class="st2"
-                        d="M70.2,195.2v121l15.3,15.3,78.9-78.9h26.5v-3.9h19.4v3.9h54.2l79.6-79.6v-48.6h-124.8v70.7h-59.1v6.3h-53.4v-6.3h-36.6ZM304.6,160.3h7.7v-7.7h4.7v7.7h7.7v4.7h-7.7v7.7h-4.7v-7.7h-7.7v-4.7ZM118.5,254.6c0,6.5-5.2,11.7-11.7,11.7-6.5,0-11.7-5.2-11.7-11.7,0-6.5,5.2-11.7,11.7-11.7,6.5,0,11.7,5.2,11.7,11.7Z" />
-                    <path class="st2"
-                        d="M1256.6,99.6v38.4h93.6l153.5,153.5h18.8l-191.9-191.9h-74.1ZM1284.7,131.2c-6.5,0-11.7-5.2-11.7-11.7,0-6.5,5.2-11.7,11.7-11.7,6.5,0,11.7,5.2,11.7,11.7,0,6.5-5.2,11.7-11.7,11.7Z" />
-                    <rect class="st2" x="647.1" y="115.5" width="349.3" height="7.9" />
-                    <path class="st2"
-                        d="M99.1,254.6c0,4.2,3.4,7.7,7.7,7.7,4.2,0,7.7-3.4,7.7-7.7,0-4.2-3.4-7.7-7.7-7.7-4.2,0-7.7,3.4-7.7,7.7ZM112.7,254.6c0,3.3-2.7,6-6,6s-6-2.7-6-6,2.7-6,6-6,6,2.7,6,6Z" />
-                    <path class="st2"
-                        d="M300,72.2v48.3h139.9v-29.4h68.7l40.9,40.9h22.8v-3.1h49.8v3.1h417.6v-62.1h-40.8v32.3h-437.2v-32.3l-261.7,2.3ZM308.6,113.5h-4.3v-25.9h4.3v25.9ZM319.1,113.5h-4.3v-25.9h4.3v25.9ZM329.6,113.5h-4.3v-25.9h4.3v25.9ZM340.1,113.5h-4.3v-25.9h4.3v25.9ZM350.6,113.5h-4.3v-25.9h4.3v25.9ZM361.1,113.5h-4.3v-25.9h4.3v25.9ZM371.6,113.5h-4.3v-25.9h4.3v25.9ZM382.1,113.5h-4.3v-25.9h4.3v25.9ZM392.6,113.5h-4.3v-25.9h4.3v25.9ZM403.2,113.5h-4.3v-25.9h4.3v25.9ZM413.7,113.5h-4.3v-25.9h4.3v25.9ZM424.2,113.5h-4.3v-25.9h4.3v25.9ZM434.7,113.5h-4.3v-25.9h4.3v25.9ZM643.1,111.5h357.3v15.9h-357.3v-15.9Z" />
-                    <polygon class="st2"
-                        points="166.1 256.6 129.5 293.1 129.5 334 142.9 334 142.9 331 217.3 331 217.3 334 227.3 334 227.3 256.6 210.3 256.6 210.3 260.6 190.9 260.6 190.9 256.6 166.1 256.6" />
-                    <path class="st2"
-                        d="M280.4,380.6v-53l67.2-67.2-42.6-42.6-38.9,38.9h-34.9v81.4h-14v3.3h-74.4v-3.3h-17.4v-40.9l-37.2,37.2,21.6,21.6h128.8v24.6h41.7ZM237.6,322.3v-48.4c0-3.3,2.7-6,6-6s6,2.7,6,6v48.4c0,3.3-2.7,6-6,6s-6-2.7-6-6Z" />
-                    <path class="st2"
-                        d="M1284.7,111.8c-4.2,0-7.7,3.4-7.7,7.7,0,4.2,3.4,7.7,7.7,7.7,4.2,0,7.7-3.4,7.7-7.7,0-4.2-3.4-7.7-7.7-7.7ZM1284.7,125.4c-3.3,0-6-2.7-6-6s2.7-6,6-6,6,2.7,6,6-2.7,6-6,6Z" />
-                    <path class="st2"
-                        d="M477.6,119.1c-4.2,0-7.7,3.4-7.7,7.7,0,4.2,3.4,7.7,7.7,7.7,4.2,0,7.7-3.4,7.7-7.7,0-4.2-3.4-7.7-7.7-7.7ZM477.6,132.8c-3.3,0-6-2.7-6-6s2.7-6,6-6,6,2.7,6,6-2.7,6-6,6Z" />
-                    <path class="st2"
-                        d="M131.4,120.5h164.7v-48.2l-172.8,1.5-19.3,19.3,27.4,27.4ZM140.2,92.9h7.7v-7.7h4.7v7.7h7.7v4.7h-7.7v7.7h-4.7v-7.7h-7.7v-4.7Z" />
-                    <path class="st2"
-                        d="M547.9,136l-40.9-40.9h-63v29.4h-95.9v50.2l-40.2,40.2,42.6,42.6,21.8-21.8v-54.9l26-26h756.8l16.8-16.8h80.6v-38.4h-65.1v3.6h-55.7v-3.6h-28.8l-36.5,36.5h-444.5v2.9h-49.8v-2.9h-24.4ZM477.6,138.5c-6.5,0-11.7-5.2-11.7-11.7,0-6.5,5.2-11.7,11.7-11.7,6.5,0,11.7,5.2,11.7,11.7,0,6.5-5.2,11.7-11.7,11.7ZM1179.1,125.4h57.3c2.4,0,4.3,1.9,4.3,4.3s-1.9,4.3-4.3,4.3h-57.3c-2.4,0-4.3-1.9-4.3-4.3s1.9-4.3,4.3-4.3Z" />
-                    <path class="st2"
-                        d="M106.8,191.2v-6.3h53.4v6.3h55.1v-66.7h-85.6l-28.6-28.6-30.9,30.9v64.4h36.6ZM168.6,142.7h35.1v35.1h-35.1v-35.1Z" />
-                    <rect class="st2" x="172.6" y="146.7" width="27.1" height="27.1" />
-                    <path class="st2"
-                        d="M1432.5,302.7v-3.2h-49.7v3.2h-20.2v-33.4l-29.3-29.3h-86.6v26.7h-76.4v-3.4h-49.7v3.4h-158.8v-20.9h-365.7v-3h-99.5v3h-81.4l-101.8,101.8v65.3h-104.7v-33.5h-95.7v2.7h93.1v33.5h110.1v-66.9l100.2-100.2h80.3v3h99.5v-3h363.1v20.9h161.5v2.6h49.7v-2.6h79.1v-26.7h82.9l27.7,27.7v35h22.9v2.9h49.7v-2.9h12.6v-2.7h-12.6Z" />
-                    <polygon class="st2"
-                        points="529 627.9 507.8 627.9 471.3 664.3 440.9 664.3 440.9 668.1 385.2 668.1 385.2 664.3 246 664.3 271.7 690 529 690 529 627.9" />
-                    <path class="st2"
-                        d="M1520.6,564.7v-121s-15.3-15.3-15.3-15.3l-78.9,78.9h-26.5s0,3.9,0,3.9h-19.4v-3.9s-54.2,0-54.2,0l-79.6,79.6v48.6s124.8,0,124.8,0v-70.7h59.1s0-6.3,0-6.3h53.4v6.3s36.6,0,36.6,0ZM1286.2,599.6h-7.7s0,7.7,0,7.7h-4.7v-7.7s-7.7,0-7.7,0v-4.7h7.7s0-7.7,0-7.7h4.7v7.7s7.7,0,7.7,0v4.7ZM1472.3,505.3c0-6.5,5.2-11.7,11.7-11.7,6.5,0,11.7,5.2,11.7,11.7,0,6.5-5.2,11.7-11.7,11.7-6.5,0-11.7-5.2-11.7-11.7Z" />
-                    <path class="st2"
-                        d="M316.1,660.3v-38.4s-93.6,0-93.6,0l-153.5-153.5h-18.8s191.9,191.9,191.9,191.9h74.1ZM288.1,628.7c6.5,0,11.7,5.2,11.7,11.7,0,6.5-5.2,11.7-11.7,11.7-6.5,0-11.7-5.2-11.7-11.7,0-6.5,5.2-11.7,11.7-11.7Z" />
-                    <rect class="st2" x="576.4" y="636.5" width="367.3" height="7.9" />
-                    <path class="st2"
-                        d="M1491.7,505.3c0-4.2-3.4-7.7-7.7-7.7-4.2,0-7.7,3.4-7.7,7.7,0,4.2,3.4,7.7,7.7,7.7,4.2,0,7.7-3.4,7.7-7.7ZM1478,505.3c0-3.3,2.7-6,6-6s6,2.7,6,6c0,3.3-2.7,6-6,6-3.3,0-6-2.7-6-6Z" />
-                    <path class="st2"
-                        d="M1290.7,687.7v-48.3s-139.9,0-139.9,0v29.4h-68.7s-40.9-40.9-40.9-40.9h-22.8s0,3.1,0,3.1h-49.8v-3.1s-435.6,0-435.6,0v62.1s40.8,0,40.8,0v-32.3h455.2v32.3s261.7-2.3,261.7-2.3ZM1282.2,646.4h4.3v25.9h-4.3v-25.9ZM1271.7,646.4h4.3v25.9h-4.3v-25.9ZM1261.2,646.4h4.3v25.9h-4.3v-25.9ZM1250.7,646.4h4.3v25.9h-4.3v-25.9ZM1240.2,646.4h4.3v25.9h-4.3v-25.9ZM1229.7,646.4h4.3v25.9h-4.3v-25.9ZM1219.2,646.4h4.3v25.9h-4.3v-25.9ZM1208.6,646.4h4.3v25.9h-4.3v-25.9ZM1198.1,646.4h4.3v25.9h-4.3v-25.9ZM1187.6,646.4h4.3v25.9h-4.3v-25.9ZM1177.1,646.4h4.3v25.9h-4.3v-25.9ZM1166.6,646.4h4.3v25.9h-4.3v-25.9ZM1156.1,646.4h4.3v25.9h-4.3v-25.9ZM947.7,648.4h-375.3v-13.9s0-2,0-2h375.3v15.9Z" />
-                    <polygon class="st2"
-                        points="1424.7 503.3 1461.2 466.8 1461.2 425.9 1447.9 425.9 1447.9 428.9 1373.5 428.9 1373.5 425.9 1363.5 425.9 1363.5 503.3 1380.5 503.3 1380.5 499.3 1399.8 499.3 1399.8 503.3 1424.7 503.3" />
-                    <path class="st2"
-                        d="M1310.3,379.3v53s-67.2,67.2-67.2,67.2l42.6,42.6,38.9-38.9h34.9s0-81.4,0-81.4h14s0-3.3,0-3.3h74.4v3.3s17.4,0,17.4,0v40.9s37.2-37.2,37.2-37.2l-21.6-21.6h-128.8v-24.6s-41.7,0-41.7,0ZM1353.1,437.6v48.4c0,3.3-2.7,6-6,6-3.3,0-6-2.7-6-6v-48.4c0-3.3,2.7-6,6-6,3.3,0,6,2.7,6,6Z" />
-                    <path class="st2"
-                        d="M288.1,648.1c4.2,0,7.7-3.4,7.7-7.7,0-4.2-3.4-7.7-7.7-7.7-4.2,0-7.7,3.4-7.7,7.7,0,4.2,3.4,7.7,7.7,7.7ZM288.1,634.5c3.3,0,6,2.7,6,6s-2.7,6-6,6-6-2.7-6-6,2.7-6,6-6Z" />
-                    <path class="st2"
-                        d="M1113.2,640.8c4.2,0,7.7-3.4,7.7-7.7,0-4.2-3.4-7.7-7.7-7.7-4.2,0-7.7,3.4-7.7,7.7,0,4.2,3.4,7.7,7.7,7.7ZM1113.2,627.1c3.3,0,6,2.7,6,6,0,3.3-2.7,6-6,6-3.3,0-6-2.7-6-6,0-3.3,2.7-6,6-6Z" />
-                    <path class="st2"
-                        d="M1459.4,639.4h-164.7s0,48.2,0,48.2l172.8-1.5,19.3-19.3-27.4-27.4ZM1450.6,667h-7.7s0,7.7,0,7.7h-4.7v-7.7s-7.7,0-7.7,0v-4.7h7.7s0-7.7,0-7.7h4.7v7.7s7.7,0,7.7,0v4.7Z" />
-                    <path class="st2"
-                        d="M1042.9,623.9l40.9,40.9h63s0-29.4,0-29.4h95.9s0-50.2,0-50.2l40.2-40.2-42.6-42.6-21.8,21.8v54.9s-26,26-26,26H417.6s-16.8,16.8-16.8,16.8h-80.6s0,38.4,0,38.4h65.1s0-3.6,0-3.6h55.7v3.6s28.8,0,28.8,0l36.5-36.5h462.5s0-2.9,0-2.9h49.8v2.9s24.4,0,24.4,0ZM1113.2,621.4c6.5,0,11.7,5.2,11.7,11.7,0,6.5-5.2,11.7-11.7,11.7-6.5,0-11.7-5.2-11.7-11.7,0-6.5,5.2-11.7,11.7-11.7ZM393.7,634.5h-57.3c-2.4,0-4.3-1.9-4.3-4.3s1.9-4.3,4.3-4.3h57.3c2.4,0,4.3,1.9,4.3,4.3s-1.9,4.3-4.3,4.3Z" />
-                    <path class="st2"
-                        d="M1484,568.7v6.3h-53.4v-6.3s-55.1,0-55.1,0v66.7s85.6,0,85.6,0l28.6,28.6,30.9-30.9v-64.4s-36.6,0-36.6,0ZM1422.2,617.2h-35.1v-33.1s0-2,0-2h35.1v35.1Z" />
-                    <rect class="st2" x="1391.1" y="586" width="27.1" height="27.1" />
-                    <path class="st2"
-                        d="M140.3,457.2v3.2s49.7,0,49.7,0v-3.2h20.2v33.4s29.3,29.3,29.3,29.3h86.6s0-26.7,0-26.7h76.4v3.4s49.7,0,49.7,0v-3.4h158.8v20.9s383.8,0,383.8,0v3s99.5,0,99.5,0v-3h81.4s101.8-101.8,101.8-101.8v-65.3h104.7v33.5s95.7,0,95.7,0v-2.7s-93.1,0-93.1,0v-33.5s-110.1,0-110.1,0v66.9s-100.2,100.2-100.2,100.2h-80.3v-3s-99.5,0-99.5,0v3h-381.1v-20.9s-161.5,0-161.5,0v-2.6s-49.7,0-49.7,0v2.6h-79.1s0,26.7,0,26.7h-82.9s-27.7-27.7-27.7-27.7v-35s-22.9,0-22.9,0v-2.9s-49.7,0-49.7,0v2.9h-12.6s0,2.7,0,2.7h12.6Z" />
-                </g>
-                <g>
-                    <path class="st0"
-                        d="M593.3,295c.3,0,.5.3.5.7v123.4h67.9v-123.4c0-.5.2-.7.5-.7h34.2c.4,0,.6.3.6.7v169.9c0,.5-.2.7-.6.7h-137.3c-.4,0-.6-.2-.6-.7v-169.9c0-.5.2-.7.6-.7h34.2Z" />
-                    <path class="st0" d="M709.8,466.3v-171.3h35.3v171.3h-35.3Z" />
-                    <path class="st0"
-                        d="M539.3,360.9v-35.3h-30.6v-30.6h-35.3v30.6h-39.5v-30.6h-35.3v30.6h-30.6v35.3h30.6v39.5h-30.6v35.3h30.6v30.6h35.3v-30.6h39.5v30.6h35.3v-30.6h30.6v-35.3h-30.6v-39.5h30.6ZM473.4,400.4h-39.5v-39.5h39.5v39.5Z" />
-                    <path class="st0"
-                        d="M792.7,295c.3,0,.5.3.5.7v123.4h67.9v-123.4c0-.5.2-.7.5-.7h34.2c.4,0,.6.3.6.7v169.9c0,.5-.2.7-.6.7h-137.3c-.4,0-.6-.2-.6-.7v-169.9c0-.5.2-.7.6-.7h34.2Z" />
-                    <path class="st0"
-                        d="M909.3,295.6c0-.5.2-.7.6-.7h139.5c.4,0,.6.3.6.7v107.8c0,.5-.2.7-.6.7h-45.5v.5c29.7,24.9,45.1,38.1,46.1,39.4v21.5c0,.5-.2.7-.6.7h-34.2c-.6,0-13.4-11.1-38.5-33.3-20.2-18.1-30.7-27.3-31.5-27.6v60.2c0,.5-.2.7-.5.7h-34.7c-.4,0-.6-.2-.6-.7v-169.9ZM945.1,357.4h68.9v-15.8h-68.9v15.8Z" />
-                    <path class="st0"
-                        d="M1200.8,341.6c.3,0,.5-.2.5-.7v-45.3c0-.4-.1-.6-.5-.7h-138v.5s0,.1,0,.1v169.9c0,.1,0,.2,0,.3v.4h13.8l.8-71.3c-2.2-.8-3.8-2.9-3.7-5.4,0-3.1,2.6-5.6,5.6-5.6,3.1,0,5.5,2.6,5.5,5.7,0,2.5-1.7,4.6-3.9,5.4l-.9,71.2h6.8l2.2-87.2h-11.5c0,.1.5-44,.5-44-2.2-.8-3.8-3-3.8-5.4,0-3.1,2.6-5.7,5.6-5.6,3.1,0,5.6,2.6,5.5,5.7,0,2.5-1.7,4.6-3.9,5.4l-.5,40.5h11.6c0-.1-2.3,90.7-2.3,90.7h110.4c.3,0,.5-.3.5-.7v-45.3c0-.4-.1-.7-.5-.7h-102.7v-77.9h102.7Z" />
-                </g>
-            </svg>
-        </div>
-        <div class="w-full sm:w-1/2 sm:max-w-[600px] self-start flex flex-col justify-start items-start">
+        class="w-full max-w-[1440px] mx-auto mt-20 px-2 sm:px-10 mb-16 py-10 flex flex-col-reverse sm:flex-row gap-4 justify-center">
+        <div class="w-full sm:w-1/2 flex-1 self-start flex flex-col justify-start items-start">
             <svg class="w-full sm:w-[400px] md:w-[500px] lg:w-[550px] max-w-full" viewBox="0 0 610 206" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -324,17 +122,16 @@ include_once '_settings/config.php';
                     fill="#FF3215" />
             </svg>
             <br>
-            <p class="w-[80%] max-w-[80%]">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, cumque!
-                Libero
-                quo expedita iusto
-                deleniti in alias voluptate sit veniam omnis dolores modi ratione illo voluptatibus, debitis consequatur
-                sunt numquam.</p>
-            <div class="flex flex-1 self-start justify-left items-left mt-4 gap-3">
+            <p class="w-[80%] max-w-[80%]">Welcome to the UIU Robotics Club, where innovation thrives at United
+                International University. We inspire passion for robotics through hands-on training, global
+                competitions, and cutting-edge research. Our members excel internationally, gaining recognition in Asia
+                and beyond while developing skills to shape the future of technology.</p>
+            <div class="flex flex-1 self-start justify-center items-center mt-4 gap-3">
                 <span>
                     <p class="text-xl font-bold text-gray-800">Explore more</p>
                 </span>
                 <span>
-                    <a href=""
+                    <a href="#"
                         class="flex justify-center items-center rounded-full bg-primary text-white font-bold text-[18px] w-[2rem] h-[2rem] cursor-pointer hover:bg-[#0E1E2D] transition duration-300 ease-in-out">
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">
                             <path fill="currentColor"
@@ -344,55 +141,108 @@ include_once '_settings/config.php';
                 </span>
             </div>
         </div>
-
-        <div x-data="{ activeSlide: 0, images: [
-                'https://scontent.fdac11-1.fna.fbcdn.net/v/t39.30808-6/486164674_681504481209928_4526373125618018447_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFzRzYazoaNc5oVPS8DyvLCxOGkVUd9dBvE4aRVR310Gxek7IUsXFqPX7gbc_djfAMECb7rfYMdZcvoW_VWH2OM&_nc_ohc=ILVWHMj3rVgQ7kNvwFtWTL3&_nc_oc=Adke_vafMtUbAdXZOjaTJFxw6eRvX9HTsw0zt7232Jx38iBxQ0sI5CLmsXt0Gw5yxNs&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-1.fna&_nc_gid=VyClRV533GdlIRPYEw9uFw&oh=00_AfJu85uldHcr46JzLozp7j0b9ffjCm7kl-MQibOKZGQj7A&oe=683644C7',
-                'https://scontent.fdac11-2.fna.fbcdn.net/v/t39.30808-6/484787497_677866458240397_3094052862723343964_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGMro4y4vGLZWDhiHF9fT9h_vuKEUZel37--4oRRl6Xfkr31d76_QEsz7pXSnrBMAP8R-7yIEoEqgVnzidiGMgu&_nc_ohc=FMsjVMQdRQQQ7kNvwElhNTZ&_nc_oc=Adk_XL4gMSqWuxNOfeIQegRyqOXJYT8hUBab-6R7KkW_MrAWf7GtWfcBUyMohkUsNL8&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-2.fna&_nc_gid=xzyXc17O7AgeGzgpyHvUIA&oh=00_AfLJK3G9TLkj5YrSJQlGMnYrx9mBKq0lgJ7d-fQzaaOFgw&oe=68367FB4',
-                'https://scontent.fdac11-1.fna.fbcdn.net/v/t39.30808-6/484304613_677866624907047_6529089986403297153_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFY_QxPjlVvzUXxfFhJsU6YqbyiGo5lmLGpvKIajmWYsRdfXniXtBdVLifzvt6QiXsocdCzNTUDnnYgZRc5E0Ay&_nc_ohc=XVAyTDEyy8sQ7kNvwGd1mzt&_nc_oc=AdkAbjvza-bF7bzCunhj_cwCY-Pk04vozh0uPYoKUMuvjLrZJNQ0nTgXQiFrUlxrXMM&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-1.fna&_nc_gid=18Qo-KxUgTzqODJWo5eESg&oh=00_AfI08QGBkCtDiEAYI5NKqxKETaO8tqviBjKtQI7PWTcQKw&oe=68368752'
-            ] }"
-            class="w-full ml-auto sm:w-1/2 rounded-xl overflow-hidden self-end flex flex-col justify-end items-end relative"
-            style="aspect-ratio: 4/3; max-width: 600px;">
-            <!-- Image -->
-            <template x-for="(image, index) in images" :key="index">
-                <img x-show="activeSlide === index" :src="image"
-                    class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
-                    x-transition:enter="opacity-0" x-transition:enter-start="opacity-0"
-                    x-transition:enter-end="opacity-100" x-transition:leave="opacity-100"
-                    x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" alt="Slide Image">
-            </template>
-
-            <button @click="activeSlide = (activeSlide === 0) ? images.length - 1 : activeSlide - 1"
-                class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white backdrop-blur-md p-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white"
-                aria-label="Previous slide">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-            </button>
-
-            <!-- Next Button -->
-            <button @click="activeSlide = (activeSlide + 1) % images.length"
-                class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white backdrop-blur-md p-3 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white"
-                aria-label="Next slide">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-            </button>
-
-            <!-- Dots -->
-            <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-2">
-                <template x-for="(image, index) in images" :key="index">
-                    <div @click="activeSlide = index"
-                        :class="{'bg-white': activeSlide === index, 'bg-gray-400': activeSlide !== index}"
-                        class="w-3 h-3 rounded-full cursor-pointer"></div>
-                </template>
+        <div class="w-full sm:w-1/2 rounded-xl overflow-hidden relative mx-auto"
+            style="aspect-ratio: 4/3; max-width: 800px;">
+            <!-- Carousel Container -->
+            <div id="photo-carousel" class="relative w-full h-full">
+                <!-- Images (populated by JavaScript) -->
+                <div id="carousel-images" class="flex h-full transition-transform duration-500 ease-in-out"></div>
+                <!-- Previous Button -->
+                <button id="prev-button"
+                    class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/30 backdrop-blur-sm rounded-full p-2 hover:bg-white/50 transition duration-300 focus:outline-none"
+                    aria-label="Previous image">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <!-- Next Button -->
+                <button id="next-button"
+                    class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/30 backdrop-blur-sm rounded-full p-2 hover:bg-white/50 transition duration-300 focus:outline-none"
+                    aria-label="Next image">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+                <!-- Navigation Dots -->
+                <div id="carousel-dots" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                    <!-- Dots populated by JavaScript -->
+                </div>
             </div>
         </div>
 
-    </section>
+        <script>
+            const images = [
+                "assets/img/Group/1.jpg",
+                "assets/img/Group/2.jpg",
+                "assets/img/Group/3.jpg"
+            ];
 
-    <section class="w-[85%] max-w-[1440px] mx-auto mt-20">
+            let currentIndex = 0;
+
+            function initializeCarousel() {
+                const carouselImages = document.getElementById('carousel-images');
+                const carouselDots = document.getElementById('carousel-dots');
+                const prevButton = document.getElementById('prev-button');
+                const nextButton = document.getElementById('next-button');
+
+                // Populate images
+                images.forEach((src, index) => {
+                    const imgDiv = document.createElement('div');
+                    imgDiv.className = 'w-full h-full flex-shrink-0';
+                    imgDiv.innerHTML =
+                        `<img src="${src}" alt="Carousel image ${index + 1}" class="w-full h-full object-cover" />`;
+                    carouselImages.appendChild(imgDiv);
+
+                    // Populate dots
+                    const dot = document.createElement('button');
+                    dot.className =
+                        `w-3 h-3 rounded-full ${index === 0 ? 'bg-white/50 backdrop-blur-md' : 'bg-white/20 backdrop-blur-sm'} focus:outline-none`;
+                    dot.setAttribute('aria-label', `Go to image ${index + 1}`);
+                    dot.addEventListener('click', () => goToImage(index));
+                    carouselDots.appendChild(dot);
+                });
+
+                function updateCarousel() {
+                    // Update images transform
+                    carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+                    // Update dots
+                    const dots = carouselDots.children;
+                    for (let i = 0; i < dots.length; i++) {
+                        dots[i].className =
+                            `w-3 h-3 rounded-full ${i === currentIndex ? 'bg-white/50 backdrop-blur-md' : 'bg-white/20 backdrop-blur-sm'} focus:outline-none`;
+                    }
+                }
+
+                function goToImage(index) {
+                    currentIndex = (index + images.length) % images.length; // Handle wrap-around
+                    updateCarousel();
+                }
+
+                prevButton.addEventListener('click', () => {
+                    goToImage(currentIndex - 1);
+                });
+
+                nextButton.addEventListener('click', () => {
+                    goToImage(currentIndex + 1);
+                });
+
+                // Keyboard navigation
+                document.getElementById('photo-carousel').addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') goToImage(currentIndex - 1);
+                    if (e.key === 'ArrowRight') goToImage(currentIndex + 1);
+                });
+
+                updateCarousel();
+            }
+
+            window.addEventListener('load', initializeCarousel);
+        </script>
+    </section>
+    <!-- Events -->
+    <section class="w-[85%] max-w-[1440px] mx-auto mt-20 px-5">
         <div class="text-nowrap flex items-center flex-row justify-center gap-[22px] text-primary">
             <span class="font-display text-md sm:text-xl md:text-2xl lg:text-4xl text-nowrap font-semibold uppercase">
                 :: Our Events
@@ -408,31 +258,54 @@ include_once '_settings/config.php';
             <!-- Carousel Container -->
             <div class="carousel-container relative">
                 <!-- Navigation Arrows -->
+                <!-- Left Arrow (hidden on mobile, shown on md and up) -->
                 <button id="left-arrow"
-                    class="nav-arrow nav-arrow-left absolute left-0 top-1/2 transform -translate-y-1/2">
+                    class="nav-arrow nav-arrow-left hidden md:flex absolute left-0 top-1/2 transform -translate-y-1/2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                         class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                     </svg>
                 </button>
                 <!-- Inside the carousel-container -->
+                <!-- Right Arrow (hidden on mobile, shown on md and up) -->
                 <button id="right-arrow"
-                    class="nav-arrow nav-arrow-right absolute right-0 top-1/2 transform -translate-y-1/2">
+                    class="nav-arrow nav-arrow-right hidden md:flex absolute right-0 top-1/2 transform -translate-y-1/2">
                     <span class="arrow-content">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                     </span>
-                    <span class="ellipsis-content hidden">
-                        <svg fill="currentColor" viewBox="0 0 32.055 32.055" class="w-6 h-6">
-                            <path
-                                d="M3.968,12.061C1.775,12.061,0,13.835,0,16.027c0,2.192,1.773,3.967,3.968,3.967c2.189,0,3.966-1.772,3.966-3.967
+                    <span id="more" class="ellipsis-content hidden"><svg fill="#ffffff" version="1.1" id="Capa_1"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            viewBox="0 0 32.055 32.055" xml:space="preserve">
+                            <g>
+                                <path
+                                    d="M3.968,12.061C1.775,12.061,0,13.835,0,16.027c0,2.192,1.773,3.967,3.968,3.967c2.189,0,3.966-1.772,3.966-3.967
                                 C7.934,13.835,6.157,12.061,3.968,12.061z M16.233,12.061c-2.188,0-3.968,1.773-3.968,3.965c0,2.192,1.778,3.967,3.968,3.967
                                 s3.97-1.772,3.97-3.967C20.201,13.835,18.423,12.061,16.233,12.061z M28.09,12.061c-2.192,0-3.969,1.774-3.969,3.967
                                 c0,2.19,1.774,3.965,3.969,3.965c2.188,0,3.965-1.772,3.965-3.965S30.278,12.061,28.09,12.061z" />
-                        </svg>
-                    </span>
+                            </g>
+                        </svg></span>
                 </button>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const moreSpan = document.getElementById('more');
+                        const moreSvg = moreSpan.querySelector('svg');
+
+                        moreSvg.addEventListener('click', function(event) {
+                            // Prevent the click from bubbling up to parent elements if needed
+                            event.stopPropagation();
+
+                            // Check if the more span is visible
+                            if (!moreSpan.classList.contains('hidden')) {
+                                // Replace 'https://example.com' with your desired URL
+                                window.location.href = 'https://example.com';
+                                // Alternatively, use window.open('https://example.com', '_blank') to open in a new tab
+                            }
+                        });
+                    });
+                </script>
 
                 <!-- Event Cards Container -->
                 <div id="events-container" class="scroll-container space-x-4 overflow-x-auto snap-x snap-mandatory">
@@ -442,65 +315,65 @@ include_once '_settings/config.php';
         </div>
 
         <script defer>
-        const placeholderImage = "/assets/img/svg/banner.svg";
+            const placeholderImage = "/assets/img/svg/banner.svg";
 
-        const staticEvents = [{
-                heading: "Majlish-e-Ifter",
-                time: "March 17, 2025",
-                location: "UIU Cafeteria",
-                image: "https://scontent.fdac11-2.fna.fbcdn.net/v/t39.30808-6/490027735_697422702951439_4002414821349991261_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=75d36f&_nc_eui2=AeFqXUPVyN0AqEtR3CBy1sbF2Ne4Cmso4frY17gKayjh-n6_c_hwPgoaW01JbkhLp1XUuw6eVAU5f9Vx5FPI75RU&_nc_ohc=acWyJljVp0MQ7kNvwF0j57L&_nc_oc=Adme6ovXR1TBFUimlKaxSHIuWyFQVIkwvtbzT6lvedhrVqRKbHfR8wEHlLrklWcS9i0&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-2.fna&_nc_gid=31XN1OvO91nZvlHhGr47KQ&oh=00_AfJhQ1djo6hpR3VxPCbiyQy5znLbYrfpP_29cmPjlunkuw&oe=68364C8A",
-                link: "/event/"
-            },
-            {
-                heading: "UIU CSE Fest",
-                time: "June 17-18, 2025",
-                location: "United International University",
-                image: "https://scontent.fdac11-1.fna.fbcdn.net/v/t39.30808-6/471726729_122110719038647360_4982353136851016130_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=108&ccb=1-7&_nc_sid=75d36f&_nc_eui2=AeELKWaNMVNbeG5P6edUQHy5ItpShxwbCq4i2lKHHBsKrhIZJoUNJXITXqeSvz3bYSAMlbCnwMHsuaDnfs_3ga87&_nc_ohc=tPM8gVwgqS8Q7kNvwEIaVMj&_nc_oc=AdnNiFqtn69CHc_qDZKAHAhZn-tqYauSsWqWNHM_KWeqTRy_rHeUAiI4wdssa__5Bt0&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-1.fna&_nc_gid=724xWw4HD4MwC0ichkgZTw&oh=00_AfIsrwQ8u8I2i9GbAozA37nIG3cdoNA58jh8cNUxQ2MEhA&oe=68363D08",
-                link: "/event/"
-            },
-            {
-                heading: "Rush Hour",
-                time: "December 4, 2024",
-                location: "UIU Gallery",
-                image: "https://scontent.fdac11-2.fna.fbcdn.net/v/t39.30808-6/484381367_677849471575429_2882193511448082183_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=75d36f&_nc_eui2=AeGog9IgGSrIF7oXp1xI1K9_6Gb3YOBnNbHoZvdg4Gc1sRlqc_XI4awDzQvEeu0Fg2z7YcXjhDvzOUEr9UZ3pzBw&_nc_ohc=83EiaYVXHDEQ7kNvwE3ezyQ&_nc_oc=AdmyxAZsAkGz46kzXS4ogMRGH-TRk-5YkLoANglk5zUgJ_o5W2yM-PL0vug7PqCpQEY&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-2.fna&_nc_gid=gStIfFzgyPb_Ruyl9h00-g&oh=00_AfIGOPJBrE3p2kZEKq6xFN7HZpfbFB6lr1iqopI7ODuKfg&oe=68362F25",
-                link: "/event/"
-            },
-            {
-                heading: "Research 101",
-                time: "Oct 9th, 2024",
-                location: "Room 126",
-                image: "https://scontent.fdac11-1.fna.fbcdn.net/v/t39.30808-6/484729646_677325414961168_8702768972533058128_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=75d36f&_nc_eui2=AeHJKrRBMaIfReqk84C8pOPJguQ4XsOdQheC5Dhew51CF54U1bHqSoSu8RmZVsUFUcHS7KSz2Ao01gEzi_RF9v8i&_nc_ohc=KkK-dZsPvJEQ7kNvwEX3RC3&_nc_oc=AdlWZC4OS1wd1B3E0l-YujASqMk_fgmvCBZT4eXPm3lka85FBJIO5-SaB4TtmA-x0Gk&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-1.fna&_nc_gid=mTF9WK95qAjSFqKK4I97JA&oh=00_AfJR44Ts7-_v2cLhJjMcfWsQaAid4XJ9g8_nlXOI7mNEfg&oe=68363DAC",
-                link: "/event/"
-            },
-            {
-                heading: "TechTrove",
-                time: "July 6-9, 2024",
-                location: "Lobby Area",
-                image: "https://scontent.fdac11-2.fna.fbcdn.net/v/t39.30808-6/482236483_675991651761211_3789288042738428016_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=106&ccb=1-7&_nc_sid=75d36f&_nc_eui2=AeEU77w3PcRPTJgNuoJgcloGrunoFDchk72u6egUNyGTvSPxrzCbyNRfqPSZZOrjQNsjIspjqhP8oSBdPU_kSYiL&_nc_ohc=0Zdb6k1DJjQQ7kNvwGAFs6L&_nc_oc=AdnXq_aUoSl3vlwqUr4EAyb4O7zD4PS7AtgxDoullUmWplsF88Dfg1-Ho9Oj0Fw1mPI&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-2.fna&_nc_gid=LnYFo_S_u4ySAYBelu5hbQ&oh=00_AfKcrVdhxZK8wHOGDoPQu2BHnNDiS7EJUf1Za829vV8zOQ&oe=68361B46",
-                link: "/event/"
-            }
-        ];
+            const staticEvents = [{
+                    heading: "Majlish-e-Ifter",
+                    time: "March 17, 2025",
+                    location: "UIU Cafeteria",
+                    image: "assets/img/Events/Iftar.jpg",
+                    link: "/event/"
+                },
+                {
+                    heading: "UIU CSE Fest",
+                    time: "June 17-18, 2025",
+                    location: "United International University",
+                    image: "assets/img/Events/CSE_fest.jpg",
+                    link: "/event/"
+                },
+                {
+                    heading: "Rush Hour",
+                    time: "December 4, 2024",
+                    location: "UIU Gallery",
+                    image: "assets/img/Events/Rush_hour.jpg",
+                    link: "/event/"
+                },
+                {
+                    heading: "Research 101",
+                    time: "Oct 9th, 2024",
+                    location: "Room 126",
+                    image: "assets/img/Events/Research 101.jpg",
+                    link: "/event/"
+                },
+                {
+                    heading: "TechTrove",
+                    time: "July 6-9, 2024",
+                    location: "Lobby Area",
+                    image: "assets/img/Events/Techtrove.jpg",
+                    link: "/event/"
+                }
+            ];
 
-        function renderEvents(events) {
-            const eventsContainer = document.getElementById('events-container');
-            eventsContainer.innerHTML = '';
+            function renderEvents(events) {
+                const eventsContainer = document.getElementById('events-container');
+                eventsContainer.innerHTML = '';
 
-            if (events.length === 0) {
-                const noEventsMessage = document.createElement('div');
-                noEventsMessage.className = 'w-full text-center py-10';
-                noEventsMessage.innerHTML = `
+                if (events.length === 0) {
+                    const noEventsMessage = document.createElement('div');
+                    noEventsMessage.className = 'w-full text-center py-10';
+                    noEventsMessage.innerHTML = `
                 <p class="text-2xl text-orange-500">No events are happening right now</p>
             `;
-                eventsContainer.appendChild(noEventsMessage);
-            } else {
-                const isMobile = window.innerWidth <= 640; // Tailwind 'sm' breakpoint
-                const eventCards = [];
+                    eventsContainer.appendChild(noEventsMessage);
+                } else {
+                    const isMobile = window.innerWidth <= 640; // Tailwind 'sm' breakpoint
+                    const eventCards = [];
 
-                // Create event cards
-                events.forEach(event => {
-                    const eventCard = document.createElement('div');
-                    eventCard.className = 'event-card rounded-lg w-full sm:w-72 inline-block snap-center';
-                    eventCard.innerHTML = `
+                    // Create event cards
+                    events.forEach(event => {
+                        const eventCard = document.createElement('div');
+                        eventCard.className = 'event-card rounded-lg w-full sm:w-72 inline-block snap-center';
+                        eventCard.innerHTML = `
                     <img src="${event.image || placeholderImage}" alt="Event" class="w-full h-48 object-cover rounded-t-lg">
                     <div class="event-details m-4">
                         <h2 class="text-sm sm:text-base font-bold text-gray-900">${event.heading}</h2>
@@ -513,177 +386,320 @@ include_once '_settings/config.php';
                         </button>
                     </div>
                 `;
-                    eventCards.push(eventCard);
-                });
+                        eventCards.push(eventCard);
+                    });
 
-                if (isMobile && events.length > 1) {
-                    // Add duplicate cards for infinite scrolling
-                    const lastCardClone = eventCards[eventCards.length - 1].cloneNode(true);
-                    const firstCardClone = eventCards[0].cloneNode(true);
-                    eventsContainer.appendChild(lastCardClone); // Prepend last card
-                    eventCards.forEach(card => eventsContainer.appendChild(card)); // Main cards
-                    eventsContainer.appendChild(firstCardClone); // Append first card
-                } else {
-                    // Non-mobile or single event: no duplicates
-                    eventCards.forEach(card => eventsContainer.appendChild(card));
-                }
-
-                initializeCarousel();
-            }
-        }
-
-        function initializeCarousel() {
-            const eventsContainer = document.getElementById('events-container');
-            const leftArrow = document.getElementById('left-arrow');
-            const rightArrow = document.getElementById('right-arrow');
-            const rightArrowContent = rightArrow.querySelector('.arrow-content');
-            const rightEllipsisContent = rightArrow.querySelector('.ellipsis-content');
-            const cardWidth = 304; // Width of each card including margin
-            const isMobile = window.innerWidth <= 640;
-            const numCards = staticEvents.length;
-            const maxIndex = numCards > 1 ? numCards : numCards - 1;
-            let isScrolling = false;
-
-            function updateArrows() {
-                const scrollLeft = eventsContainer.scrollLeft;
-                const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
-
-                // Handle left arrow visibility
-                leftArrow.style.display = scrollLeft <= 5 ? 'none' : 'block';
-                leftArrow.disabled = scrollLeft <= 5;
-
-                // Ensure right arrow is always visible
-                rightArrow.style.display = 'block';
-                rightArrow.disabled = false;
-
-                if (scrollLeft >= maxScroll - 5) {
-                    // Show ellipsis at rightmost position
-                    rightArrowContent.classList.add('hidden');
-                    rightEllipsisContent.classList.remove('hidden');
-                } else {
-                    // Show right arrow when not at rightmost position
-                    rightArrowContent.classList.remove('hidden');
-                    rightEllipsisContent.classList.add('hidden');
-                }
-            }
-
-            function scrollToIndex(index, instant = false) {
-                if (isScrolling) return;
-                isScrolling = true;
-
-                if (numCards > 1) {
-                    // Handle infinite scrolling
-                    if (index < 0) {
-                        index = numCards - 1;
-                        eventsContainer.scrollTo({
-                            left: index * cardWidth,
-                            behavior: instant ? 'auto' : 'smooth'
-                        });
-                    } else if (index > numCards) {
-                        index = 1;
-                        eventsContainer.scrollTo({
-                            left: index * cardWidth,
-                            behavior: instant ? 'auto' : 'smooth'
-                        });
+                    if (isMobile && events.length > 1) {
+                        // Add duplicate cards for infinite scrolling
+                        const lastCardClone = eventCards[eventCards.length - 1].cloneNode(true);
+                        const firstCardClone = eventCards[0].cloneNode(true);
+                        eventsContainer.appendChild(lastCardClone); // Prepend last card
+                        eventCards.forEach(card => eventsContainer.appendChild(card)); // Main cards
+                        eventsContainer.appendChild(firstCardClone); // Append first card
                     } else {
-                        eventsContainer.scrollTo({
-                            left: index * cardWidth,
-                            behavior: instant ? 'auto' : 'smooth'
-                        });
+                        // Non-mobile or single event: no duplicates
+                        eventCards.forEach(card => eventsContainer.appendChild(card));
                     }
-                } else {
-                    // Clamp index for single card
-                    index = Math.max(0, Math.min(index, maxIndex));
+
+                    initializeCarousel();
+                }
+            }
+
+            function initializeCarousel() {
+                const eventsContainer = document.getElementById('events-container');
+                const leftArrow = document.getElementById('left-arrow');
+                const rightArrow = document.getElementById('right-arrow');
+                const cardWidth = 304; // Width of each card including margin
+                const isMobile = window.innerWidth <= 640;
+                const numCards = staticEvents.length;
+                const maxIndex = isMobile && numCards > 1 ? numCards : numCards - 1;
+                let isScrolling = false;
+
+                function updateArrows() {
+                    const scrollLeft = eventsContainer.scrollLeft;
+                    const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
+
+                    if (!isMobile || numCards <= 1) {
+                        // Finite scrolling for desktop or single card
+                        leftArrow.style.display = scrollLeft <= 5 ? 'none' : 'block';
+                        leftArrow.disabled = scrollLeft <= 5;
+                        rightArrow.style.display = scrollLeft >= maxScroll - 5 ? 'none' : 'block';
+                        rightArrow.disabled = scrollLeft >= maxScroll - 5;
+                    } else {
+                        // Infinite scrolling: arrows always visible in mobile
+                        leftArrow.style.display = 'block';
+                        leftArrow.disabled = false;
+                        rightArrow.style.display = 'block';
+                        rightArrow.disabled = false;
+                    }
+                }
+
+                function scrollToIndex(index, instant = false) {
+                    if (isScrolling) return;
+                    isScrolling = true;
+
+                    if (isMobile && numCards > 1) {
+                        // Handle infinite scrolling
+                        if (index < 0) {
+                            // Jump to the real last card (before duplicate first card)
+                            index = numCards - 1;
+                            eventsContainer.scrollTo({
+                                left: index * cardWidth,
+                                behavior: 'auto'
+                            });
+                        } else if (index > numCards) {
+                            // Jump to the real first card (after duplicate last card)
+                            index = 1;
+                            eventsContainer.scrollTo({
+                                left: index * cardWidth,
+                                behavior: 'auto'
+                            });
+                        }
+                    } else {
+                        // Clamp index for non-mobile
+                        index = Math.max(0, Math.min(index, maxIndex));
+                    }
+
                     eventsContainer.scrollTo({
                         left: index * cardWidth,
                         behavior: instant ? 'auto' : 'smooth'
                     });
+
+                    setTimeout(() => {
+                        isScrolling = false;
+                        updateArrows();
+                    }, instant ? 0 : 600);
                 }
 
-                setTimeout(() => {
-                    isScrolling = false;
-                    updateArrows();
-                }, instant ? 0 : 600);
-            }
+                function handleInfiniteScroll() {
+                    if (!isMobile || numCards <= 1) return;
+                    const scrollLeft = eventsContainer.scrollLeft;
+                    const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
 
-            function handleInfiniteScroll() {
-                if (numCards <= 1) return;
-                const scrollLeft = eventsContainer.scrollLeft;
-                const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
-
-                if (scrollLeft <= 0) {
-                    scrollToIndex(numCards - 1, true); // Instant jump to last real card
-                } else if (scrollLeft >= maxScroll - 5) {
-                    // Don't jump to first card; show ellipsis
-                    updateArrows();
-                }
-            }
-
-            leftArrow.addEventListener('click', () => {
-                if (leftArrow.disabled || isScrolling) return;
-                const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                scrollToIndex(currentIndex - 1);
-            });
-
-            rightArrow.addEventListener('click', () => {
-                if (rightArrow.disabled || isScrolling) return;
-                const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                if (!rightEllipsisContent.classList.contains('hidden')) {
-                    // Ellipsis: navigate to all_events.php
-                    window.location.href = '/All_Events/index.php';
-                } else {
-                    // Right arrow: scroll right
-                    scrollToIndex(currentIndex + 1);
-                }
-            });
-
-            // Handle touch scrolling
-            let startX, isDragging = false;
-            eventsContainer.addEventListener('touchstart', (e) => {
-                if (isScrolling) return;
-                startX = e.touches[0].clientX;
-                isDragging = true;
-            });
-
-            eventsContainer.addEventListener('touchmove', (e) => {
-                if (!isDragging || isScrolling) return;
-                const currentX = e.touches[0].clientX;
-                const diffX = startX - currentX;
-                const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                if (Math.abs(diffX) > 50) {
-                    if (diffX > 0) {
-                        scrollToIndex(currentIndex + 1);
-                    } else if (diffX < 0) {
-                        scrollToIndex(currentIndex - 1);
+                    if (scrollLeft <= 0) {
+                        // At duplicate last card: jump to real last card
+                        scrollToIndex(numCards - 1, true);
+                    } else if (scrollLeft >= maxScroll - 5) {
+                        // At duplicate first card: jump to real first card
+                        scrollToIndex(1, true);
                     }
+                }
+
+                leftArrow.addEventListener('click', () => {
+                    if (leftArrow.disabled || isScrolling) return;
+                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                    scrollToIndex(currentIndex - 1);
+                });
+
+                rightArrow.addEventListener('click', () => {
+                    if (rightArrow.disabled || isScrolling) return;
+                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                    scrollToIndex(currentIndex + 1);
+                });
+
+                // Handle touch scrolling
+                let startX, isDragging = false;
+                eventsContainer.addEventListener('touchstart', (e) => {
+                    if (isScrolling) return;
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                });
+
+                eventsContainer.addEventListener('touchmove', (e) => {
+                    if (!isDragging || isScrolling) return;
+                    const currentX = e.touches[0].clientX;
+                    const diffX = startX - currentX;
+                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                    if (Math.abs(diffX) > 50) {
+                        if (diffX > 0) {
+                            // Swipe left: scroll to next card
+                            scrollToIndex(currentIndex + 1);
+                        } else if (diffX < 0) {
+                            // Swipe right: scroll to previous card
+                            scrollToIndex(currentIndex - 1);
+                        }
+                        isDragging = false;
+                    }
+                });
+
+                eventsContainer.addEventListener('touchend', () => {
                     isDragging = false;
-                }
-            });
+                    if (!isScrolling) handleInfiniteScroll();
+                });
 
-            eventsContainer.addEventListener('touchend', () => {
-                isDragging = false;
-                if (!isScrolling) handleInfiniteScroll();
-            });
+                // Update arrows and check for infinite scroll on scroll
+                eventsContainer.addEventListener('scroll', () => {
+                    if (!isScrolling) {
+                        updateArrows();
+                        handleInfiniteScroll();
+                    }
+                });
 
-            eventsContainer.addEventListener('scroll', () => {
-                if (!isScrolling) {
+                // Initial scroll position for mobile infinite scroll
+                if (isMobile && numCards > 1) {
+                    scrollToIndex(1, true); // Start at first real card
+                } else {
                     updateArrows();
-                    handleInfiniteScroll();
                 }
-            });
-
-            if (numCards > 1) {
-                scrollToIndex(1, true); // Start at first real card
-            } else {
-                updateArrows();
             }
-        }
 
-        window.onload = () => renderEvents(staticEvents);
+            function initializeCarousel() {
+                const eventsContainer = document.getElementById('events-container');
+                const leftArrow = document.getElementById('left-arrow');
+                const rightArrow = document.getElementById('right-arrow');
+                const rightArrowContent = rightArrow.querySelector('.arrow-content');
+                const rightEllipsisContent = rightArrow.querySelector('.ellipsis-content');
+                const cardWidth = 304; // Width of each card including margin
+                const isMobile = window.innerWidth <= 640;
+                const numCards = staticEvents.length;
+                const maxIndex = isMobile && numCards > 1 ? numCards : numCards - 1;
+                let isScrolling = false;
+
+                function updateArrows() {
+                    const scrollLeft = eventsContainer.scrollLeft;
+                    const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
+
+                    if (!isMobile || numCards <= 1) {
+                        // Finite scrolling for desktop or single card
+                        leftArrow.style.display = scrollLeft <= 5 ? 'none' : 'block';
+                        leftArrow.disabled = scrollLeft <= 5;
+
+                        if (scrollLeft >= maxScroll - 5) {
+                            // Show ellipsis at rightmost position
+                            rightArrowContent.classList.add('hidden');
+                            rightEllipsisContent.classList.remove('hidden');
+                            rightArrow.disabled = false; // Allow clicking ellipsis to scroll left
+                        } else {
+                            // Show right arrow when not at rightmost position
+                            rightArrowContent.classList.remove('hidden');
+                            rightEllipsisContent.classList.add('hidden');
+                            rightArrow.disabled = false;
+                        }
+                    } else {
+                        // Infinite scrolling: arrows always visible in mobile
+                        leftArrow.style.display = 'block';
+                        leftArrow.disabled = false;
+                        rightArrowContent.classList.remove('hidden');
+                        rightEllipsisContent.classList.add('hidden');
+                        rightArrow.disabled = false;
+                    }
+                }
+
+                function scrollToIndex(index, instant = false) {
+                    if (isScrolling) return;
+                    isScrolling = true;
+
+                    if (isMobile && numCards > 1) {
+                        // Handle infinite scrolling
+                        if (index < 0) {
+                            index = numCards - 1;
+                            eventsContainer.scrollTo({
+                                left: index * cardWidth,
+                                behavior: 'auto'
+                            });
+                        } else if (index > numCards) {
+                            index = 1;
+                            eventsContainer.scrollTo({
+                                left: index * cardWidth,
+                                behavior: 'auto'
+                            });
+                        }
+                    } else {
+                        // Clamp index for non-mobile
+                        index = Math.max(0, Math.min(index, maxIndex));
+                    }
+
+                    eventsContainer.scrollTo({
+                        left: index * cardWidth,
+                        behavior: instant ? 'auto' : 'smooth'
+                    });
+
+                    setTimeout(() => {
+                        isScrolling = false;
+                        updateArrows();
+                    }, instant ? 0 : 600);
+                }
+
+                function handleInfiniteScroll() {
+                    if (!isMobile || numCards <= 1) return;
+                    const scrollLeft = eventsContainer.scrollLeft;
+                    const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
+
+                    if (scrollLeft <= 0) {
+                        scrollToIndex(numCards - 1, true);
+                    } else if (scrollLeft >= maxScroll - 5) {
+                        scrollToIndex(1, true);
+                    }
+                }
+
+                leftArrow.addEventListener('click', () => {
+                    if (leftArrow.disabled || isScrolling) return;
+                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                    scrollToIndex(currentIndex - 1);
+                });
+
+                rightArrow.addEventListener('click', () => {
+                    if (rightArrow.disabled || isScrolling) return;
+                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                    if (!isMobile && rightEllipsisContent.classList.contains('hidden')) {
+                        // Right arrow: scroll right
+                        scrollToIndex(currentIndex + 1);
+                    } else if (!isMobile) {
+                        // Ellipsis: scroll left
+                        scrollToIndex(currentIndex - 1);
+                    } else {
+                        // Mobile: always scroll right
+                        scrollToIndex(currentIndex + 1);
+                    }
+                });
+
+                // Handle touch scrolling
+                let startX, isDragging = false;
+                eventsContainer.addEventListener('touchstart', (e) => {
+                    if (isScrolling) return;
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                });
+
+                eventsContainer.addEventListener('touchmove', (e) => {
+                    if (!isDragging || isScrolling) return;
+                    const currentX = e.touches[0].clientX;
+                    const diffX = startX - currentX;
+                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                    if (Math.abs(diffX) > 50) {
+                        if (diffX > 0) {
+                            scrollToIndex(currentIndex + 1);
+                        } else if (diffX < 0) {
+                            scrollToIndex(currentIndex - 1);
+                        }
+                        isDragging = false;
+                    }
+                });
+
+                eventsContainer.addEventListener('touchend', () => {
+                    isDragging = false;
+                    if (!isScrolling) handleInfiniteScroll();
+                });
+
+                eventsContainer.addEventListener('scroll', () => {
+                    if (!isScrolling) {
+                        updateArrows();
+                        handleInfiniteScroll();
+                    }
+                });
+
+                if (isMobile && numCards > 1) {
+                    scrollToIndex(1, true);
+                } else {
+                    updateArrows();
+                }
+            }
+
+            window.onload = () => renderEvents(staticEvents);
         </script>
     </section>
-
-    <section class="w-[85%] max-w-[1440px] mx-auto mt-20">
+    <!-- What we do -->
+    <section class="w-[85%] max-w-[1440px] mx-auto mt-20 px-5">
         <div class="text-nowrap flex items-center flex-row justify-center gap-[22px] text-primary">
             <span class="font-display text-md sm:text-xl md:text-2xl lg:text-4xl text-nowrap font-semibold uppercase">
                 :: What do we do?
@@ -701,8 +717,11 @@ include_once '_settings/config.php';
 
                 <div class="flex flex-col">
                     <p class="text-3xl text-primary mb-2">Community</p>
-                    <p class="text-md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam harum fuga
-                        eligendi error ad commodi!</p>
+                    <p class="text-md">The UIU Robotics Club creates a supportive environment by organizing programs,
+                        workshops, and competitions that connect students, teachers, and employers, fostering a sense of
+                        community around robotics and embedded systems. Events like INNOBOTICS-2020 and Ideastorm-2021
+                        bring together multidisciplinary students, promoting collaboration and teamwork, which helps
+                        members build lasting connections.</p>
                 </div>
             </div>
             <div class="flex flex-col sm:flex-row max-w-[600px] gap-8">
@@ -710,8 +729,10 @@ include_once '_settings/config.php';
 
                 <div class="flex flex-col">
                     <p class="text-3xl text-primary mb-2">Career opportunity</p>
-                    <p class="text-md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam harum fuga
-                        eligendi error ad commodi!</p>
+                    <p class="text-md">The club enhances career prospects by developing technical skills through project
+                        work and providing exposure to industry connections. Achievements like the UIU Mars Rover Team's
+                        first place in Asia at the University Rover Challenge 2022 showcase how members gain practical
+                        experience, potentially opening doors to future employment in robotics and related fields.</p>
                 </div>
             </div>
             <div class="flex flex-col sm:flex-row max-w-[600px] gap-8">
@@ -720,23 +741,27 @@ include_once '_settings/config.php';
 
                 <div class="flex flex-col">
                     <p class="text-3xl text-primary mb-2">Leadership</p>
-                    <p class="text-md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam harum fuga
-                        eligendi error ad commodi!</p>
+                    <p class="text-md">Leadership is fostered by encouraging members to organize national and global
+                        competitions, such as INNOBOTICS, and participate in research endeavors. These roles help
+                        students build confidence and organizational skills, preparing them for leadership positions in
+                        their future careers.</p>
                 </div>
             </div>
             <div class="flex flex-col sm:flex-row max-w-[600px] gap-8">
-                <img class="mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px]" src="/assets/img/svg/door.svg">
+                <img class="mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px]" src="\assets\img\svg\manuals.png">
 
                 <div class="flex flex-col">
-                    <p class="text-3xl text-primary mb-2">Community</p>
-                    <p class="text-md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam harum fuga
-                        eligendi error ad commodi!</p>
+                    <p class="text-3xl text-primary mb-2">Guidelines and Resources</p>
+                    <p class="text-md">The club provides guidelines through training workshops, like "Electronics &
+                        Basic Robotics," and resources such as the Robotics Starter Kitbox in Beginner, Standard, and
+                        Advanced packages, ensuring members have structured support to start and excel in robotics
+                        projects.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="w-[85%] max-w-[1440px] mx-auto mt-20 ">
+    <section class="w-[85%] max-w-[1440px] mx-auto mt-20 px-5">
         <div class="text-nowrap flex items-center flex-row justify-center gap-[22px] text-primary">
             <span class="font-display text-md sm:text-xl md:text-2xl lg:text-4xl text-nowrap font-semibold uppercase">
                 :: Brands we work with

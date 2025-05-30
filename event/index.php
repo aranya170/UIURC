@@ -1,6 +1,4 @@
-<?php
-include_once '../_settings/config.php';
-?>
+<?php include_once '../_settings/config.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,11 +10,11 @@ include_once '../_settings/config.php';
 <body>
     <?php include ABSPATH . '_includes/header.php'; ?>
 
-    <section class="w-[85%] max-w-[1440px] mx-auto mt-20 flex flex-col items-center sm:flex-row gap-8">
+    <section
+        class="w-[85%] max-w-[1440px] mx-auto mt-20 flex flex-col items-center sm:flex-row gap-8 sm:mt-5 mt-[160px] sm:pt-5 pt-[10px]">
         <div class="w-full sm:w-1/2 rounded-xl">
-            <img class="rounded-xl w-full h-[400px] object-cover"
-                src="https://scontent.fdac11-1.fna.fbcdn.net/v/t39.30808-6/484729646_677325414961168_8702768972533058128_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=75d36f&_nc_eui2=AeHJKrRBMaIfReqk84C8pOPJguQ4XsOdQheC5Dhew51CF54U1bHqSoSu8RmZVsUFUcHS7KSz2Ao01gEzi_RF9v8i&_nc_ohc=Mi0Stj5xgVMQ7kNvwFQ7nuV&_nc_oc=AdlryV5xdkCSuGeTj9utNalVKWr9ZOIUrDTQtp_4PVMCjRI1PpVxvzzUVxRSfyxRcPQ&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-1.fna&_nc_gid=1Rk2HC8urE15DhYDl_Czlg&oh=00_AfJn4a_BXCj4D-lC4OWSl7V08s_UKG70wYqFNUKVSeoOnw&oe=68363DAC"
-                alt="Banner">
+            <img class="rounded-xl w-full h-[400px] object-cover" src="/assets/img/Events/Research101.jpg"
+                alt="Research 101 Banner">
         </div>
         <div class="w-full sm:w-1/2 flex flex-col">
             <div class="my-6">
@@ -26,25 +24,28 @@ include_once '../_settings/config.php';
                     effective presentation skills, empowering them to excel in their academic pursuits.</p>
             </div>
             <div class="mt-2 flex flex-row items-center gap-1">
-                <svg fill="var(--color-primary)" xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem"
-                    viewBox="0 0 48 48">
-                    <use xlink:href="#location"></use>
+                <svg fill="var(--color-primary)" xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M12.2848 18.9935C12.1567 19.0875 12.0373 19.1728 11.9282 19.2493C11.8118 19.1721 11.6827 19.0833 11.5427 18.9832C10.8826 18.5109 10.0265 17.8176 9.18338 16.9529C7.45402 15.1792 6 12.9151 6 10.5C6 7.18629 8.68629 4.5 12 4.5C15.3137 4.5 18 7.18629 18 10.5C18 12.8892 16.4819 15.1468 14.6893 16.9393C13.8196 17.8091 12.9444 18.5099 12.2848 18.9935ZM19.5 10.5C19.5 16.5 12 21 12 21C11.625 21 4.5 16.5 4.5 10.5C4.5 6.35786 7.85786 3 12 3C16.1421 3 19.5 6.35786 19.5 10.5ZM13.5 10.5C13.5 11.3284 12.8284 12 12 12C11.1716 12 10.5 11.3284 10.5 10.5C10.5 9.67157 11.1716 9 12 9C12.8284 9 13.5 9.67157 13.5 10.5ZM15 10.5C15 12.1569 13.6569 13.5 12 13.5C10.3431 13.5 9 12.1569 9 10.5C9 8.84315 10.3431 7.5 12 7.5C13.6569 7.5 15 8.84315 15 10.5Z" />
                 </svg>
                 <p class="text-sm lg:text-lg xl:text-2xl">
                     Room 126
                 </p>
             </div>
             <div class="mt-2 flex flex-row items-center gap-1">
-                <svg fill="var(--color-primary)" xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem"
+                <svg fill="#ffffff" xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem"
                     viewBox="0 0 24 24">
-                    <use xlink:href="#clock"></use>
+                    <path
+                        d="M12 7V12L13.5 14.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                        stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+
                 </svg>
                 <p class="text-sm lg:text-lg xl:text-2xl">
                     Oct 9th, 2024
                 </p>
             </div>
             <div class="mt-2 flex flex-row items-center gap-1 sm:mt-4 lg:mt-6 xl:mt-8">
-                <a href="/events_form">
+                <!-- <a href="/events_form">
                     <svg class="w-30 lg:w-40 xl:w-50" viewBox="0 0 215 65" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_40_80)">
@@ -120,7 +121,8 @@ include_once '../_settings/config.php';
                             </clipPath>
                         </defs>
                     </svg>
-                </a>
+                </a> -->
+                <h4 class="text-lg">Registration is closed now</h4>
             </div>
         </div>
     </section>
@@ -145,6 +147,86 @@ include_once '../_settings/config.php';
             </div>
         </div>
     </section>
+
+    <section class="w-[85%] max-w-[1440px] mx-auto mt-20">
+        <!-- Title -->
+        <div class="text-nowrap flex items-center flex-row justify-center gap-[22px] text-primary">
+            <span class="font-display text-md sm:text-xl md:text-2xl lg:text-4xl text-nowrap font-semibold uppercase">
+                :: Event Gallery
+            </span>
+            <div class="relative w-full h-[2px] bg-[#F0F0F0]">
+                <div class="bg-primary absolute -top-[3px] left-0 bottom-0 w-[8px] h-[8px] rounded-full"></div>
+            </div>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div id="gallery" class="flex flex-wrap items-center justify-center mt-10 gap-6 rounded-xl">
+            <!-- Images injected here -->
+        </div>
+
+        <script>
+            const photos = [{
+                    src: "/assets/img/Events/Research/1.jpg",
+                    alt: "Event Photo 1"
+                },
+                {
+                    src: "/assets/img/Events/Research/2.jpg",
+                    alt: "Event Photo 2"
+                },
+                {
+                    src: "/assets/img/Events/Research/3.jpg",
+                    alt: "Event Photo 3"
+                },
+                {
+                    src: "/assets/img/Events/Research/4.jpg",
+                    alt: "Event Photo 4"
+                },
+                {
+                    src: "/assets/img/Events/Research/5.jpg",
+                    alt: "Event Photo 5"
+                }
+            ];
+
+            const gallery = document.getElementById('gallery');
+
+            photos.forEach(photo => {
+                const item = document.createElement('div');
+                item.className = 'group relative w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2';
+
+                const img = document.createElement('img');
+                img.src = photo.src;
+                img.alt = photo.alt;
+                img.loading = 'lazy';
+                img.className =
+                    'w-full h-64 object-cover rounded-xl shadow-md transition-transform duration-300 group-hover:scale-105 cursor-pointer';
+                img.onerror = () => {
+                    img.src = 'https://via.placeholder.com/400x300?text=Image+Not+Found';
+                };
+
+                const overlay = document.createElement('div');
+                overlay.className =
+                    'absolute inset-0 flex items-center justify-center pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300 rounded-xl';
+
+                overlay.innerHTML = `
+                <div class="w-full h-full backdrop-blur-sm bg-transparent flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300">
+                    <a href="${photo.src}" target="_blank" title="View Full Image"
+                       class="bg-white text-primary px-4 py-2 rounded-md hover:bg-opacity-90 transition-colors">
+                        View
+                    </a>
+                    <a href="${photo.src}" download title="Download Image"
+                       class="bg-primary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-colors">
+                        Download
+                    </a>
+                </div>
+            `;
+
+                item.appendChild(img);
+                item.appendChild(overlay);
+                gallery.appendChild(item);
+            });
+        </script>
+    </section>
+
 
     <section class="w-[85%] max-w-[1440px] mx-auto mt-20">
         <div class="text-nowrap flex items-center flex-row justify-center gap-[22px] text-primary">

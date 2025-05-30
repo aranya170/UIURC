@@ -11,7 +11,8 @@ include_once '../_settings/config.php';
 
 <body>
     <?php include ABSPATH . '_includes/header.php'; ?>
-    <div class="flex items-center justify-start pr-15 pl-15 pt-15 gap-4 text-primary">
+    <div
+        class="flex items-center justify-start pr-15 pl-15 pt-15 gap-4 text-primary sm:mt-5 mt-[160px] sm:pt-5 pt-[10px]">
         <span
             class="font-display text-2xl sm:text-4xl md:text-2xl lg:text-4xl font-semibold uppercase whitespace-nowrap">
             Our Achievements
@@ -88,8 +89,7 @@ include_once '../_settings/config.php';
         <!-- Card 4: Tech Quest 2019 -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
-                    alt="Team Member"
+                <img src="\assets\img\Achievements\Robofest Ica.jpg" alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
             <div class="mb-8">
@@ -109,8 +109,7 @@ include_once '../_settings/config.php';
         <!-- Card 5: Robolution 2019 -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
-                    alt="Team Member"
+                <img src="\assets\img\Achievements\Robolution.jpg" alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
             <div class="mb-8">
@@ -130,7 +129,7 @@ include_once '../_settings/config.php';
         <!-- Card 6: Google CodeU 2019 -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -150,7 +149,7 @@ include_once '../_settings/config.php';
         <!-- Card 7: International Robo Fest 2019 -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -172,7 +171,7 @@ include_once '../_settings/config.php';
         <!-- Card 8: Student to Start-Up 2019 -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -194,7 +193,7 @@ include_once '../_settings/config.php';
         <!-- Card 9: Entrepreneurship 360 2019 -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -216,7 +215,7 @@ include_once '../_settings/config.php';
         <!-- Card 10: Hult Prize 2019 -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -238,7 +237,7 @@ include_once '../_settings/config.php';
         <!-- Card 11: CoronaThon-19 2019 -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -260,7 +259,7 @@ include_once '../_settings/config.php';
         <!-- Card 12: Robo Carnival 2019 -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -282,7 +281,7 @@ include_once '../_settings/config.php';
         <!-- Card 13: Ureckon(India) 2018 Champion -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -303,7 +302,7 @@ include_once '../_settings/config.php';
         <!-- Card 14: Ureckon(India) 2018 Runners Up -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -325,7 +324,7 @@ include_once '../_settings/config.php';
         <!-- Card 15: DUIT FEST 2018 -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -346,7 +345,7 @@ include_once '../_settings/config.php';
         <!-- Card 16: DUET Techfest 2018 -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -368,7 +367,7 @@ include_once '../_settings/config.php';
         <!-- Card 17: University Rover Challenge 2017 -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -388,7 +387,7 @@ include_once '../_settings/config.php';
         <!-- Card 18: BRACathon II 2017 -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -410,7 +409,7 @@ include_once '../_settings/config.php';
         <!-- Card 19: National Women’s Hackathon 2017 Champion -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -432,7 +431,7 @@ include_once '../_settings/config.php';
         <!-- Card 20: National Women’s Hackathon 2017 Runners Up -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -454,7 +453,7 @@ include_once '../_settings/config.php';
         <!-- Card 21: MCCI Agragami 2017 Champion -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -474,7 +473,7 @@ include_once '../_settings/config.php';
         <!-- Card 22: MCCI Agragami 2017 Runners Up -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -494,7 +493,7 @@ include_once '../_settings/config.php';
         <!-- Card 23: Tech For Peace 2017 -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -516,7 +515,7 @@ include_once '../_settings/config.php';
         <!-- Card 24: Techfest Bangladesh Round & NRF 2017 -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -538,7 +537,7 @@ include_once '../_settings/config.php';
         <!-- Card 25: APICTA Award (MERIT Award) 2017 -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -558,7 +557,7 @@ include_once '../_settings/config.php';
         <!-- Card 26: NRF 2017 AI -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -580,7 +579,7 @@ include_once '../_settings/config.php';
         <!-- Card 27: NRF 2017 Soccer Bot -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -602,7 +601,7 @@ include_once '../_settings/config.php';
         <!-- Card 28: EEE Day 2017 -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -622,7 +621,7 @@ include_once '../_settings/config.php';
         <!-- Card 29: TechQuest 2016 Champion -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -644,7 +643,7 @@ include_once '../_settings/config.php';
         <!-- Card 30: TechQuest 2016 1st Runners Up -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -666,7 +665,7 @@ include_once '../_settings/config.php';
         <!-- Card 31: UIU Soccer Bot Championship 2016 Champion -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
@@ -688,7 +687,7 @@ include_once '../_settings/config.php';
         <!-- Card 32: UIU Soccer Bot Championship 2016 Runner's Up -->
         <div class="nut_box_4 max-w-sm mx-auto rounded-2xl shadow-md bg-white">
             <div class="w-full aspect-[4/3] overflow-hidden rounded-t-xl">
-                <img src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+                <img src="https://static.vecteezy.com/system/resources/previews/022/412/362/non_2x/unavailable-rubber-grunge-stamp-seal-illustration-vector.jpg"
                     alt="Team Member"
                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
             </div>
