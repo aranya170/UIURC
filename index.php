@@ -314,21 +314,21 @@ include_once '_settings/config.php';
                     time: "March 17, 2025",
                     location: "UIU Cafeteria",
                     image: "assets/img/Events/Iftar.jpg",
-                    link: "/event/"
+                    link: "#"
                 },
                 {
                     heading: "UIU CSE Fest",
                     time: "June 17-18, 2025",
                     location: "United International University",
                     image: "assets/img/Events/CSE_fest.jpg",
-                    link: "/event/"
+                    link: "#"
                 },
                 {
                     heading: "Rush Hour",
                     time: "December 4, 2024",
                     location: "UIU Gallery",
                     image: "assets/img/Events/Rush_hour.jpg",
-                    link: "/event/"
+                    link: "#"
                 },
                 {
                     heading: "Research 101",
@@ -342,7 +342,7 @@ include_once '_settings/config.php';
                     time: "July 6-9, 2024",
                     location: "Lobby Area",
                     image: "assets/img/Events/Techtrove.jpg",
-                    link: "/event/"
+                    link: "#"
                 }
             ];
 
