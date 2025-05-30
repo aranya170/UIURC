@@ -32,7 +32,8 @@ include_once '_settings/config.php';
     <?php include ABSPATH . '_includes/header.php'; ?>
 
     <section
-        class="w-full max-w-[1440px] mx-auto mt-20 px-2 sm:px-10 mb-16 py-10 flex flex-col-reverse sm:flex-row gap-4 justify-center">
+        class="w-full max-w-[1440px] mx-auto mt-20 px-2 sm:px-10 mb-16 py-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <!-- Text and SVG Container -->
         <div class="w-full sm:w-1/2 flex-1 self-start flex flex-col justify-start items-start">
             <svg class="w-full sm:w-[400px] md:w-[500px] lg:w-[550px] max-w-full" viewBox="0 0 610 206" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
@@ -141,13 +142,11 @@ include_once '_settings/config.php';
                 </span>
             </div>
         </div>
+        <!-- Carousel Container -->
         <div class="w-full sm:w-1/2 rounded-xl overflow-hidden relative mx-auto"
             style="aspect-ratio: 4/3; max-width: 800px;">
-            <!-- Carousel Container -->
             <div id="photo-carousel" class="relative w-full h-full">
-                <!-- Images (populated by JavaScript) -->
                 <div id="carousel-images" class="flex h-full transition-transform duration-500 ease-in-out"></div>
-                <!-- Previous Button -->
                 <button id="prev-button"
                     class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/30 backdrop-blur-sm rounded-full p-2 hover:bg-white/50 transition duration-300 focus:outline-none"
                     aria-label="Previous image">
@@ -156,7 +155,6 @@ include_once '_settings/config.php';
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                     </svg>
                 </button>
-                <!-- Next Button -->
                 <button id="next-button"
                     class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/30 backdrop-blur-sm rounded-full p-2 hover:bg-white/50 transition duration-300 focus:outline-none"
                     aria-label="Next image">
@@ -165,9 +163,7 @@ include_once '_settings/config.php';
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
                 </button>
-                <!-- Navigation Dots -->
                 <div id="carousel-dots" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                    <!-- Dots populated by JavaScript -->
                 </div>
             </div>
         </div>
@@ -205,10 +201,7 @@ include_once '_settings/config.php';
                 });
 
                 function updateCarousel() {
-                    // Update images transform
                     carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-                    // Update dots
                     const dots = carouselDots.children;
                     for (let i = 0; i < dots.length; i++) {
                         dots[i].className =
@@ -217,7 +210,7 @@ include_once '_settings/config.php';
                 }
 
                 function goToImage(index) {
-                    currentIndex = (index + images.length) % images.length; // Handle wrap-around
+                    currentIndex = (index + images.length) % images.length;
                     updateCarousel();
                 }
 
@@ -229,7 +222,6 @@ include_once '_settings/config.php';
                     goToImage(currentIndex + 1);
                 });
 
-                // Keyboard navigation
                 document.getElementById('photo-carousel').addEventListener('keydown', (e) => {
                     if (e.key === 'ArrowLeft') goToImage(currentIndex - 1);
                     if (e.key === 'ArrowRight') goToImage(currentIndex + 1);
