@@ -151,7 +151,7 @@ include_once '../_settings/config.php';
                 location: "United International University",
                 details: "Join us for the UIU CSE Fest, a two-day celebration of technology and innovation, featuring workshops, competitions, and networking opportunities with industry leaders and fellow tech enthusiasts.",
                 image: "/assets/img/Events/CSE_fest.jpg",
-                link: "#"
+                link: "https://csefest.uiu.ac.bd/"
             },
             {
                 heading: "Rush Hour",
@@ -159,7 +159,7 @@ include_once '../_settings/config.php';
                 location: "UIU Gallery",
                 details: "Join us for Rush Hour, an exciting event filled with tech talks, workshops, and networking opportunities, designed to inspire and empower the next generation of innovators and leaders in technology.",
                 image: "/assets/img/Events/Rush_hour.jpg",
-                link: "#"
+                link: "/RushHour/index.php"
             },
             {
                 heading: "Research 101",
