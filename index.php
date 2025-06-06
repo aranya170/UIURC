@@ -92,6 +92,8 @@ include_once '_settings/config.php';
 </head>
 
 <body>
+
+    <?php include '_includes/scroll-to-top.php'; ?>
     <a id="scrollToTop" class="scroll-to-top" title="Go to top">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 15 15">
             <path fill="currentColor"
@@ -99,7 +101,6 @@ include_once '_settings/config.php';
                 transform="rotate(270 7.5 7.5)" />
         </svg>
     </a>
-
     <script>
         // Get the scroll-to-top button
         const scrollToTopBtn = document.getElementById('scrollToTop');
@@ -227,7 +228,7 @@ include_once '_settings/config.php';
                     fill="#FF3215" />
             </svg>
             <br>
-            <p class="w-full max-w-full text-justify">
+            <p class="w-[90%] max-w-full text-justify">
                 Welcome to the UIU Robotics Club, where innovation thrives at United
                 International University. We inspire passion for robotics through hands-on training, global
                 competitions, and cutting-edge research. Our members excel internationally, gaining recognition in Asia

@@ -1,94 +1,93 @@
 <style>
+html,
+body {
+    overflow-x: hidden;
+    font-family: 'Exo 2', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 1024px) {
+
     html,
     body {
         overflow-x: hidden;
-        font-family: 'Exo 2', sans-serif;
+    }
+}
+
+.main-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.main-btn:hover .pulse {
+    fill: #F79B72;
+}
+
+.main-btn:focus {
+    outline: none;
+}
+
+@media (max-width: 640px) {
+
+    html,
+    body {
+        overflow-x: hidden;
+        width: 100%;
         margin: 0;
         padding: 0;
+        touch-action: pan-y;
+        /* Restrict touch scrolling to vertical only */
     }
 
-    @media (max-width: 1024px) {
-
-        html,
-        body {
-            overflow-x: hidden;
-        }
+    .navbar {
+        width: 100%;
+        max-width: 100vw;
+        /* Ensure navbar doesn't exceed viewport width */
+        overflow-x: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
     }
 
-    .main-btn {
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 0;
+    .navbar-svg {
+        width: 100%;
+        max-width: 100vw;
+        /* Force SVG to stay within viewport */
+        height: auto;
+        max-height: 80px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        /* Prevent SVG content from overflowing */
     }
 
-    .main-btn:hover .pulse {
-        fill: #F79B72;
+    /* Ensure nut icons stay within viewport */
+    .nut-icon-top-right,
+    .nut-icon-middle-right {
+        left: calc(100% - 20px);
+        /* Keep icons within viewport */
     }
 
-    .main-btn:focus {
-        outline: none;
+    /* Prevent horizontal scrolling for all navbar children */
+    .navbar * {
+        max-width: 100%;
+        overflow-x: hidden;
     }
 
-    @media (max-width: 640px) {
-
-        html,
-        body {
-            overflow-x: hidden;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            touch-action: pan-y;
-            /* Restrict touch scrolling to vertical only */
-        }
-
-        .navbar {
-            width: 100%;
-            max-width: 100vw;
-            /* Ensure navbar doesn't exceed viewport width */
-            overflow-x: hidden;
-            position: fixed;
-            top: 0;
-            left: 0;
-        }
-
-        .navbar-svg {
-            width: 100%;
-            max-width: 100vw;
-            /* Force SVG to stay within viewport */
-            height: auto;
-            max-height: 80px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-            /* Prevent SVG content from overflowing */
-        }
-
-        /* Ensure nut icons stay within viewport */
-        .nut-icon-top-right,
-        .nut-icon-middle-right {
-            left: calc(100% - 20px);
-            /* Keep icons within viewport */
-        }
-
-        /* Prevent horizontal scrolling for all navbar children */
-        .navbar * {
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-
-        /* Ensure mobile menu stays within bounds */
-        .mobile-menu {
-            max-width: 160px;
-            right: 10px;
-            overflow-x: hidden;
-        }
+    /* Ensure mobile menu stays within bounds */
+    .mobile-menu {
+        max-width: 160px;
+        right: 10px;
+        overflow-x: hidden;
     }
+}
 </style>
 
 <body class="sm:mt-0 mt-[160px] sm:pt-0 pt-[10px]">
-
     <hr class="w-full -z-10 bg-black h-[2px] absolute top-[78.5px] -translate-y-[1px] sm:block hidden">
 
     <nav class="w-[625px] h-[143px] p-0 m-0 relative sm:w-[625px] sm:h-[143px] w-full h-auto" style="z-index: 20;">
@@ -204,22 +203,22 @@
 
     <!-- Toggle Script -->
     <script>
-        const body = document.querySelector('body');
-        const sidebarButton = document.getElementById('sidebar-button');
-        const sidebarSlab = document.getElementById('sidebar-slab');
+    const body = document.querySelector('body');
+    const sidebarButton = document.getElementById('sidebar-button');
+    const sidebarSlab = document.getElementById('sidebar-slab');
 
-        sidebarButton.addEventListener('click', () => {
-            const status = sidebarButton.getAttribute('data-sidebar-status');
-            if (status === 'close') {
-                sidebarSlab.classList.remove('translate-x-full');
-                sidebarSlab.classList.add('translate-x-0');
-                body.classList.add('overflow-hidden');
-                sidebarButton.setAttribute('data-sidebar-status', 'open');
-            } else {
-                sidebarSlab.classList.add('translate-x-full');
-                sidebarSlab.classList.remove('translate-x-0');
-                body.classList.remove('overflow-hidden');
-                sidebarButton.setAttribute('data-sidebar-status', 'close');
-            }
-        });
+    sidebarButton.addEventListener('click', () => {
+        const status = sidebarButton.getAttribute('data-sidebar-status');
+        if (status === 'close') {
+            sidebarSlab.classList.remove('translate-x-full');
+            sidebarSlab.classList.add('translate-x-0');
+            body.classList.add('overflow-hidden');
+            sidebarButton.setAttribute('data-sidebar-status', 'open');
+        } else {
+            sidebarSlab.classList.add('translate-x-full');
+            sidebarSlab.classList.remove('translate-x-0');
+            body.classList.remove('overflow-hidden');
+            sidebarButton.setAttribute('data-sidebar-status', 'close');
+        }
+    });
     </script>
