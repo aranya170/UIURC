@@ -44,18 +44,18 @@ include_once '../_settings/config.php';
     <main class="container mx-auto px-6 py-16 max-w-6xl">
         <div class="flex justify-between items-center mb-8">
             <h1 class="text-2xl font-bold text-gray-900">Featured Article</h1>
-            <a href="#" class="text-blue-500 font-medium hover:text-blue-600 transition-colors duration-200">See All
-                Articles →</a>
+            <a href="AllBlogs.php"
+                class="text-blue-500 font-medium hover:text-blue-600 transition-colors duration-200">See All
+                Articles</a>
         </div>
 
         <!-- Featured Articles Section -->
         <div class="flex flex-col md:flex-row gap-6">
             <!-- Large Featured Post -->
             <a href="post.php?id=1" class="md:w-1/2 bg-white rounded-xl overflow-hidden card-hover fade-in">
-                <img src="https://via.placeholder.com/600x400?text=Featured+Post" alt="Featured post image"
-                    class="w-full h-64 object-cover">
+                <img src="img\Blog1.png" alt="Featured post image" class="w-full h-64 object-cover">
                 <div class="p-6">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-3">Fundamentals Of Javascript</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-3">Smart Plant Monitoring System</h2>
                     <div class="flex items-center text-gray-600 text-sm">
                         <span>Dasteen</span>
                         <span class="mx-2">•</span>
@@ -68,18 +68,25 @@ include_once '../_settings/config.php';
 
             <!-- Smaller Posts -->
             <div class="md:w-1/2 grid grid-cols-1 gap-6">
-                <?php for ($i = 2; $i <= 4; $i++): ?>
+                <?php
+                // Array mapping post IDs to unique image URLs
+                $images = [
+                    2 => "img/Blog2.jpg",
+                    3 => "img/Blog3.jpg",
+                    4 => "img/Blog4.jpg"
+                ];
+
+                for ($i = 2; $i <= 4; $i++): ?>
                 <a href="post.php?id=<?php echo $i; ?>" class="bg-white rounded-xl overflow-hidden card-hover fade-in">
                     <div class="flex">
-                        <img src="https://via.placeholder.com/150x150?text=Post+<?php echo $i; ?>" alt="Blog post image"
-                            class="w-1/3 h-32 object-cover">
+                        <img src="<?php echo $images[$i]; ?>" alt="Blog post image" class="w-1/3 h-32 object-cover">
                         <div class="p-4 flex-1">
                             <h3 class="text-lg font-semibold text-gray-900 mb-2">
                                 <?php
                                     $titles = [
-                                        2 => "Grid CSS Make Your Life Easier",
-                                        3 => "Make Animated Light Mode And Dark Mode Toggle With CSS",
-                                        4 => "Make Tic Tac Toe Games With React JS"
+                                        2 => "Colorful Arduino Tetris Game - WS2812B LED Matrix Tutorial",
+                                        3 => "Motion Activated LED Strip using LDR and PIR",
+                                        4 => "Bluetooth-Controlled Car with HC-05 Module"
                                     ];
                                     echo $titles[$i];
                                     ?>

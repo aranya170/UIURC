@@ -1,90 +1,90 @@
 <style>
-html,
-body {
-    overflow-x: hidden;
-    font-family: 'Exo 2', sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-@media (max-width: 1024px) {
-
     html,
     body {
         overflow-x: hidden;
-    }
-}
-
-.main-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-}
-
-.main-btn:hover .pulse {
-    fill: #F79B72;
-}
-
-.main-btn:focus {
-    outline: none;
-}
-
-@media (max-width: 640px) {
-
-    html,
-    body {
-        overflow-x: hidden;
-        width: 100%;
+        font-family: 'Exo 2', sans-serif;
         margin: 0;
         padding: 0;
-        touch-action: pan-y;
-        /* Restrict touch scrolling to vertical only */
     }
 
-    .navbar {
-        width: 100%;
-        max-width: 100vw;
-        /* Ensure navbar doesn't exceed viewport width */
-        overflow-x: hidden;
-        position: fixed;
-        top: 0;
-        left: 0;
+    @media (max-width: 1024px) {
+
+        html,
+        body {
+            overflow-x: hidden;
+        }
     }
 
-    .navbar-svg {
-        width: 100%;
-        max-width: 100vw;
-        /* Force SVG to stay within viewport */
-        height: auto;
-        max-height: 80px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        overflow: hidden;
-        /* Prevent SVG content from overflowing */
+    .main-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
     }
 
-    /* Ensure nut icons stay within viewport */
-    .nut-icon-top-right,
-    .nut-icon-middle-right {
-        left: calc(100% - 20px);
-        /* Keep icons within viewport */
+    .main-btn:hover .pulse {
+        fill: #F79B72;
     }
 
-    /* Prevent horizontal scrolling for all navbar children */
-    .navbar * {
-        max-width: 100%;
-        overflow-x: hidden;
+    .main-btn:focus {
+        outline: none;
     }
 
-    /* Ensure mobile menu stays within bounds */
-    .mobile-menu {
-        max-width: 160px;
-        right: 10px;
-        overflow-x: hidden;
+    @media (max-width: 640px) {
+
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            touch-action: pan-y;
+            /* Restrict touch scrolling to vertical only */
+        }
+
+        .navbar {
+            width: 100%;
+            max-width: 100vw;
+            /* Ensure navbar doesn't exceed viewport width */
+            overflow-x: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .navbar-svg {
+            width: 100%;
+            max-width: 100vw;
+            /* Force SVG to stay within viewport */
+            height: auto;
+            max-height: 80px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            /* Prevent SVG content from overflowing */
+        }
+
+        /* Ensure nut icons stay within viewport */
+        .nut-icon-top-right,
+        .nut-icon-middle-right {
+            left: calc(100% - 20px);
+            /* Keep icons within viewport */
+        }
+
+        /* Prevent horizontal scrolling for all navbar children */
+        .navbar * {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Ensure mobile menu stays within bounds */
+        .mobile-menu {
+            max-width: 160px;
+            right: 10px;
+            overflow-x: hidden;
+        }
     }
-}
 </style>
 
 <body class="sm:mt-0 mt-[160px] sm:pt-0 pt-[10px]">
@@ -149,6 +149,10 @@ body {
             class="text-[#262626] hover:text-[#ff0302] text-lg font-medium relative transition-colors duration-300 group">
             Achievements
         </a>
+        <a href="\Blog\index.php"
+            class="text-[#262626] hover:text-[#ff0302] text-lg font-medium relative transition-colors duration-300 group">
+            Blog
+        </a>
         <a href="\AboutUs\index.php"
             class="text-[#262626] hover:text-[#ff0302] text-lg font-medium relative transition-colors duration-300 group">
             About Us
@@ -194,6 +198,11 @@ body {
                 <hr class="w-full h-[2px] mt-[10px] bg-white transition-colors duration-300 group-hover:bg-red-500">
             </div>
             <div class="w-full text-center group">
+                <a href="\Blog\index.php"
+                    class="text-sm font-sans font-medium text-gray-300 hover:text-red-500">Blog</a>
+                <hr class="w-full h-[2px] mt-[10px] bg-white transition-colors duration-300 group-hover:bg-red-500">
+            </div>
+            <div class="w-full text-center group">
                 <a href="\AboutUs\index.php"
                     class="text-sm font-sans font-medium text-gray-300 hover:text-red-500">About us</a>
                 <hr class="w-full h-[2px] mt-[10px] bg-white transition-colors duration-300 group-hover:bg-red-500">
@@ -203,22 +212,22 @@ body {
 
     <!-- Toggle Script -->
     <script>
-    const body = document.querySelector('body');
-    const sidebarButton = document.getElementById('sidebar-button');
-    const sidebarSlab = document.getElementById('sidebar-slab');
+        const body = document.querySelector('body');
+        const sidebarButton = document.getElementById('sidebar-button');
+        const sidebarSlab = document.getElementById('sidebar-slab');
 
-    sidebarButton.addEventListener('click', () => {
-        const status = sidebarButton.getAttribute('data-sidebar-status');
-        if (status === 'close') {
-            sidebarSlab.classList.remove('translate-x-full');
-            sidebarSlab.classList.add('translate-x-0');
-            body.classList.add('overflow-hidden');
-            sidebarButton.setAttribute('data-sidebar-status', 'open');
-        } else {
-            sidebarSlab.classList.add('translate-x-full');
-            sidebarSlab.classList.remove('translate-x-0');
-            body.classList.remove('overflow-hidden');
-            sidebarButton.setAttribute('data-sidebar-status', 'close');
-        }
-    });
+        sidebarButton.addEventListener('click', () => {
+            const status = sidebarButton.getAttribute('data-sidebar-status');
+            if (status === 'close') {
+                sidebarSlab.classList.remove('translate-x-full');
+                sidebarSlab.classList.add('translate-x-0');
+                body.classList.add('overflow-hidden');
+                sidebarButton.setAttribute('data-sidebar-status', 'open');
+            } else {
+                sidebarSlab.classList.add('translate-x-full');
+                sidebarSlab.classList.remove('translate-x-0');
+                body.classList.remove('overflow-hidden');
+                sidebarButton.setAttribute('data-sidebar-status', 'close');
+            }
+        });
     </script>
