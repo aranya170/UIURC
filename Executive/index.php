@@ -60,7 +60,7 @@ include_once '../_settings/config.php';
         position: absolute;
         top: 0;
         bottom: 0;
-        left: 50%;
+        left: 24%;
         width: 2px;
         background: linear-gradient(to bottom, #3b82f6, #93c5fd);
         transform: translateX(-50%);
@@ -92,14 +92,19 @@ include_once '../_settings/config.php';
 <body class="font-sans min-h-screen flex flex-col">
     <?php include ABSPATH . '_includes/header.php'; ?>
 
-    <div class="flex flex-row flex-1 w-full max-w-7xl mx-auto p-6">
+    <div class="w-[85%] max-w-[1440px] mx-auto mt-20 flex flex-row flex-1 w-full max-w-7xl mx-auto p-6">
         <aside class="w-1/4 p-4 flex flex-col items-center">
             <h2 class="text-xl font-semibold text-gray-700 mb-6 animate-fadeIn">Timeline</h2>
             <div class="timeline-container" id="timeline">
                 <div class="timeline-line"></div>
             </div>
         </aside>
-        <main class="w-3/4 p-6" id="executive-panel"></main>
+        <main class="w-3/4 p-6" id="executive-panel">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Executive Panel</h2>
+            <div id="executive-grid"></div>
+            <h2 class="text-2xl font-bold text-gray-800 mt-8 mb-6">Supervising Faculty</h2>
+            <div id="supervisor-grid"></div>
+        </main>
     </div>
 
     <script>
@@ -110,6 +115,12 @@ include_once '../_settings/config.php';
                 img: "https://via.placeholder.com/200x150?text=John+Doe",
                 dept: "Department of CSE",
                 link: "https://linkedin.com/in/johndoe"
+            },
+            "Vice President": {
+                name: "Sarah Connor",
+                img: "https://via.placeholder.com/200x150?text=Sarah+Connor",
+                dept: "Department of CSE",
+                link: "https://linkedin.com/in/sarahconnor"
             },
             "Secretary": {
                 name: "Jane Smith",
@@ -140,7 +151,32 @@ include_once '../_settings/config.php';
                 img: "https://via.placeholder.com/200x150?text=Michael+Lee",
                 dept: "Department of CSE",
                 link: "https://linkedin.com/in/michaellee"
-            }
+            },
+            "Public Relations Officer": {
+                name: "Rachel Green",
+                img: "https://via.placeholder.com/200x150?text=Rachel+Green",
+                dept: "Department of CSE",
+                link: "https://linkedin.com/in/rachelgreen"
+            },
+            "Technical Lead": {
+                name: "Ross Geller",
+                img: "https://via.placeholder.com/200x150?text=Ross+Geller",
+                dept: "Department of CSE",
+                link: "https://linkedin.com/in/rossgeller"
+            },
+            "Supervisors": [{
+                    name: "Akib Zaman",
+                    role: "Faculty Advisor",
+                    dept: "Department of CSE",
+                    link: "https://linkedin.com/in/akibzaman"
+                },
+                {
+                    name: "Md Abid Hossain",
+                    role: "Faculty Advisor",
+                    dept: "Department of CSE",
+                    link: "https://linkedin.com/in/mdabidhossain"
+                }
+            ]
         },
         "2022-2023": {
             "President": {
@@ -178,7 +214,26 @@ include_once '../_settings/config.php';
                 img: "https://via.placeholder.com/200x150?text=Ella+Scott",
                 dept: "Department of CSE",
                 link: "https://linkedin.com/in/ellascott"
-            }
+            },
+            "Public Relations Officer": {
+                name: "Monica Bing",
+                img: "https://via.placeholder.com/200x150?text=Monica+Bing",
+                dept: "Department of CSE",
+                link: "https://linkedin.com/in/monicabing"
+            },
+            "Supervisors": [{
+                    name: "Akib Zaman",
+                    role: "Faculty Advisor",
+                    dept: "Department of CSE",
+                    link: "https://linkedin.com/in/akibzaman"
+                },
+                {
+                    name: "Md Abid Hossain",
+                    role: "Faculty Advisor",
+                    dept: "Department of CSE",
+                    link: "https://linkedin.com/in/mdabidhossain"
+                }
+            ]
         },
         "2021-2022": {
             "President": {
@@ -216,7 +271,20 @@ include_once '../_settings/config.php';
                 img: "https://via.placeholder.com/200x150?text=Lily+Walker",
                 dept: "Department of CSE",
                 link: "https://linkedin.com/in/lilywalker"
-            }
+            },
+            "Supervisors": [{
+                    name: "Akib Zaman",
+                    role: "Faculty Advisor",
+                    dept: "Department of CSE",
+                    link: "https://linkedin.com/in/akibzaman"
+                },
+                {
+                    name: "Md Abid Hossain",
+                    role: "Faculty Advisor",
+                    dept: "Department of CSE",
+                    link: "https://linkedin.com/in/mdabidhossain"
+                }
+            ]
         },
         "2020-2021": {
             "President": {
@@ -254,7 +322,32 @@ include_once '../_settings/config.php';
                 img: "https://via.placeholder.com/200x150?text=Grace+Adams",
                 dept: "Department of CSE",
                 link: "https://linkedin.com/in/graceadams"
-            }
+            },
+            "Public Relations Officer": {
+                name: "Phoebe Buffay",
+                img: "https://via.placeholder.com/200x150?text=Phoebe+Buffay",
+                dept: "Department of CSE",
+                link: "https://linkedin.com/in/phoebebuffay"
+            },
+            "Technical Lead": {
+                name: "Chandler Bing",
+                img: "https://via.placeholder.com/200x150?text=Chandler+Bing",
+                dept: "Department of CSE",
+                link: "https://linkedin.com/in/chandlerbing"
+            },
+            "Supervisors": [{
+                    name: "Akib Zaman",
+                    role: "Faculty Advisor",
+                    dept: "Department of CSE",
+                    link: "https://linkedin.com/in/akibzaman"
+                },
+                {
+                    name: "Md Abid Hossain",
+                    role: "Faculty Advisor",
+                    dept: "Department of CSE",
+                    link: "https://linkedin.com/in/mdabidhossain"
+                }
+            ]
         },
         "2019-2020": {
             "President": {
@@ -292,7 +385,20 @@ include_once '../_settings/config.php';
                 img: "https://via.placeholder.com/200x150?text=Chloe+Allen",
                 dept: "Department of CSE",
                 link: "https://linkedin.com/in/chloeallen"
-            }
+            },
+            "Supervisors": [{
+                    name: "Akib Zaman",
+                    role: "Faculty Advisor",
+                    dept: "Department of CSE",
+                    link: "https://linkedin.com/in/akibzaman"
+                },
+                {
+                    name: "Md Abid Hossain",
+                    role: "Faculty Advisor",
+                    dept: "Department of CSE",
+                    link: "https://linkedin.com/in/mdabidhossain"
+                }
+            ]
         },
         "2018-2019": {
             "President": {
@@ -330,7 +436,26 @@ include_once '../_settings/config.php';
                 img: "https://via.placeholder.com/200x150?text=Abigail+King",
                 dept: "Department of CSE",
                 link: "https://linkedin.com/in/abigailking"
-            }
+            },
+            "Public Relations Officer": {
+                name: "Joey Tribbiani",
+                img: "https://via.placeholder.com/200x150?text=Joey+Tribbiani",
+                dept: "Department of CSE",
+                link: "https://linkedin.com/in/joeytribbiani"
+            },
+            "Supervisors": [{
+                    name: "Akib Zaman",
+                    role: "Faculty Advisor",
+                    dept: "Department of CSE",
+                    link: "https://linkedin.com/in/akibzaman"
+                },
+                {
+                    name: "Md Abid Hossain",
+                    role: "Faculty Advisor",
+                    dept: "Department of CSE",
+                    link: "https://linkedin.com/in/mdabidhossain"
+                }
+            ]
         }
     };
 
@@ -358,37 +483,74 @@ include_once '../_settings/config.php';
     }
 
     function renderExecutives() {
-        const panel = document.getElementById('executive-panel');
-        panel.innerHTML = '';
-        const grid = document.createElement('div');
-        grid.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6';
+        const executiveGrid = document.getElementById('executive-grid');
+        const supervisorGrid = document.getElementById('supervisor-grid');
+        executiveGrid.innerHTML = '';
+        supervisorGrid.innerHTML = '';
+
+        // Render Executive Members
+        const execGrid = document.createElement('div');
+        execGrid.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6';
         Object.entries(executives[selectedYear]).forEach(([role, data], index) => {
+            if (role !== "Supervisors") {
+                const card = document.createElement('a');
+                card.href = data.link;
+                card.target = '_blank';
+                card.className =
+                    'bg-white rounded-lg p-5 flex flex-col items-center card-hover animate-fadeIn border border-gray-100';
+                card.style.animationDelay = `${index * 0.1}s`;
+                const img = document.createElement('img');
+                img.src = data.img;
+                img.alt = data.name;
+                img.className = 'w-48 h-64 rounded-lg object-cover mb-3 executive-img';
+                const name = document.createElement('h3');
+                name.className = 'text-lg font-semibold text-gray-800 text-center';
+                name.textContent = data.name;
+                const roleP = document.createElement('p');
+                roleP.className = 'text-gray-600 text-sm text-center';
+                roleP.textContent = role;
+                const dept = document.createElement('p');
+                dept.className = 'text-gray-400 text-xs text-center mt-1';
+                dept.textContent = data.dept;
+                card.appendChild(img);
+                card.appendChild(name);
+                card.appendChild(roleP);
+                card.appendChild(dept);
+                execGrid.appendChild(card);
+            }
+        });
+        executiveGrid.appendChild(execGrid);
+
+        // Render Supervisors
+        const supGrid = document.createElement('div');
+        supGrid.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6';
+        executives[selectedYear].Supervisors.forEach((supervisor, index) => {
             const card = document.createElement('a');
-            card.href = data.link;
+            card.href = supervisor.link;
             card.target = '_blank';
             card.className =
                 'bg-white rounded-lg p-5 flex flex-col items-center card-hover animate-fadeIn border border-gray-100';
-            card.style.animationDelay = `${index * 0.1}s`;
+            card.style.animationDelay = `${(index + Object.keys(executives[selectedYear]).length - 1) * 0.1}s`;
             const img = document.createElement('img');
-            img.src = data.img;
-            img.alt = data.name;
+            img.src = "https://via.placeholder.com/200x150?text=" + supervisor.name.replace(" ", "+");
+            img.alt = supervisor.name;
             img.className = 'w-48 h-36 rounded-lg object-cover mb-3 executive-img';
             const name = document.createElement('h3');
             name.className = 'text-lg font-semibold text-gray-800 text-center';
-            name.textContent = data.name;
+            name.textContent = supervisor.name;
             const roleP = document.createElement('p');
             roleP.className = 'text-gray-600 text-sm text-center';
-            roleP.textContent = role;
+            roleP.textContent = supervisor.role;
             const dept = document.createElement('p');
             dept.className = 'text-gray-400 text-xs text-center mt-1';
-            dept.textContent = data.dept;
+            dept.textContent = supervisor.dept;
             card.appendChild(img);
             card.appendChild(name);
             card.appendChild(roleP);
             card.appendChild(dept);
-            grid.appendChild(card);
+            supGrid.appendChild(card);
         });
-        panel.appendChild(grid);
+        supervisorGrid.appendChild(supGrid);
     }
 
     function handleYearClick(year) {
