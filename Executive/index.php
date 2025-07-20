@@ -24,6 +24,7 @@ include_once '../_settings/config.php';
     .section-title {
         background: linear-gradient(90deg, #1E40AF, #3B82F6);
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 
