@@ -441,6 +441,13 @@ include_once '_settings/config.php';
                 const placeholderImage = "/assets/img/svg/banner.svg";
 
                 const staticEvents = [{
+                        heading: "Meet and Greet",
+                        time: "August 2, 2025",
+                        location: "Room No. 630, 631",
+                        image: "assets/img/Events/Meet&Greet.jpg",
+                        link: "/Iftar/index.php"
+                    },
+                    {
                         heading: "Majlish-e-Ifter",
                         time: "March 17, 2025",
                         location: "UIU Cafeteria",
