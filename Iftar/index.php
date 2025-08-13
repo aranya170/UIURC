@@ -18,7 +18,7 @@
         </div>
         <div class="w-full sm:w-1/2 flex flex-col">
             <div class="my-6">
-                <h1 class="text-2xl lg:text-4xl xl:text-[3.25rem] text-primary font-semibold">Research 101</h1>
+                <h1 class="text-2xl lg:text-4xl xl:text-[3.25rem] text-primary font-semibold">Majlish-e-Iftar</h1>
                 <p class="text-lg">The UIU Robotics Club cordially invites you to Majlish-e-Iftar, a special evening of
                     togetherness, reflection, and celebration of the holy month of Ramadan! 🕌✨ <br>
                     Eligibility: Club Members & Alumni</p>
@@ -144,73 +144,73 @@
         </div>
 
         <script>
-            const photos = [{
-                    src: "img/1.jpg",
-                    alt: "Event Photo 1"
-                },
-                {
-                    src: "img/2.jpg",
-                    alt: "Event Photo 2"
-                },
-                {
-                    src: "img/3.jpg",
-                    alt: "Event Photo 3"
-                },
-                {
-                    src: "img/4.jpg",
-                    alt: "Event Photo 4"
-                },
-                {
-                    src: "img/5.jpg",
-                    alt: "Event Photo 5"
-                },
-                {
-                    src: "img/6.jpg",
-                    alt: "Event Photo 6"
-                },
-                {
-                    src: "img/7.jpg",
-                    alt: "Event Photo 7"
-                },
-                {
-                    src: "img/8.jpg",
-                    alt: "Event Photo 8"
-                },
-                {
-                    src: "img/9.jpg",
-                    alt: "Event Photo 9"
-                },
-                {
-                    src: "img/10.jpg",
-                    alt: "Event Photo 10"
-                },
-                {
-                    src: "img/11.jpg",
-                    alt: "Event Photo 11"
-                }
-            ];
+        const photos = [{
+                src: "img/1.jpg",
+                alt: "Event Photo 1"
+            },
+            {
+                src: "img/2.jpg",
+                alt: "Event Photo 2"
+            },
+            {
+                src: "img/3.jpg",
+                alt: "Event Photo 3"
+            },
+            {
+                src: "img/4.jpg",
+                alt: "Event Photo 4"
+            },
+            {
+                src: "img/5.jpg",
+                alt: "Event Photo 5"
+            },
+            {
+                src: "img/6.jpg",
+                alt: "Event Photo 6"
+            },
+            {
+                src: "img/7.jpg",
+                alt: "Event Photo 7"
+            },
+            {
+                src: "img/8.jpg",
+                alt: "Event Photo 8"
+            },
+            {
+                src: "img/9.jpg",
+                alt: "Event Photo 9"
+            },
+            {
+                src: "img/10.jpg",
+                alt: "Event Photo 10"
+            },
+            {
+                src: "img/11.jpg",
+                alt: "Event Photo 11"
+            }
+        ];
 
-            const gallery = document.getElementById('gallery');
+        const gallery = document.getElementById('gallery');
 
-            photos.forEach(photo => {
-                const item = document.createElement('div');
-                item.className = 'group relative w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2';
+        photos.forEach(photo => {
+            const item = document.createElement('div');
+            item.className = 'group relative w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2';
 
-                const img = document.createElement('img');
-                img.src = photo.src;
-                img.alt = photo.alt;
-                img.loading = 'lazy';
-                img.className =
-                    'w-full h-64 object-cover rounded-xl shadow-md transition-transform duration-300 group-hover:scale-105 cursor-pointer';
-                img.onerror = () => {
-                    img.src = 'https://via.placeholder.com/400x300?text=Image+Not+Found';
-                };
+            const img = document.createElement('img');
+            img.src = photo.src;
+            img.alt = photo.alt;
+            img.loading = 'lazy';
+            img.className =
+                'w-full h-64 object-cover rounded-xl shadow-md transition-transform duration-300 group-hover:scale-105 cursor-pointer';
+            img.onerror = () => {
+                img.src = 'https://via.placeholder.com/400x300?text=Image+Not+Found';
+            };
 
-                const overlay = document.createElement('div');
-                overlay.className =
-                    'absolute inset-0 flex items-center justify-center pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300 rounded-xl';
+            const overlay = document.createElement('div');
+            overlay.className =
+                'absolute inset-0 flex items-center justify-center pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300 rounded-xl';
 
-                overlay.innerHTML = `
+            overlay.innerHTML = `
                 <div class="w-full h-full backdrop-blur-sm bg-transparent flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300">
                     <a href="${photo.src}" target="_blank" title="View Full Image"
                        class="bg-white text-primary px-4 py-2 rounded-md hover:bg-opacity-90 transition-colors">
@@ -223,10 +223,10 @@
                 </div>
             `;
 
-                item.appendChild(img);
-                item.appendChild(overlay);
-                gallery.appendChild(item);
-            });
+            item.appendChild(img);
+            item.appendChild(overlay);
+            gallery.appendChild(item);
+        });
         </script>
     </section>
 

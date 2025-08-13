@@ -122,7 +122,7 @@ include_once '../_settings/config.php';
         <div class="flex items-center justify-start gap-4 text-primary">
             <span
                 class="font-display text-md sm:text-xl md:text-2xl lg:text-4xl font-semibold uppercase whitespace-nowrap p-4">
-                Our Events
+                Featured Events
             </span>
         </div>
         <div class="container mx-auto p-4">
@@ -138,6 +138,13 @@ include_once '../_settings/config.php';
     const staticUpcomingEvents = [];
 
     const staticOurEvents = [{
+            heading: "Meet and Greet",
+            time: "August 2, 2025",
+            location: "Room 631 & 632",
+            details: "The most awaited Phase 2 of Spring 2025 Trimester’s Recruitment Session is finally back on track! This time it isn’t just a regular meet-up, it’s a special alumni reunion + interactive meet-&-greet designed to inspire, connect, and guide!",
+            image: "/assets/img/Events/Meet&Greet.jpg",
+            link: "/Iftar/index.php"
+        }, {
             heading: "Majlish-e-Ifter",
             time: "March 17, 2025",
             location: "UIU Cafeteria",

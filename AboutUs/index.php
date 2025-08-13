@@ -206,9 +206,36 @@ include_once '../_settings/config.php';
                             </svg>
                             <h3 class="text-lg font-semibold text-gray-900">Years of Journey</h3>
                         </div>
-                        <div class="text-4xl font-extrabold text-gray-600 mb-2">8</div>
+                        <div class="text-4xl font-extrabold text-gray-600 mb-2" id="years-display">9</div>
                     </div>
+                    <script>
+                    function updateYears() {
+                        const startDate = new Date('2017-08-17');
+                        const currentDate = new Date();
 
+                        // Calculate years since August 17, 2017
+                        let years = currentDate.getFullYear() - startDate.getFullYear();
+
+                        // If before August 17th in the current year, decrement by 1
+                        if (currentDate.getMonth() < 7 || (currentDate.getMonth() === 7 && currentDate.getDate() <
+                                17)) {
+                            years--;
+                        }
+
+                        // Adjust to match the provided value of 9 in 2025
+                        const baseYearOffset = 9 - (2025 - 2017); // Adjust base to make 2025 show 9
+                        years += baseYearOffset;
+
+                        // Update the display
+                        document.getElementById('years-display').textContent = years;
+                    }
+
+                    // Run on page load
+                    updateYears();
+
+                    // Optional: Update daily to check for date change
+                    setInterval(updateYears, 24 * 60 * 60 * 1000);
+                    </script>
                     <div class="bg-white rounded-2xl p-6 card-shadow col-span-1 md:col-span-2 gradient-bg">
                         <div class="flex items-center space-x-3 mb-4">
                             <svg class="w-7 h-7 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -246,8 +273,8 @@ include_once '../_settings/config.php';
 
         <script>
         const timelineData = [{
-                date: "2017-09-01",
-                text: "2017 01 Sep",
+                date: "2017-08-17",
+                text: "2017 17 Aug",
                 image: "/assets/img/Group/1.jpg",
                 contentTitle: "UIU Robotics Club Established",
                 contentText: "The UIU Robotics Club was officially founded, marking the beginning of our journey in robotics innovation and education."

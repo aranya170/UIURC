@@ -10,10 +10,14 @@ include_once '../_settings/config.php';
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-    /* Custom styles for enhanced visuals */
     .executive-card {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        min-height: 350px;
+        /* Ensure consistent card height */
     }
 
     .executive-card:hover {
@@ -22,7 +26,8 @@ include_once '../_settings/config.php';
     }
 
     .section-title {
-        background: linear-gradient(90deg, #1E40AF, #3B82F6);
+        background: linear-gradient(90deg, #4B5563, #6B7280);
+        /* Changed to grey gradient */
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -30,13 +35,16 @@ include_once '../_settings/config.php';
 
     .timeline-container {
         position: relative;
-        height: 80px;
-        margin: 2rem 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        margin-left: 60px;
     }
 
     .timeline-track {
         position: relative;
-        height: 4px;
+        width: 4px;
+        height: 100%;
         background: #e5e7eb;
         border-radius: 2px;
     }
@@ -45,9 +53,10 @@ include_once '../_settings/config.php';
         position: absolute;
         width: 24px;
         height: 24px;
-        background: #3B82F6;
+        background: #6B7280;
+        /* Changed to grey */
         border-radius: 50%;
-        top: -10px;
+        left: -10px;
         cursor: grab;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
@@ -58,33 +67,82 @@ include_once '../_settings/config.php';
 
     .timeline-markers {
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         position: absolute;
-        top: -30px;
-        width: 100%;
+        left: -60px;
+        height: 100%;
+        width: 60px;
     }
 
     .timeline-marker {
         font-size: 1rem;
         font-weight: 600;
-        color: #4b5563;
-        text-align: center;
-        width: 80px;
+        color: #4B5563;
+        /* Grey */
+        text-align: left;
+        height: auto;
+        padding-right: 0;
+        white-space: nowrap;
     }
 
     .timeline-marker.active {
-        color: #1E40AF;
+        background: linear-gradient(90deg, #4B5563, #6B7280);
+        /* Changed to grey gradient */
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     .timeline-content {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateX(20px);
         transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
     .timeline-content.active {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
+    }
+
+    .profile-img {
+        border-radius: 50%;
+        width: 128px;
+        height: 128px;
+        object-fit: cover;
+        margin: 0 auto;
+    }
+
+    .card-content {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 180px;
+        /* Ensure consistent content height */
+    }
+
+    .go-back-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #4B5563;
+        /* Grey */
+        color: white;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        z-index: 1000;
+    }
+
+    .go-back-btn:hover {
+        background-color: #6B7280;
+        /* Lighter grey on hover */
     }
     </style>
 </head>
@@ -94,477 +152,262 @@ include_once '../_settings/config.php';
 
     <main class="container mx-auto px-4 py-12">
         <!-- Hero Section -->
-        <section class="text-center mb-16">
+        <section class=" mb-16">
             <h1 class="text-4xl md:text-5xl font-bold section-title mb-4">UIU Robotics Club Executives</h1>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                Meet the passionate leaders driving innovation and excellence at the UIU Robotics Club.
-            </p>
         </section>
 
-        <!-- Current Committee Section -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-semibold section-title mb-8 text-center">Current Committee</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Supervisor -->
-                <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
-                    <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                        alt="Supervisor" class="w-full h-64 object-cover">
-                    <div class="p-6 text-center">
-                        <h3 class="text-xl font-semibold text-gray-800">Dr. Emily Carter</h3>
-                        <p class="text-blue-600 font-medium">Faculty Supervisor</p>
-                        <p class="text-gray-600 mt-2">Guiding the club with expertise and mentorship.</p>
-                        <div class="mt-4 flex justify-center space-x-4">
-                            <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fab fa-github"></i></a>
-                        </div>
+        <div class="flex">
+            <!-- Timeline Section -->
+            <aside class="w-1/4 pr-8">
+                <h2 class="text-2xl font-semibold section-title mb-8">Executive Bodies</h2>
+                <div class="timeline-container" style="height: 300px;">
+                    <div class="timeline-markers">
+                        <div class="timeline-marker" data-year="2024">2024</div>
+                        <div class="timeline-marker" data-year="2022">2022</div>
+                    </div>
+                    <div class="timeline-track">
+                        <div class="timeline-slider"></div>
                     </div>
                 </div>
+            </aside>
 
-                <!-- President -->
-                <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
-                    <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                        alt="President" class="w-full h-64 object-cover">
-                    <div class="p-6 text-center">
-                        <h3 class="text-xl font-semibold text-gray-800">John Doe</h3>
-                        <p class="text-blue-600 font-medium">President</p>
-                        <p class="text-gray-600 mt-2">Leading the club with a vision for cutting-edge robotics
-                            innovation.</p>
-                        <div class="mt-4 flex justify-center space-x-4">
-                            <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
+            <!-- Committee Section -->
+            <section class="w-3/4">
+                <div id="timeline-content-container">
+                    <!-- Current Committee Section -->
+                    <div class="timeline-content" data-year="2024">
+                        <h3 class="text-3xl font-semibold section-title mb-8 text-center">Current Committee</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+                            <!-- Supervisor -->
+                            <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                                <img src="https://cse.uiu.ac.bd/wp-content/uploads/sites/3/2024/04/F-H-min-1-240x300.jpg"
+                                    alt="Fahim Hafiz" class="profile-img mt-6">
+                                <div class="p-6 text-center card-content">
+                                    <h3 class="text-xl font-semibold text-gray-800">Fahim Hafiz</h3>
+                                    <p class="text-gray-600 font-medium">Faculty Moderator</p> <!-- Changed to grey -->
+                                    <div class="mt-4 flex justify-center space-x-4">
+                                        <a href="https://www.linkedin.com/in/fahim-hafiz-47b3a5154"
+                                            class="text-gray-500 hover:text-gray-700"><i
+                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                        <a href="https://github.com/fahimhafiz"
+                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
 
-                <!-- Vice President -->
-                <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
-                    <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                        alt="Vice President" class="w-full h-64 object-cover">
-                    <div class="p-6 text-center">
-                        <h3 class="text-xl font-semibold text-gray-800">Jane Smith</h3>
-                        <p class="text-blue-600 font-medium">Vice President</p>
-                        <p class="text-gray-600 mt-2">Coordinating projects and fostering team collaboration.</p>
-                        <div class="mt-4 flex justify-center space-x-4">
-                            <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
+                            <!-- President -->
+                            <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                                <img src="/assets/img/Executive/tanim.jpg" alt="Junayed Tanim" class="profile-img mt-6">
+                                <div class="p-6 text-center card-content">
+                                    <h3 class="text-xl font-semibold text-gray-800">Junayed Tanim</h3>
+                                    <p class="text-gray-600 font-medium">President</p> <!-- Changed to grey -->
+                                    <div class="mt-4 flex justify-center space-x-4">
+                                        <a href="https://www.linkedin.com/in/junayedtanim"
+                                            class="text-gray-500 hover:text-gray-700"><i
+                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                        <a href="https://github.com/junayedtanim"
+                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
 
-                <!-- Technical Lead -->
-                <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
-                    <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                        alt="Technical Lead" class="w-full h-64 object-cover">
-                    <div class="p-6 text-center">
-                        <h3 class="text-xl font-semibold text-gray-800">Alex Johnson</h3>
-                        <p class="text-blue-600 font-medium">Technical Lead</p>
-                        <p class="text-gray-600 mt-2">Overseeing technical development and innovation.</p>
-                        <div class="mt-4 flex justify-center space-x-4">
-                            <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="text-blue-500 hover:text-blue-700 workload
-                            <i class=" fab fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
+                            <!-- Vice President -->
+                            <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                                <img src="/assets/img/Executive/Bodi.jpg" alt="Md Bodiuzzaman Shikder"
+                                    class="profile-img mt-6">
+                                <div class="p-6 text-center card-content">
+                                    <h3 class="text-xl font-semibold text-gray-800">Md Bodiuzzaman Shikder</h3>
+                                    <p class="text-gray-600 font-medium">Vice President</p> <!-- Changed to grey -->
+                                    <div class="mt-4 flex justify-center space-x-4">
+                                        <a href="https://www.linkedin.com/in/md-bodiuzzaman-shikder-0a72861a1"
+                                            class="text-gray-500 hover:text-gray-700"><i
+                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                        <a href="https://github.com/bodiuzzaman"
+                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
 
-                <!-- Treasurer -->
-                <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
-                    <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                        alt="Treasurer" class="w-full h-64 object-cover">
-                    <div class="p-6 text-center">
-                        <h3 class="text-xl font-semibold text-gray-800">Sarah Lee</h3>
-                        <p class="text-blue-600 font-medium">Treasurer</p>
-                        <p class="text-gray-600 mt-2">Managing finances and ensuring sustainable operations.</p>
-                        <div class="mt-4 flex justify-center space-x-4">
-                            <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
+                            <!-- General Secretary -->
+                            <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                                <img src="/assets/img/Executive/borsha.jpg" alt="Faria Rakib Borsha"
+                                    class="profile-img mt-6">
+                                <div class="p-6 text-center card-content">
+                                    <h3 class="text-xl font-semibold text-gray-800">Faria Rakib Borsha</h3>
+                                    <p class="text-gray-600 font-medium">General Secretary</p> <!-- Changed to grey -->
+                                    <div class="mt-4 flex justify-center space-x-4">
+                                        <a href="https://www.linkedin.com/in/faria-rakib-borsha-713034213"
+                                            class="text-gray-500 hover:text-gray-700"><i
+                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                        <a href="https://github.com/fariarakib"
+                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
 
-                <!-- Event Coordinator -->
-                <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
-                    <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                        alt="Event Coordinator" class="w-full h-64 object-cover">
-                    <div class="p-6 text-center">
-                        <h3 class="text-xl font-semibold text-gray-800">Michael Brown</h3>
-                        <p class="text-blue-600 font-medium">Event Coordinator</p>
-                        <p class="text-gray-600 mt-2">Organizing workshops, competitions, and events.</p>
-                        <div class="mt-4 flex justify-center space-x-4">
-                            <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
+                            <!-- Asst. General Secretary -->
+                            <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                                <img src="/assets/img/Executive/Fahad.jpg" alt="Fahad Rahman" class="profile-img mt-6">
+                                <div class="p-6 text-center card-content">
+                                    <h3 class="text-xl font-semibold text-gray-800">Fahad Rahman</h3>
+                                    <p class="text-gray-600 font-medium">Asst. General Secretary</p>
+                                    <!-- Changed to grey -->
+                                    <div class="mt-4 flex justify-center space-x-4">
+                                        <a href="https://www.linkedin.com/in/fahadrahman"
+                                            class="text-gray-500 hover:text-gray-700"><i
+                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                        <a href="https://github.com/fahadrahman"
+                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
 
-                <!-- Public Relations -->
-                <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
-                    <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                        alt="Public Relations" class="w-full h-64 object-cover">
-                    <div class="p-6 text-center">
-                        <h3 class="text-xl font-semibold text-gray-800">Emma Davis</h3>
-                        <p class="text-blue-600 font-medium">Public Relations</p>
-                        <p class="text-gray-600 mt-2">Promoting the club and engaging with the community.</p>
-                        <div class="mt-4 flex justify-center space-x-4">
-                            <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fab fa-github"></i></a>
+                            <!-- Treasurer -->
+                            <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                                <img src="/assets/img/Executive/Hamjah.jpg" alt="Md. Rashique Hamjah Chowdhury"
+                                    class="profile-img mt-6">
+                                <div class="p-6 text-center card-content">
+                                    <h3 class="text-xl font-semibold text-gray-800">Md. Rashique Hamjah Chowdhury</h3>
+                                    <p class="text-gray-600 font-medium">Treasurer</p> <!-- Changed to grey -->
+                                    <div class="mt-4 flex justify-center space-x-4">
+                                        <a href="https://www.linkedin.com/in/mrhchow"
+                                            class="text-gray-500 hover:text-gray-700"><i
+                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                        <a href="https://github.com/mrhchow"
+                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Timeline Section -->
-        <section class="mb-16">
-            <h2 class="text-3xl font-semibold section-title mb-8 text-center">Previous Executive Bodies</h2>
-            <div class="timeline-container">
-                <div class="timeline-markers">
-                    <div class="timeline-marker" data-year="2024">2024-2025</div>
-                    <div class="timeline-marker" data-year="2023">2023-2024</div>
-                    <div class="timeline-marker" data-year="2022">2022-2023</div>
-                </div>
-                <div class="timeline-track">
-                    <div class="timeline-slider"></div>
-                </div>
-            </div>
-            <div id="timeline-content">
-                <!-- 2024-2025 Committee -->
-                <div class="timeline-content" data-year="2024">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">2024-2025 Committee</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous Supervisor" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">Dr. Robert Wilson</h3>
-                                <p class="text-blue-600 font-medium">Faculty Supervisor</p>
-                                <p class="text-gray-600 mt-2">Provided strategic guidance in 2024.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
+                    <!-- 2022-2023 Committee -->
+                    <div class="timeline-content hidden" data-year="2022">
+                        <h3 class="text-3xl font-semibold section-title mb-8 text-center">2022-2023 Committee</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+                            <!-- Vice President -->
+                            <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                                <img src="/assets/img/Executive/abirsir.jpg" alt="Md. Abir Hassan"
+                                    class="profile-img mt-6">
+                                <div class="p-6 text-center card-content">
+                                    <h3 class="text-xl font-semibold text-gray-800">Md. Abir Hassan</h3>
+                                    <p class="text-gray-600 font-medium">Vice President</p> <!-- Changed to grey -->
+                                    <div class="mt-4 flex justify-center space-x-4">
+                                        <a href="https://www.linkedin.com/in/abir-hassan"
+                                            class="text-gray-500 hover:text-gray-700"><i
+                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                        <a href="https://github.com/abir0" class="text-gray-500 hover:text-gray-700"><i
+                                                class="fab fa-github"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous President" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">Lisa Thompson</h3>
-                                <p class="text-blue-600 font-medium">President</p>
-                                <p class="text-gray-600 mt-2">Led the club to new heights in 2024.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous Vice President" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">David Kim</h3>
-                                <p class="text-blue-600 font-medium">Vice President</p>
-                                <p class="text-gray-600 mt-2">Supported innovative projects in 2024.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous Technical Lead" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">Sophie Chen</h3>
-                                <p class="text-blue-600 font-medium">Technical Lead</p>
-                                <p class="text-gray-600 mt-2">Pioneered technical advancements in 2024.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous Treasurer" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">Mark Lee</h3>
-                                <p class="text-blue-600 font-medium">Treasurer</p>
-                                <p class="text-gray-600 mt-2">Managed finances effectively in 2024.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous Event Coordinator" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">Anna Rodriguez</h3>
-                                <p class="text-blue-600 font-medium">Event Coordinator</p>
-                                <p class="text-gray-600 mt-2">Organized successful events in 2024.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous Public Relations" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">James Patel</h3>
-                                <p class="text-blue-600 font-medium">Public Relations</p>
-                                <p class="text-gray-600 mt-2">Boosted club visibility in 2024.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- 2023-2024 Committee -->
-                <div class="timeline-content hidden" data-year="2023">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">2023-2024 Committee</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous Supervisor" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">Dr. Laura Adams</h3>
-                                <p class="text-blue-600 font-medium">Faculty Supervisor</p>
-                                <p class="text-gray-600 mt-2">Mentored the team in 2023.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
+                            <!-- President -->
+                            <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                                <img src="/assets/img/Executive/Miftah.jpg" alt="Miftahul Islam Mazumdar"
+                                    class="profile-img mt-6">
+                                <div class="p-6 text-center card-content">
+                                    <h3 class="text-xl font-semibold text-gray-800">Miftahul Islam Mazumdar</h3>
+                                    <p class="text-gray-600 font-medium">President</p> <!-- Changed to grey -->
+                                    <div class="mt-4 flex justify-center space-x-4">
+                                        <a href="https://www.linkedin.com/in/miftahul-islam"
+                                            class="text-gray-500 hover:text-gray-700"><i
+                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                        <a href="https://github.com/miftahulislam"
+                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous President" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">Anna Rodriguez</h3>
-                                <p class="text-blue-600 font-medium">President</p>
-                                <p class="text-gray-600 mt-2">Expanded club outreach in 2023.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous Vice President" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">Mark Lee</h3>
-                                <p class="text-blue-600 font-medium">Vice President</p>
-                                <p class="text-gray-600 mt-2">Enhanced team collaboration in 2023.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous Technical Lead" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">Sophie Chen</h3>
-                                <p class="text-blue-600 font-medium">Technical Lead</p>
-                                <p class="text-gray-600 mt-2">Introduced new tech workshops in 2023.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous Treasurer" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">Ethan Harris</h3>
-                                <p class="text-blue-600 font-medium">Treasurer</p>
-                                <p class="text-gray-600 mt-2">Ensured financial stability in 2023.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous Event Coordinator" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">Olivia White</h3>
-                                <p class="text-blue-600 font-medium">Event Coordinator</p>
-                                <p class="text-gray-600 mt-2">Hosted major events in 2023.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous Public Relations" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">James Patel</h3>
-                                <p class="text-blue-600 font-medium">Public Relations</p>
-                                <p class="text-gray-600 mt-2">Strengthened community ties in 2023.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- 2022-2023 Committee -->
-                <div class="timeline-content hidden" data-year="2022">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">2022-2023 Committee</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous Supervisor" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">Dr. Michael Brown</h3>
-                                <p class="text-blue-600 font-medium">Faculty Supervisor</p>
-                                <p class="text-gray-600 mt-2">Guided the club in 2022.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
+                            <!-- Vice President -->
+                            <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                                <img src="/assets/img/Executive/abid.jpg" alt="Md. Abid Hossain"
+                                    class="profile-img mt-6">
+                                <div class="p-6 text-center card-content">
+                                    <h3 class="text-xl font-semibold text-gray-800">Md. Abid Hossain</h3>
+                                    <p class="text-gray-600 font-medium">Vice President</p> <!-- Changed to grey -->
+                                    <div class="mt-4 flex justify-center space-x-4">
+                                        <a href="https://www.linkedin.com/in/abidhossain"
+                                            class="text-gray-500 hover:text-gray-700"><i
+                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                        <a href="https://github.com/Abidh56"
+                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous President" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">James Patel</h3>
-                                <p class="text-blue-600 font-medium">President</p>
-                                <p class="text-gray-600 mt-2">Launched major robotics competitions in 2022.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
+
+                            <!-- General Secretary -->
+                            <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                                <img src="/assets/img/Executive/hasib.jpg" alt="Md. Shad Hasib Talukder"
+                                    class="profile-img mt-6">
+                                <div class="p-6 text-center card-content">
+                                    <h3 class="text-xl font-semibold text-gray-800">Md. Shad Hasib Talukder</h3>
+                                    <p class="text-gray-600 font-medium">General Secretary</p> <!-- Changed to grey -->
+                                    <div class="mt-4 flex justify-center space-x-4">
+                                        <a href="https://www.linkedin.com/in/shadhasib"
+                                            class="text-gray-500 hover:text-gray-700"><i
+                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                        <a href="https://github.com/shadhasib"
+                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous Vice President" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">Olivia White</h3>
-                                <p class="text-blue-600 font-medium">Vice President</p>
-                                <p class="text-gray-600 mt-2">Strengthened community ties in 2022.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
+
+                            <!-- Asst. General Secretary -->
+                            <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                                <img src="/assets/img/Executive/maria.jpg" alt="Maria Talukder"
+                                    class="profile-img mt-6">
+                                <div class="p-6 text-center card-content">
+                                    <h3 class="text-xl font-semibold text-gray-800">Maria Talukder</h3>
+                                    <p class="text-gray-600 font-medium">Asst. General Secretary</p>
+                                    <!-- Changed to grey -->
+                                    <div class="mt-4 flex justify-center space-x-4">
+                                        <a href="https://www.linkedin.com/in/mariatalukder"
+                                            class="text-gray-500 hover:text-gray-700"><i
+                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                        <a href="https://github.com/mariatalukder"
+                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous Technical Lead" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">Ethan Harris</h3>
-                                <p class="text-blue-600 font-medium">Technical Lead</p>
-                                <p class="text-gray-600 mt-2">Developed core robotics projects in 2022.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
+
+                            <!-- Treasurer -->
+                            <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                                <img src="/assets/img/Executive/niloya.jpg" alt="Niloya Roy" class="profile-img mt-6">
+                                <div class="p-6 text-center card-content">
+                                    <h3 class="text-xl font-semibold text-gray-800">Niloya Roy</h3>
+                                    <p class="text-gray-600 font-medium">Treasurer</p> <!-- Changed to grey -->
+                                    <div class="mt-4 flex justify-center space-x-4">
+                                        <a href="https://www.linkedin.com/in/niloyaroy"
+                                            class="text-gray-500 hover:text-gray-700"><i
+                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                        <a href="https://github.com/niloyaroy"
+                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous Treasurer" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">Sophie Chen</h3>
-                                <p class="text-blue-600 font-medium">Treasurer</p>
-                                <p class="text-gray-600 mt-2">Managed budgets effectively in 2022.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous Event Coordinator" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">Anna Rodriguez</h3>
-                                <p class="text-blue-600 font-medium">Event Coordinator</p>
-                                <p class="text-gray-600 mt-2">Organized key events in 2022.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src="https://loremipsum.imgix.net/gPyHKDGI0md4NkRDjs4k8/36be1e73008a0181c1980f727f29d002/avatar-placeholder-generator-500x500.jpg?w=300&h=400&q=60&auto=format,compress"
-                                alt="Previous Public Relations" class="w-full h-64 object-cover">
-                            <div class="p-6 text-center">
-                                <h3 class="text-xl font-semibold text-gray-800">Mark Lee</h3>
-                                <p class="text-blue-600 font-medium">Public Relations</p>
-                                <p class="text-gray-600 mt-2">Promoted the club in 2022.</p>
-                                <div class="mt-4 flex justify-center space-x-4">
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="text-blue-500 hover:text-blue-700"><i
-                                            class="fab fa-github"></i></a>
+
+                            <!-- Webmaster -->
+                            <div class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                                <img src="/assets/img/Executive/abdullah.jpg" alt="Abdullah Al Masud"
+                                    class="profile-img mt-6">
+                                <div class="p-6 text-center card-content">
+                                    <h3 class="text-xl font-semibold text-gray-800">Abdullah Al Masud</h3>
+                                    <p class="text-gray-600 font-medium">Webmaster</p> <!-- Changed to grey -->
+                                    <div class="mt-4 flex justify-center space-x-4">
+                                        <a href="https://www.linkedin.com/in/staywithabdullah"
+                                            class="text-gray-500 hover:text-gray-700"><i
+                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                        <a href="https://github.com/staywithabdullah"
+                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
 
     <?php include ABSPATH . '_includes/footer.php'; ?>
@@ -590,27 +433,27 @@ include_once '../_settings/config.php';
     });
 
     // Timeline slider logic
-    const years = [2024, 2023, 2022];
+    const years = [2024, 2022];
     const slider = document.querySelector('.timeline-slider');
     const track = document.querySelector('.timeline-track');
     const markers = document.querySelectorAll('.timeline-marker');
     const contents = document.querySelectorAll('.timeline-content');
-    const trackWidth = track.offsetWidth;
-    const snapPoints = years.map((_, index) => (index / (years.length - 1)) * (trackWidth - 24)); // 24 is slider width
+    const trackHeight = track.offsetHeight;
+    const snapPoints = years.map((_, index) => (index / (years.length - 1)) * (trackHeight - 24));
 
     // Initialize Draggable
     Draggable.create(slider, {
-        type: "x",
+        type: "y",
         bounds: {
-            minX: 0,
-            maxX: trackWidth - 24
+            minY: 0,
+            maxY: trackHeight - 24
         },
         edgeResistance: 0.85,
         snap: snapPoints,
         onDragEnd: function() {
-            const x = this.x;
+            const y = this.y;
             const closestSnap = snapPoints.reduce((prev, curr) =>
-                Math.abs(curr - x) < Math.abs(prev - x) ? curr : prev
+                Math.abs(curr - y) < Math.abs(prev - y) ? curr : prev
             );
             const index = snapPoints.indexOf(closestSnap);
             updateTimeline(years[index]);
@@ -632,10 +475,10 @@ include_once '../_settings/config.php';
 
         gsap.fromTo(selectedContent, {
             opacity: 0,
-            y: 20
+            x: 20
         }, {
             opacity: 1,
-            y: 0,
+            x: 0,
             duration: 0.5,
             ease: "power3.out",
             onComplete: () => {
@@ -650,7 +493,7 @@ include_once '../_settings/config.php';
             const year = parseInt(marker.getAttribute('data-year'));
             const index = years.indexOf(year);
             gsap.to(slider, {
-                x: snapPoints[index],
+                y: snapPoints[index],
                 duration: 0.5,
                 ease: "power3.out"
             });
@@ -658,7 +501,7 @@ include_once '../_settings/config.php';
         });
     });
 
-    // Initialize with 2024-2025
+    // Initialize with 2024
     updateTimeline(2024);
     </script>
 </body>

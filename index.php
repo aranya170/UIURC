@@ -8,86 +8,86 @@ include_once '_settings/config.php';
 <head>
     <?php include ABSPATH . '_includes/head.php'; ?>
     <style>
-        .nav-arrow-right .ellipsis-content {
-            font-size: 1.5rem;
-            /* Adjust to match arrow size */
-            font-weight: bold;
-            color: currentColor;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            /* Match SVG size */
-            height: 24px;
-        }
+    .nav-arrow-right .ellipsis-content {
+        font-size: 1.5rem;
+        /* Adjust to match arrow size */
+        font-weight: bold;
+        color: currentColor;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        /* Match SVG size */
+        height: 24px;
+    }
 
-        .nav-arrow-right .arrow-content.hidden,
-        .nav-arrow-right .ellipsis-content.hidden {
-            display: none;
-        }
+    .nav-arrow-right .arrow-content.hidden,
+    .nav-arrow-right .ellipsis-content.hidden {
+        display: none;
+    }
     </style>
     <style>
-        /* Styling the scroll-to-top button */
-        .scroll-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: none;
-            /* Hidden by default */
-            justify-content: center;
-            align-items: center;
-            width: 2.5rem;
-            /* Increased from 2rem for larger button */
-            height: 2.5rem;
-            /* Increased from 2rem for larger button */
-            background-color: #ff0303;
-            /* Primary color, adjust as needed */
-            color: white;
-            border-radius: 50%;
-            font-weight: bold;
-            font-size: 18px;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-            z-index: 1000;
-            /* Ensures button stays on top */
-        }
+    /* Styling the scroll-to-top button */
+    .scroll-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: none;
+        /* Hidden by default */
+        justify-content: center;
+        align-items: center;
+        width: 2.5rem;
+        /* Increased from 2rem for larger button */
+        height: 2.5rem;
+        /* Increased from 2rem for larger button */
+        background-color: #ff0303;
+        /* Primary color, adjust as needed */
+        color: white;
+        border-radius: 50%;
+        font-weight: bold;
+        font-size: 18px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        z-index: 1000;
+        /* Ensures button stays on top */
+    }
 
-        .scroll-to-top:hover {
-            background-color: #0E1E2D;
-            /* Hover color */
-        }
+    .scroll-to-top:hover {
+        background-color: #0E1E2D;
+        /* Hover color */
+    }
 
-        .scroll-to-top.visible {
-            display: flex;
-            /* Show when scrolled */
-        }
+    .scroll-to-top.visible {
+        display: flex;
+        /* Show when scrolled */
+    }
     </style>
     <style>
-        @media (max-width: 640px) {
-            section {
-                padding-left: 1rem;
-                padding-right: 2rem;
-                padding-top: 2.5rem;
-                padding-bottom: 2.5rem;
-                margin-left: 0.5rem;
-                margin-right: 1.5rem;
-            }
-
-            .w-full.sm\:w-1\/2 {
-                padding: 0.5rem;
-            }
-
-            .mx-2 {
-                margin-left: 0.75rem;
-                margin-right: 1.25rem;
-                border-radius: 0.75rem;
-            }
-
-            #photo-carousel {
-                overflow: hidden;
-                border-radius: 0.75rem;
-            }
+    @media (max-width: 640px) {
+        section {
+            padding-left: 1rem;
+            padding-right: 2rem;
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+            margin-left: 0.5rem;
+            margin-right: 1.5rem;
         }
+
+        .w-full.sm\:w-1\/2 {
+            padding: 0.5rem;
+        }
+
+        .mx-2 {
+            margin-left: 0.75rem;
+            margin-right: 1.25rem;
+            border-radius: 0.75rem;
+        }
+
+        #photo-carousel {
+            overflow: hidden;
+            border-radius: 0.75rem;
+        }
+    }
     </style>
 </head>
 
@@ -102,37 +102,37 @@ include_once '_settings/config.php';
         </svg>
     </a>
     <script>
-        // Get the scroll-to-top button
-        const scrollToTopBtn = document.getElementById('scrollToTop');
+    // Get the scroll-to-top button
+    const scrollToTopBtn = document.getElementById('scrollToTop');
 
-        // Function to check scroll position and toggle button visibility
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) { // Show button after scrolling 100px
-                scrollToTopBtn.classList.add('visible');
-            } else {
-                scrollToTopBtn.classList.remove('visible');
-            }
+    // Function to check scroll position and toggle button visibility
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) { // Show button after scrolling 100px
+            scrollToTopBtn.classList.add('visible');
+        } else {
+            scrollToTopBtn.classList.remove('visible');
+        }
+    });
+
+    // Smooth scroll to top when button is clicked
+    scrollToTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
+    });
 
-        // Smooth scroll to top when button is clicked
-        scrollToTopBtn.addEventListener('click', (e) => {
+    // Accessibility: Allow Enter or Space key to trigger scroll
+    scrollToTopBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
-        });
-
-        // Accessibility: Allow Enter or Space key to trigger scroll
-        scrollToTopBtn.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            }
-        });
+        }
+    });
     </script>
     <?php include ABSPATH . '_includes/header.php'; ?>
 
@@ -276,68 +276,68 @@ include_once '_settings/config.php';
         </div>
 
         <script>
-            const images = [
-                "assets/img/Group/1.jpg",
-                "assets/img/Group/2.jpg",
-                "assets/img/Group/3.jpg"
-            ];
+        const images = [
+            "assets/img/Group/1.jpg",
+            "assets/img/Group/2.jpg",
+            "assets/img/Group/3.jpg"
+        ];
 
-            let currentIndex = 0;
+        let currentIndex = 0;
 
-            function initializeCarousel() {
-                const carouselImages = document.getElementById('carousel-images');
-                const carouselDots = document.getElementById('carousel-dots');
-                const prevButton = document.getElementById('prev-button');
-                const nextButton = document.getElementById('next-button');
+        function initializeCarousel() {
+            const carouselImages = document.getElementById('carousel-images');
+            const carouselDots = document.getElementById('carousel-dots');
+            const prevButton = document.getElementById('prev-button');
+            const nextButton = document.getElementById('next-button');
 
-                // Populate images
-                images.forEach((src, index) => {
-                    const imgDiv = document.createElement('div');
-                    imgDiv.className = 'w-full h-full flex-shrink-0';
-                    imgDiv.innerHTML =
-                        `<img src="${src}" alt="Carousel image ${index + 1}" class="w-full h-full object-cover" />`;
-                    carouselImages.appendChild(imgDiv);
+            // Populate images
+            images.forEach((src, index) => {
+                const imgDiv = document.createElement('div');
+                imgDiv.className = 'w-full h-full flex-shrink-0';
+                imgDiv.innerHTML =
+                    `<img src="${src}" alt="Carousel image ${index + 1}" class="w-full h-full object-cover" />`;
+                carouselImages.appendChild(imgDiv);
 
-                    // Populate dots
-                    const dot = document.createElement('button');
-                    dot.className =
-                        `w-3 h-3 rounded-full ${index === 0 ? 'bg-white/50 backdrop-blur-md' : 'bg-white/20 backdrop-blur-sm'} focus:outline-none`;
-                    dot.setAttribute('aria-label', `Go to image ${index + 1}`);
-                    dot.addEventListener('click', () => goToImage(index));
-                    carouselDots.appendChild(dot);
-                });
+                // Populate dots
+                const dot = document.createElement('button');
+                dot.className =
+                    `w-3 h-3 rounded-full ${index === 0 ? 'bg-white/50 backdrop-blur-md' : 'bg-white/20 backdrop-blur-sm'} focus:outline-none`;
+                dot.setAttribute('aria-label', `Go to image ${index + 1}`);
+                dot.addEventListener('click', () => goToImage(index));
+                carouselDots.appendChild(dot);
+            });
 
-                function updateCarousel() {
-                    carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
-                    const dots = carouselDots.children;
-                    for (let i = 0; i < dots.length; i++) {
-                        dots[i].className =
-                            `w-3 h-3 rounded-full ${i === currentIndex ? 'bg-white/50 backdrop-blur-md' : 'bg-white/20 backdrop-blur-sm'} focus:outline-none`;
-                    }
+            function updateCarousel() {
+                carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+                const dots = carouselDots.children;
+                for (let i = 0; i < dots.length; i++) {
+                    dots[i].className =
+                        `w-3 h-3 rounded-full ${i === currentIndex ? 'bg-white/50 backdrop-blur-md' : 'bg-white/20 backdrop-blur-sm'} focus:outline-none`;
                 }
+            }
 
-                function goToImage(index) {
-                    currentIndex = (index + images.length) % images.length;
-                    updateCarousel();
-                }
-
-                prevButton.addEventListener('click', () => {
-                    goToImage(currentIndex - 1);
-                });
-
-                nextButton.addEventListener('click', () => {
-                    goToImage(currentIndex + 1);
-                });
-
-                document.getElementById('photo-carousel').addEventListener('keydown', (e) => {
-                    if (e.key === 'ArrowLeft') goToImage(currentIndex - 1);
-                    if (e.key === 'ArrowRight') goToImage(currentIndex + 1);
-                });
-
+            function goToImage(index) {
+                currentIndex = (index + images.length) % images.length;
                 updateCarousel();
             }
 
-            window.addEventListener('load', initializeCarousel);
+            prevButton.addEventListener('click', () => {
+                goToImage(currentIndex - 1);
+            });
+
+            nextButton.addEventListener('click', () => {
+                goToImage(currentIndex + 1);
+            });
+
+            document.getElementById('photo-carousel').addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') goToImage(currentIndex - 1);
+                if (e.key === 'ArrowRight') goToImage(currentIndex + 1);
+            });
+
+            updateCarousel();
+        }
+
+        window.addEventListener('load', initializeCarousel);
         </script>
     </section>
     <!-- Events -->
@@ -397,113 +397,113 @@ include_once '_settings/config.php';
             </div>
 
             <style>
-                /* Base styles for arrows */
+            /* Base styles for arrows */
+            .nav-arrow {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(255, 255, 255, 0.8);
+                border: none;
+                padding: 0.5rem;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: background 0.3s;
+            }
+
+            .nav-arrow:hover {
+                background: rgba(255, 255, 255, 1);
+            }
+
+            .nav-arrow:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+
+            /* Adjust arrow visibility: show on mobile and desktop */
+            @media (max-width: 767px) {
                 .nav-arrow {
                     display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    background: rgba(255, 255, 255, 0.8);
-                    border: none;
-                    padding: 0.5rem;
-                    border-radius: 50%;
-                    cursor: pointer;
-                    transition: background 0.3s;
                 }
 
-                .nav-arrow:hover {
-                    background: rgba(255, 255, 255, 1);
+                .ellipsis-content {
+                    display: none !important;
                 }
+            }
 
-                .nav-arrow:disabled {
-                    opacity: 0.5;
-                    cursor: not-allowed;
+            @media (min-width: 768px) {
+                .nav-arrow {
+                    display: flex;
                 }
-
-                /* Adjust arrow visibility: show on mobile and desktop */
-                @media (max-width: 767px) {
-                    .nav-arrow {
-                        display: flex;
-                    }
-
-                    .ellipsis-content {
-                        display: none !important;
-                    }
-                }
-
-                @media (min-width: 768px) {
-                    .nav-arrow {
-                        display: flex;
-                    }
-                }
+            }
             </style>
 
             <script>
-                const placeholderImage = "/assets/img/svg/banner.svg";
+            const placeholderImage = "/assets/img/svg/banner.svg";
 
-                const staticEvents = [{
-                        heading: "Meet and Greet",
-                        time: "August 2, 2025",
-                        location: "Room No. 630, 631",
-                        image: "assets/img/Events/Meet&Greet.jpg",
-                        link: "/Iftar/index.php"
-                    },
-                    {
-                        heading: "Majlish-e-Ifter",
-                        time: "March 17, 2025",
-                        location: "UIU Cafeteria",
-                        image: "assets/img/Events/Iftar.jpg",
-                        link: "/Iftar/index.php"
-                    },
-                    {
-                        heading: "UIU CSE Fest",
-                        time: "June 17-18, 2025",
-                        location: "United International University",
-                        image: "assets/img/Events/CSE_fest.jpg",
-                        link: "https://csefest.uiu.ac.bd/"
-                    },
-                    {
-                        heading: "Rush Hour",
-                        time: "December 4, 2024",
-                        location: "UIU Gallery",
-                        image: "assets/img/Events/Rush_hour.jpg",
-                        link: "/RushHour/index.php"
-                    },
-                    {
-                        heading: "Research 101",
-                        time: "Oct 9th, 2024",
-                        location: "Room 126",
-                        image: "assets/img/Events/Research 101.jpg",
-                        link: "/Research101/index.php"
-                    },
-                    {
-                        heading: "TechTrove",
-                        time: "July 6-9, 2024",
-                        location: "Lobby Area",
-                        image: "assets/img/Events/Techtrove.jpg",
-                        link: "#"
-                    }
-                ];
+            const staticEvents = [{
+                    heading: "Meet and Greet",
+                    time: "August 2, 2025",
+                    location: "Room No. 630, 631",
+                    image: "assets/img/Events/Meet&Greet.jpg",
+                    link: "/MeetAndGreet/index.php"
+                },
+                {
+                    heading: "Majlish-e-Ifter",
+                    time: "March 17, 2025",
+                    location: "UIU Cafeteria",
+                    image: "assets/img/Events/Iftar.jpg",
+                    link: "/Iftar/index.php"
+                },
+                {
+                    heading: "UIU CSE Fest",
+                    time: "June 17-18, 2025",
+                    location: "United International University",
+                    image: "assets/img/Events/CSE_fest.jpg",
+                    link: "https://csefest.uiu.ac.bd/"
+                },
+                {
+                    heading: "Rush Hour",
+                    time: "December 4, 2024",
+                    location: "UIU Gallery",
+                    image: "assets/img/Events/Rush_hour.jpg",
+                    link: "/RushHour/index.php"
+                },
+                {
+                    heading: "Research 101",
+                    time: "Oct 9th, 2024",
+                    location: "Room 126",
+                    image: "assets/img/Events/Research 101.jpg",
+                    link: "/Research101/index.php"
+                },
+                {
+                    heading: "TechTrove",
+                    time: "July 6-9, 2024",
+                    location: "Lobby Area",
+                    image: "assets/img/Events/Techtrove.jpg",
+                    link: "https://www.facebook.com/events/1216987649676468"
+                }
+            ];
 
-                function renderEvents(events) {
-                    const eventsContainer = document.getElementById('events-container');
-                    eventsContainer.innerHTML = '';
+            function renderEvents(events) {
+                const eventsContainer = document.getElementById('events-container');
+                eventsContainer.innerHTML = '';
 
-                    if (events.length === 0) {
-                        const noEventsMessage = document.createElement('div');
-                        noEventsMessage.className = 'w-full text-center py-10';
-                        noEventsMessage.innerHTML = `
+                if (events.length === 0) {
+                    const noEventsMessage = document.createElement('div');
+                    noEventsMessage.className = 'w-full text-center py-10';
+                    noEventsMessage.innerHTML = `
                         <p class="text-2xl text-orange-500">No events are happening right now</p>
                     `;
-                        eventsContainer.appendChild(noEventsMessage);
-                    } else {
-                        const isMobile = window.innerWidth <= 640; // Tailwind 'sm' breakpoint
-                        const eventCards = [];
+                    eventsContainer.appendChild(noEventsMessage);
+                } else {
+                    const isMobile = window.innerWidth <= 640; // Tailwind 'sm' breakpoint
+                    const eventCards = [];
 
-                        // Create event cards
-                        events.forEach(event => {
-                            const eventCard = document.createElement('div');
-                            eventCard.className = 'event-card rounded-lg w-full sm:w-72 inline-block snap-center';
-                            eventCard.innerHTML = `
+                    // Create event cards
+                    events.forEach(event => {
+                        const eventCard = document.createElement('div');
+                        eventCard.className = 'event-card rounded-lg w-full sm:w-72 inline-block snap-center';
+                        eventCard.innerHTML = `
                             <img src="${event.image || placeholderImage}" alt="Event" class="w-full h-48 object-cover rounded-t-lg">
                             <div class="event-details m-4">
                                 <h2 class="text-sm sm:text-base font-bold text-gray-900">${event.heading}</h2>
@@ -516,239 +516,239 @@ include_once '_settings/config.php';
                                 </button>
                             </div>
                         `;
-                            eventCards.push(eventCard);
-                        });
-
-                        if (isMobile && events.length > 1) {
-                            // Add duplicate cards for infinite scrolling on mobile
-                            const lastCardClone = eventCards[eventCards.length - 1].cloneNode(true);
-                            const firstCardClone = eventCards[0].cloneNode(true);
-                            eventsContainer.appendChild(lastCardClone); // Prepend last card
-                            eventCards.forEach(card => eventsContainer.appendChild(card)); // Main cards
-                            eventsContainer.appendChild(firstCardClone); // Append first card
-                        } else {
-                            // Non-mobile: no duplicates
-                            eventCards.forEach(card => eventsContainer.appendChild(card));
-                        }
-
-                        // Initialize carousel based on device
-                        if (isMobile) {
-                            initializeMobileCarousel();
-                        } else {
-                            initializeDesktopCarousel();
-                        }
-                    }
-                }
-
-                function initializeMobileCarousel() {
-                    const eventsContainer = document.getElementById('events-container');
-                    const leftArrow = document.getElementById('left-arrow');
-                    const rightArrow = document.getElementById('right-arrow');
-                    const cardWidth = 304; // Width of each card including margin
-                    const numCards = staticEvents.length;
-                    let isScrolling = false;
-
-                    function updateArrows() {
-                        // Arrows always enabled for infinite scrolling on mobile
-                        leftArrow.disabled = false;
-                        rightArrow.disabled = false;
-                    }
-
-                    function scrollToIndex(index, instant = false) {
-                        if (isScrolling) return;
-                        isScrolling = true;
-
-                        if (numCards > 1) {
-                            // Handle infinite scrolling
-                            if (index < 0) {
-                                // Jump to the real last card (before duplicate first card)
-                                index = numCards - 1;
-                                eventsContainer.scrollTo({
-                                    left: index * cardWidth,
-                                    behavior: 'auto'
-                                });
-                            } else if (index > numCards) {
-                                // Jump to the real first card (after duplicate last card)
-                                index = 1;
-                                eventsContainer.scrollTo({
-                                    left: index * cardWidth,
-                                    behavior: 'auto'
-                                });
-                            }
-                        } else {
-                            // Clamp index if only one card
-                            index = Math.max(0, Math.min(index, numCards - 1));
-                        }
-
-                        eventsContainer.scrollTo({
-                            left: index * cardWidth,
-                            behavior: instant ? 'auto' : 'smooth'
-                        });
-
-                        setTimeout(() => {
-                            isScrolling = false;
-                            updateArrows();
-                        }, instant ? 0 : 600);
-                    }
-
-                    function handleInfiniteScroll() {
-                        if (numCards <= 1) return;
-                        const scrollLeft = eventsContainer.scrollLeft;
-                        const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
-
-                        if (scrollLeft <= 0) {
-                            // At duplicate last card: jump to real last card
-                            scrollToIndex(numCards - 1, true);
-                        } else if (scrollLeft >= maxScroll - 5) {
-                            // At duplicate first card: jump to real first card
-                            scrollToIndex(1, true);
-                        }
-                    }
-
-                    leftArrow.addEventListener('click', () => {
-                        if (leftArrow.disabled || isScrolling) return;
-                        const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                        scrollToIndex(currentIndex - 1);
+                        eventCards.push(eventCard);
                     });
 
-                    rightArrow.addEventListener('click', () => {
-                        if (rightArrow.disabled || isScrolling) return;
-                        const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                        scrollToIndex(currentIndex + 1);
-                    });
-
-                    eventsContainer.addEventListener('scroll', () => {
-                        if (!isScrolling) {
-                            updateArrows();
-                            handleInfiniteScroll();
-                        }
-                    });
-
-                    // Initial scroll position for infinite scroll
-                    if (numCards > 1) {
-                        scrollToIndex(1, true); // Start at first real card
+                    if (isMobile && events.length > 1) {
+                        // Add duplicate cards for infinite scrolling on mobile
+                        const lastCardClone = eventCards[eventCards.length - 1].cloneNode(true);
+                        const firstCardClone = eventCards[0].cloneNode(true);
+                        eventsContainer.appendChild(lastCardClone); // Prepend last card
+                        eventCards.forEach(card => eventsContainer.appendChild(card)); // Main cards
+                        eventsContainer.appendChild(firstCardClone); // Append first card
                     } else {
+                        // Non-mobile: no duplicates
+                        eventCards.forEach(card => eventsContainer.appendChild(card));
+                    }
+
+                    // Initialize carousel based on device
+                    if (isMobile) {
+                        initializeMobileCarousel();
+                    } else {
+                        initializeDesktopCarousel();
+                    }
+                }
+            }
+
+            function initializeMobileCarousel() {
+                const eventsContainer = document.getElementById('events-container');
+                const leftArrow = document.getElementById('left-arrow');
+                const rightArrow = document.getElementById('right-arrow');
+                const cardWidth = 304; // Width of each card including margin
+                const numCards = staticEvents.length;
+                let isScrolling = false;
+
+                function updateArrows() {
+                    // Arrows always enabled for infinite scrolling on mobile
+                    leftArrow.disabled = false;
+                    rightArrow.disabled = false;
+                }
+
+                function scrollToIndex(index, instant = false) {
+                    if (isScrolling) return;
+                    isScrolling = true;
+
+                    if (numCards > 1) {
+                        // Handle infinite scrolling
+                        if (index < 0) {
+                            // Jump to the real last card (before duplicate first card)
+                            index = numCards - 1;
+                            eventsContainer.scrollTo({
+                                left: index * cardWidth,
+                                behavior: 'auto'
+                            });
+                        } else if (index > numCards) {
+                            // Jump to the real first card (after duplicate last card)
+                            index = 1;
+                            eventsContainer.scrollTo({
+                                left: index * cardWidth,
+                                behavior: 'auto'
+                            });
+                        }
+                    } else {
+                        // Clamp index if only one card
+                        index = Math.max(0, Math.min(index, numCards - 1));
+                    }
+
+                    eventsContainer.scrollTo({
+                        left: index * cardWidth,
+                        behavior: instant ? 'auto' : 'smooth'
+                    });
+
+                    setTimeout(() => {
+                        isScrolling = false;
                         updateArrows();
+                    }, instant ? 0 : 600);
+                }
+
+                function handleInfiniteScroll() {
+                    if (numCards <= 1) return;
+                    const scrollLeft = eventsContainer.scrollLeft;
+                    const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
+
+                    if (scrollLeft <= 0) {
+                        // At duplicate last card: jump to real last card
+                        scrollToIndex(numCards - 1, true);
+                    } else if (scrollLeft >= maxScroll - 5) {
+                        // At duplicate first card: jump to real first card
+                        scrollToIndex(1, true);
                     }
                 }
 
-                function initializeDesktopCarousel() {
-                    const eventsContainer = document.getElementById('events-container');
-                    const leftArrow = document.getElementById('left-arrow');
-                    const rightArrow = document.getElementById('right-arrow');
-                    const rightArrowContent = rightArrow.querySelector('.arrow-content');
-                    const rightEllipsisContent = rightArrow.querySelector('.ellipsis-content');
-                    const cardWidth = 304; // Width of each card including margin
-                    const numCards = staticEvents.length;
-                    const maxIndex = numCards - 1;
-                    let isScrolling = false;
-
-                    function updateArrows() {
-                        const scrollLeft = eventsContainer.scrollLeft;
-                        const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
-
-                        // Finite scrolling for desktop
-                        leftArrow.style.display = scrollLeft <= 5 ? 'none' : 'block';
-                        leftArrow.disabled = scrollLeft <= 5;
-
-                        if (scrollLeft >= maxScroll - 5) {
-                            // Show ellipsis at rightmost position
-                            rightArrowContent.classList.add('hidden');
-                            rightEllipsisContent.classList.remove('hidden');
-                            rightArrow.disabled = false; // Allow clicking ellipsis to scroll left
-                        } else {
-                            // Show right arrow when not at rightmost position
-                            rightArrowContent.classList.remove('hidden');
-                            rightEllipsisContent.classList.add('hidden');
-                            rightArrow.disabled = false;
-                        }
-                    }
-
-                    function scrollToIndex(index, instant = false) {
-                        if (isScrolling) return;
-                        isScrolling = true;
-
-                        // Clamp index for desktop
-                        index = Math.max(0, Math.min(index, maxIndex));
-
-                        eventsContainer.scrollTo({
-                            left: index * cardWidth,
-                            behavior: instant ? 'auto' : 'smooth'
-                        });
-
-                        setTimeout(() => {
-                            isScrolling = false;
-                            updateArrows();
-                        }, instant ? 0 : 600);
-                    }
-
-                    leftArrow.addEventListener('click', () => {
-                        if (leftArrow.disabled || isScrolling) return;
-                        const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                        scrollToIndex(currentIndex - 1);
-                    });
-
-                    rightArrow.addEventListener('click', () => {
-                        if (rightArrow.disabled || isScrolling) return;
-                        const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                        if (rightEllipsisContent.classList.contains('hidden')) {
-                            // Right arrow: scroll right
-                            scrollToIndex(currentIndex + 1);
-                        } else {
-                            // Ellipsis: scroll left
-                            scrollToIndex(currentIndex - 1);
-                        }
-                    });
-
-                    // Handle touch scrolling
-                    let startX, isDragging = false;
-                    eventsContainer.addEventListener('touchstart', (e) => {
-                        if (isScrolling) return;
-                        startX = e.touches[0].clientX;
-                        isDragging = true;
-                    });
-
-                    eventsContainer.addEventListener('touchmove', (e) => {
-                        if (!isDragging || isScrolling) return;
-                        const currentX = e.touches[0].clientX;
-                        const diffX = startX - currentX;
-                        const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                        if (Math.abs(diffX) > 50) {
-                            if (diffX > 0) {
-                                scrollToIndex(currentIndex + 1);
-                            } else if (diffX < 0) {
-                                scrollToIndex(currentIndex - 1);
-                            }
-                            isDragging = false;
-                        }
-                    });
-
-                    eventsContainer.addEventListener('touchend', () => {
-                        isDragging = false;
-                    });
-
-                    eventsContainer.addEventListener('scroll', () => {
-                        if (!isScrolling) {
-                            updateArrows();
-                        }
-                    });
-
-                    updateArrows();
-                }
-
-                document.addEventListener('DOMContentLoaded', function() {
-                    const moreSpan = document.getElementById('more');
-                    const moreSvg = moreSpan.querySelector('svg');
-
-                    moreSvg.addEventListener('click', function(event) {
-                        event.stopPropagation();
-                        if (!moreSpan.classList.contains('hidden')) {
-                            window.location.href = '/All_Events/index.php';
-                        }
-                    });
+                leftArrow.addEventListener('click', () => {
+                    if (leftArrow.disabled || isScrolling) return;
+                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                    scrollToIndex(currentIndex - 1);
                 });
 
-                window.onload = () => renderEvents(staticEvents);
+                rightArrow.addEventListener('click', () => {
+                    if (rightArrow.disabled || isScrolling) return;
+                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                    scrollToIndex(currentIndex + 1);
+                });
+
+                eventsContainer.addEventListener('scroll', () => {
+                    if (!isScrolling) {
+                        updateArrows();
+                        handleInfiniteScroll();
+                    }
+                });
+
+                // Initial scroll position for infinite scroll
+                if (numCards > 1) {
+                    scrollToIndex(1, true); // Start at first real card
+                } else {
+                    updateArrows();
+                }
+            }
+
+            function initializeDesktopCarousel() {
+                const eventsContainer = document.getElementById('events-container');
+                const leftArrow = document.getElementById('left-arrow');
+                const rightArrow = document.getElementById('right-arrow');
+                const rightArrowContent = rightArrow.querySelector('.arrow-content');
+                const rightEllipsisContent = rightArrow.querySelector('.ellipsis-content');
+                const cardWidth = 304; // Width of each card including margin
+                const numCards = staticEvents.length;
+                const maxIndex = numCards - 1;
+                let isScrolling = false;
+
+                function updateArrows() {
+                    const scrollLeft = eventsContainer.scrollLeft;
+                    const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
+
+                    // Finite scrolling for desktop
+                    leftArrow.style.display = scrollLeft <= 5 ? 'none' : 'block';
+                    leftArrow.disabled = scrollLeft <= 5;
+
+                    if (scrollLeft >= maxScroll - 5) {
+                        // Show ellipsis at rightmost position
+                        rightArrowContent.classList.add('hidden');
+                        rightEllipsisContent.classList.remove('hidden');
+                        rightArrow.disabled = false; // Allow clicking ellipsis to scroll left
+                    } else {
+                        // Show right arrow when not at rightmost position
+                        rightArrowContent.classList.remove('hidden');
+                        rightEllipsisContent.classList.add('hidden');
+                        rightArrow.disabled = false;
+                    }
+                }
+
+                function scrollToIndex(index, instant = false) {
+                    if (isScrolling) return;
+                    isScrolling = true;
+
+                    // Clamp index for desktop
+                    index = Math.max(0, Math.min(index, maxIndex));
+
+                    eventsContainer.scrollTo({
+                        left: index * cardWidth,
+                        behavior: instant ? 'auto' : 'smooth'
+                    });
+
+                    setTimeout(() => {
+                        isScrolling = false;
+                        updateArrows();
+                    }, instant ? 0 : 600);
+                }
+
+                leftArrow.addEventListener('click', () => {
+                    if (leftArrow.disabled || isScrolling) return;
+                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                    scrollToIndex(currentIndex - 1);
+                });
+
+                rightArrow.addEventListener('click', () => {
+                    if (rightArrow.disabled || isScrolling) return;
+                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                    if (rightEllipsisContent.classList.contains('hidden')) {
+                        // Right arrow: scroll right
+                        scrollToIndex(currentIndex + 1);
+                    } else {
+                        // Ellipsis: scroll left
+                        scrollToIndex(currentIndex - 1);
+                    }
+                });
+
+                // Handle touch scrolling
+                let startX, isDragging = false;
+                eventsContainer.addEventListener('touchstart', (e) => {
+                    if (isScrolling) return;
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                });
+
+                eventsContainer.addEventListener('touchmove', (e) => {
+                    if (!isDragging || isScrolling) return;
+                    const currentX = e.touches[0].clientX;
+                    const diffX = startX - currentX;
+                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                    if (Math.abs(diffX) > 50) {
+                        if (diffX > 0) {
+                            scrollToIndex(currentIndex + 1);
+                        } else if (diffX < 0) {
+                            scrollToIndex(currentIndex - 1);
+                        }
+                        isDragging = false;
+                    }
+                });
+
+                eventsContainer.addEventListener('touchend', () => {
+                    isDragging = false;
+                });
+
+                eventsContainer.addEventListener('scroll', () => {
+                    if (!isScrolling) {
+                        updateArrows();
+                    }
+                });
+
+                updateArrows();
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const moreSpan = document.getElementById('more');
+                const moreSvg = moreSpan.querySelector('svg');
+
+                moreSvg.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    if (!moreSpan.classList.contains('hidden')) {
+                        window.location.href = '/All_Events/index.php';
+                    }
+                });
+            });
+
+            window.onload = () => renderEvents(staticEvents);
             </script>
     </section>
     <!-- What we do -->
@@ -834,28 +834,27 @@ include_once '_settings/config.php';
         <div class="flex flex-row flex-wrap items-center justify-around gap-3 mt-10">
             <div
                 class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img src="/assets/img/companies/united.png">
+                <img class="rounded-xl" src="https://preneurlab.ca/assets/images/logo.png">
             </div>
             <div
                 class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img src="/assets/img/companies/ici.png">
+                <img class="rounded-xl" src="/assets/img/companies/cansat.jpg">
             </div>
             <div
                 class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img src="/assets/img/companies/PRAN.png">
+                <img class="rounded-xl" src="/assets/img/companies/tensorflow.png" alt="TensorFlow">
             </div>
             <div
                 class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Government_Seal_of_Bangladesh.svg/2048px-Government_Seal_of_Bangladesh.svg.png">
+                <img class="rounded-xl" src="/assets/img/companies/MarsRover.jpg">
             </div>
             <div
                 class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img src="/assets/img/companies/shurokkha.png">
+                <img class="rounded-xl" src="https://www.anttrobotics.com/assets/images/logo/logo-main.png">
             </div>
             <div
                 class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img src="/assets/img/companies/startech.png">
+                <img class="rounded-xl" src="/assets/img/companies/RobotonBD.jpg">
             </div>
         </div>
     </section>
