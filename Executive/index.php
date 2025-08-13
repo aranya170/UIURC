@@ -12,138 +12,198 @@ include_once '../_settings/config.php';
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-    .executive-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        min-height: 350px;
-        /* Ensure consistent card height */
-    }
+        .executive-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 350px;
+        }
 
-    .executive-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
+        .executive-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
 
-    .section-title {
-        background: linear-gradient(90deg, #4B5563, #6B7280);
-        /* Changed to grey gradient */
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
+        .section-title {
+            background: linear-gradient(90deg, #4B5563, #6B7280);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    .timeline-container {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        margin-left: 60px;
-    }
+        .timeline-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            margin-left: 60px;
+        }
 
-    .timeline-track {
-        position: relative;
-        width: 4px;
-        height: 100%;
-        background: #e5e7eb;
-        border-radius: 2px;
-    }
+        .timeline-track {
+            position: relative;
+            width: 4px;
+            height: 100%;
+            background: #e5e7eb;
+            border-radius: 2px;
+        }
 
-    .timeline-slider {
-        position: absolute;
-        width: 24px;
-        height: 24px;
-        background: #6B7280;
-        /* Changed to grey */
-        border-radius: 50%;
-        left: -10px;
-        cursor: grab;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
+        .timeline-slider {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: #6B7280;
+            border-radius: 50%;
+            left: -10px;
+            cursor: grab;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
 
-    .timeline-slider:active {
-        cursor: grabbing;
-    }
+        .timeline-slider:active {
+            cursor: grabbing;
+        }
 
-    .timeline-markers {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        position: absolute;
-        left: -60px;
-        height: 100%;
-        width: 60px;
-    }
+        .timeline-markers {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: absolute;
+            left: -60px;
+            height: 100%;
+            width: 60px;
+        }
 
-    .timeline-marker {
-        font-size: 1rem;
-        font-weight: 600;
-        color: #4B5563;
-        /* Grey */
-        text-align: left;
-        height: auto;
-        padding-right: 0;
-        white-space: nowrap;
-    }
+        .timeline-marker {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #4B5563;
+            text-align: left;
+            height: auto;
+            padding-right: 0;
+            white-space: nowrap;
+        }
 
-    .timeline-marker.active {
-        background: linear-gradient(90deg, #4B5563, #6B7280);
-        /* Changed to grey gradient */
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
+        .timeline-marker.active {
+            background: linear-gradient(90deg, #4B5563, #6B7280);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    .timeline-content {
-        opacity: 0;
-        transform: translateX(20px);
-        transition: opacity 0.5s ease, transform 0.5s ease;
-    }
+        .timeline-content {
+            opacity: 0;
+            transform: translateX(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
 
-    .timeline-content.active {
-        opacity: 1;
-        transform: translateX(0);
-    }
+        .timeline-content.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
 
-    .profile-img {
-        border-radius: 50%;
-        width: 128px;
-        height: 128px;
-        object-fit: cover;
-        margin: 0 auto;
-    }
+        .profile-img {
+            border-radius: 50%;
+            width: 128px;
+            height: 128px;
+            object-fit: cover;
+            margin: 0 auto;
+        }
 
-    .card-content {
-        flex: 1 1 auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        min-height: 180px;
-        /* Ensure consistent content height */
-    }
+        .card-content {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 180px;
+        }
 
-    .go-back-btn {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background-color: #4B5563;
-        /* Grey */
-        color: white;
-        padding: 8px 16px;
-        border-radius: 6px;
-        font-size: 1rem;
-        font-weight: 500;
-        transition: background-color 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        z-index: 1000;
-    }
+        .go-back-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4B5563;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 1000;
+        }
 
-    .go-back-btn:hover {
-        background-color: #6B7280;
-        /* Lighter grey on hover */
-    }
+        .go-back-btn:hover {
+            background-color: #6B7280;
+        }
+
+        @media (max-width: 640px) {
+            .main {
+                padding-top: 120rem;
+            }
+
+            .flex {
+                flex-direction: column;
+            }
+
+            .timeline-container {
+                margin-left: 40px;
+                height: 200px;
+            }
+
+            .timeline-markers {
+                left: -40px;
+                width: 40px;
+            }
+
+            .timeline-marker {
+                font-size: 0.875rem;
+            }
+
+            .timeline-track {
+                width: 3px;
+            }
+
+            .timeline-slider {
+                width: 20px;
+                height: 20px;
+                left: -8px;
+            }
+
+            .executive-card {
+                min-height: 300px;
+            }
+
+            .profile-img {
+                width: 96px;
+                height: 96px;
+                margin-top: 4px;
+            }
+
+            .card-content {
+                padding: 4px;
+                min-height: 140px;
+            }
+
+            .go-back-btn {
+                top: 10px;
+                right: 10px;
+                padding: 6px 12px;
+                font-size: 0.875rem;
+            }
+
+            h1.section-title {
+                font-size: 2rem;
+            }
+
+            h2.section-title {
+                font-size: 1.5rem;
+            }
+
+            h3.section-title {
+                font-size: 1.25rem;
+            }
+        }
     </style>
 </head>
 
@@ -152,13 +212,13 @@ include_once '../_settings/config.php';
 
     <main class="container mx-auto px-4 py-12">
         <!-- Hero Section -->
-        <section class=" mb-16">
-            <h1 class="text-4xl md:text-5xl font-bold section-title mb-4">UIU Robotics Club Executives</h1>
+        <section class="mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold section-title mb-4 pt-5">UIU Robotics Club Executives</h1>
         </section>
 
         <div class="flex">
             <!-- Timeline Section -->
-            <aside class="w-1/4 pr-8">
+            <aside class="w-full sm:w-1/4 pr-8">
                 <h2 class="text-2xl font-semibold section-title mb-8">Executive Bodies</h2>
                 <div class="timeline-container" style="height: 300px;">
                     <div class="timeline-markers">
@@ -172,7 +232,7 @@ include_once '../_settings/config.php';
             </aside>
 
             <!-- Committee Section -->
-            <section class="w-3/4">
+            <section class="w-full sm:w-3/4">
                 <div id="timeline-content-container">
                     <!-- Current Committee Section -->
                     <div class="timeline-content" data-year="2024">
@@ -184,13 +244,12 @@ include_once '../_settings/config.php';
                                     alt="Fahim Hafiz" class="profile-img mt-6">
                                 <div class="p-6 text-center card-content">
                                     <h3 class="text-xl font-semibold text-gray-800">Fahim Hafiz</h3>
-                                    <p class="text-gray-600 font-medium">Faculty Moderator</p> <!-- Changed to grey -->
+                                    <p class="text-gray-600 font-medium">Faculty Moderator</p>
                                     <div class="mt-4 flex justify-center space-x-4">
                                         <a href="https://www.linkedin.com/in/fahim-hafiz-47b3a5154"
-                                            class="text-gray-500 hover:text-gray-700"><i
-                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-linkedin"></i></a>
                                         <a href="https://github.com/fahimhafiz"
-                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -200,13 +259,12 @@ include_once '../_settings/config.php';
                                 <img src="/assets/img/Executive/tanim.jpg" alt="Junayed Tanim" class="profile-img mt-6">
                                 <div class="p-6 text-center card-content">
                                     <h3 class="text-xl font-semibold text-gray-800">Junayed Tanim</h3>
-                                    <p class="text-gray-600 font-medium">President</p> <!-- Changed to grey -->
+                                    <p class="text-gray-600 font-medium">President</p>
                                     <div class="mt-4 flex justify-center space-x-4">
                                         <a href="https://www.linkedin.com/in/junayedtanim"
-                                            class="text-gray-500 hover:text-gray-700"><i
-                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-linkedin"></i></a>
                                         <a href="https://github.com/junayedtanim"
-                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -217,13 +275,12 @@ include_once '../_settings/config.php';
                                     class="profile-img mt-6">
                                 <div class="p-6 text-center card-content">
                                     <h3 class="text-xl font-semibold text-gray-800">Md Bodiuzzaman Shikder</h3>
-                                    <p class="text-gray-600 font-medium">Vice President</p> <!-- Changed to grey -->
+                                    <p class="text-gray-600 font-medium">Vice President</p>
                                     <div class="mt-4 flex justify-center space-x-4">
                                         <a href="https://www.linkedin.com/in/md-bodiuzzaman-shikder-0a72861a1"
-                                            class="text-gray-500 hover:text-gray-700"><i
-                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-linkedin"></i></a>
                                         <a href="https://github.com/bodiuzzaman"
-                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -234,13 +291,12 @@ include_once '../_settings/config.php';
                                     class="profile-img mt-6">
                                 <div class="p-6 text-center card-content">
                                     <h3 class="text-xl font-semibold text-gray-800">Faria Rakib Borsha</h3>
-                                    <p class="text-gray-600 font-medium">General Secretary</p> <!-- Changed to grey -->
+                                    <p class="text-gray-600 font-medium">General Secretary</p>
                                     <div class="mt-4 flex justify-center space-x-4">
                                         <a href="https://www.linkedin.com/in/faria-rakib-borsha-713034213"
-                                            class="text-gray-500 hover:text-gray-700"><i
-                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-linkedin"></i></a>
                                         <a href="https://github.com/fariarakib"
-                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -251,13 +307,11 @@ include_once '../_settings/config.php';
                                 <div class="p-6 text-center card-content">
                                     <h3 class="text-xl font-semibold text-gray-800">Fahad Rahman</h3>
                                     <p class="text-gray-600 font-medium">Asst. General Secretary</p>
-                                    <!-- Changed to grey -->
                                     <div class="mt-4 flex justify-center space-x-4">
                                         <a href="https://www.linkedin.com/in/fahadrahman"
-                                            class="text-gray-500 hover:text-gray-700"><i
-                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-linkedin"></i></a>
                                         <a href="https://github.com/fahadrahman"
-                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -268,13 +322,12 @@ include_once '../_settings/config.php';
                                     class="profile-img mt-6">
                                 <div class="p-6 text-center card-content">
                                     <h3 class="text-xl font-semibold text-gray-800">Md. Rashique Hamjah Chowdhury</h3>
-                                    <p class="text-gray-600 font-medium">Treasurer</p> <!-- Changed to grey -->
+                                    <p class="text-gray-600 font-medium">Treasurer</p>
                                     <div class="mt-4 flex justify-center space-x-4">
                                         <a href="https://www.linkedin.com/in/mrhchow"
-                                            class="text-gray-500 hover:text-gray-700"><i
-                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
-                                        <a href="https://github.com/mrhchow"
-                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-linkedin"></i></a>
+                                        <a href="https://github.com/mrhchow" class="text-gray-500 hover:text-primary"><i
+                                                class="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -291,12 +344,11 @@ include_once '../_settings/config.php';
                                     class="profile-img mt-6">
                                 <div class="p-6 text-center card-content">
                                     <h3 class="text-xl font-semibold text-gray-800">Md. Abir Hassan</h3>
-                                    <p class="text-gray-600 font-medium">Vice President</p> <!-- Changed to grey -->
+                                    <p class="text-gray-600 font-medium">Vice President</p>
                                     <div class="mt-4 flex justify-center space-x-4">
                                         <a href="https://www.linkedin.com/in/abir-hassan"
-                                            class="text-gray-500 hover:text-gray-700"><i
-                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
-                                        <a href="https://github.com/abir0" class="text-gray-500 hover:text-gray-700"><i
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-linkedin"></i></a>
+                                        <a href="https://github.com/abir0" class="text-gray-500 hover:text-primary"><i
                                                 class="fab fa-github"></i></a>
                                     </div>
                                 </div>
@@ -308,13 +360,12 @@ include_once '../_settings/config.php';
                                     class="profile-img mt-6">
                                 <div class="p-6 text-center card-content">
                                     <h3 class="text-xl font-semibold text-gray-800">Miftahul Islam Mazumdar</h3>
-                                    <p class="text-gray-600 font-medium">President</p> <!-- Changed to grey -->
+                                    <p class="text-gray-600 font-medium">President</p>
                                     <div class="mt-4 flex justify-center space-x-4">
                                         <a href="https://www.linkedin.com/in/miftahul-islam"
-                                            class="text-gray-500 hover:text-gray-700"><i
-                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-linkedin"></i></a>
                                         <a href="https://github.com/miftahulislam"
-                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -325,13 +376,12 @@ include_once '../_settings/config.php';
                                     class="profile-img mt-6">
                                 <div class="p-6 text-center card-content">
                                     <h3 class="text-xl font-semibold text-gray-800">Md. Abid Hossain</h3>
-                                    <p class="text-gray-600 font-medium">Vice President</p> <!-- Changed to grey -->
+                                    <p class="text-gray-600 font-medium">Vice President</p>
                                     <div class="mt-4 flex justify-center space-x-4">
                                         <a href="https://www.linkedin.com/in/abidhossain"
-                                            class="text-gray-500 hover:text-gray-700"><i
-                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
-                                        <a href="https://github.com/Abidh56"
-                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-linkedin"></i></a>
+                                        <a href="https://github.com/Abidh56" class="text-gray-500 hover:text-primary"><i
+                                                class="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -342,13 +392,12 @@ include_once '../_settings/config.php';
                                     class="profile-img mt-6">
                                 <div class="p-6 text-center card-content">
                                     <h3 class="text-xl font-semibold text-gray-800">Md. Shad Hasib Talukder</h3>
-                                    <p class="text-gray-600 font-medium">General Secretary</p> <!-- Changed to grey -->
+                                    <p class="text-gray-600 font-medium">General Secretary</p>
                                     <div class="mt-4 flex justify-center space-x-4">
                                         <a href="https://www.linkedin.com/in/shadhasib"
-                                            class="text-gray-500 hover:text-gray-700"><i
-                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-linkedin"></i></a>
                                         <a href="https://github.com/shadhasib"
-                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -360,13 +409,11 @@ include_once '../_settings/config.php';
                                 <div class="p-6 text-center card-content">
                                     <h3 class="text-xl font-semibold text-gray-800">Maria Talukder</h3>
                                     <p class="text-gray-600 font-medium">Asst. General Secretary</p>
-                                    <!-- Changed to grey -->
                                     <div class="mt-4 flex justify-center space-x-4">
                                         <a href="https://www.linkedin.com/in/mariatalukder"
-                                            class="text-gray-500 hover:text-gray-700"><i
-                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-linkedin"></i></a>
                                         <a href="https://github.com/mariatalukder"
-                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -376,13 +423,12 @@ include_once '../_settings/config.php';
                                 <img src="/assets/img/Executive/niloya.jpg" alt="Niloya Roy" class="profile-img mt-6">
                                 <div class="p-6 text-center card-content">
                                     <h3 class="text-xl font-semibold text-gray-800">Niloya Roy</h3>
-                                    <p class="text-gray-600 font-medium">Treasurer</p> <!-- Changed to grey -->
+                                    <p class="text-gray-600 font-medium">Treasurer</p>
                                     <div class="mt-4 flex justify-center space-x-4">
                                         <a href="https://www.linkedin.com/in/niloyaroy"
-                                            class="text-gray-500 hover:text-gray-700"><i
-                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-linkedin"></i></a>
                                         <a href="https://github.com/niloyaroy"
-                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -393,13 +439,12 @@ include_once '../_settings/config.php';
                                     class="profile-img mt-6">
                                 <div class="p-6 text-center card-content">
                                     <h3 class="text-xl font-semibold text-gray-800">Abdullah Al Masud</h3>
-                                    <p class="text-gray-600 font-medium">Webmaster</p> <!-- Changed to grey -->
+                                    <p class="text-gray-600 font-medium">Webmaster</p>
                                     <div class="mt-4 flex justify-center space-x-4">
                                         <a href="https://www.linkedin.com/in/staywithabdullah"
-                                            class="text-gray-500 hover:text-gray-700"><i
-                                                class="fab fa-linkedin"></i></a> <!-- Changed to grey -->
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-linkedin"></i></a>
                                         <a href="https://github.com/staywithabdullah"
-                                            class="text-gray-500 hover:text-gray-700"><i class="fab fa-github"></i></a>
+                                            class="text-gray-500 hover:text-primary"><i class="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -413,96 +458,96 @@ include_once '../_settings/config.php';
     <?php include ABSPATH . '_includes/footer.php'; ?>
 
     <script>
-    // GSAP animations for cards
-    gsap.from(".animate-card", {
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power3.out"
-    });
-
-    // Animate section titles
-    gsap.from(".section-title", {
-        opacity: 0,
-        x: -50,
-        duration: 1,
-        delay: 0.5,
-        ease: "power3.out",
-        stagger: 0.3
-    });
-
-    // Timeline slider logic
-    const years = [2024, 2022];
-    const slider = document.querySelector('.timeline-slider');
-    const track = document.querySelector('.timeline-track');
-    const markers = document.querySelectorAll('.timeline-marker');
-    const contents = document.querySelectorAll('.timeline-content');
-    const trackHeight = track.offsetHeight;
-    const snapPoints = years.map((_, index) => (index / (years.length - 1)) * (trackHeight - 24));
-
-    // Initialize Draggable
-    Draggable.create(slider, {
-        type: "y",
-        bounds: {
-            minY: 0,
-            maxY: trackHeight - 24
-        },
-        edgeResistance: 0.85,
-        snap: snapPoints,
-        onDragEnd: function() {
-            const y = this.y;
-            const closestSnap = snapPoints.reduce((prev, curr) =>
-                Math.abs(curr - y) < Math.abs(prev - y) ? curr : prev
-            );
-            const index = snapPoints.indexOf(closestSnap);
-            updateTimeline(years[index]);
-        }
-    });
-
-    // Update timeline content
-    function updateTimeline(year) {
-        contents.forEach(content => {
-            content.classList.add('hidden');
-            content.classList.remove('active');
-        });
-        markers.forEach(marker => marker.classList.remove('active'));
-
-        const selectedContent = document.querySelector(`.timeline-content[data-year="${year}"]`);
-        const selectedMarker = document.querySelector(`.timeline-marker[data-year="${year}"]`);
-        selectedContent.classList.remove('hidden');
-        selectedMarker.classList.add('active');
-
-        gsap.fromTo(selectedContent, {
+        // GSAP animations for cards
+        gsap.from(".animate-card", {
             opacity: 0,
-            x: 20
-        }, {
-            opacity: 1,
-            x: 0,
-            duration: 0.5,
+            y: 50,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
+        // Animate section titles
+        gsap.from(".section-title", {
+            opacity: 0,
+            x: -50,
+            duration: 1,
+            delay: 0.5,
             ease: "power3.out",
-            onComplete: () => {
-                selectedContent.classList.add('active');
+            stagger: 0.3
+        });
+
+        // Timeline slider logic
+        const years = [2024, 2022];
+        const slider = document.querySelector('.timeline-slider');
+        const track = document.querySelector('.timeline-track');
+        const markers = document.querySelectorAll('.timeline-marker');
+        const contents = document.querySelectorAll('.timeline-content');
+        const trackHeight = track.offsetHeight;
+        const snapPoints = years.map((_, index) => (index / (years.length - 1)) * (trackHeight - 24));
+
+        // Initialize Draggable
+        Draggable.create(slider, {
+            type: "y",
+            bounds: {
+                minY: 0,
+                maxY: trackHeight - 24
+            },
+            edgeResistance: 0.85,
+            snap: snapPoints,
+            onDragEnd: function() {
+                const y = this.y;
+                const closestSnap = snapPoints.reduce((prev, curr) =>
+                    Math.abs(curr - y) < Math.abs(prev - y) ? curr : prev
+                );
+                const index = snapPoints.indexOf(closestSnap);
+                updateTimeline(years[index]);
             }
         });
-    }
 
-    // Clickable markers
-    markers.forEach(marker => {
-        marker.addEventListener('click', () => {
-            const year = parseInt(marker.getAttribute('data-year'));
-            const index = years.indexOf(year);
-            gsap.to(slider, {
-                y: snapPoints[index],
-                duration: 0.5,
-                ease: "power3.out"
+        // Update timeline content
+        function updateTimeline(year) {
+            contents.forEach(content => {
+                content.classList.add('hidden');
+                content.classList.remove('active');
             });
-            updateTimeline(year);
-        });
-    });
+            markers.forEach(marker => marker.classList.remove('active'));
 
-    // Initialize with 2024
-    updateTimeline(2024);
+            const selectedContent = document.querySelector(`.timeline-content[data-year="${year}"]`);
+            const selectedMarker = document.querySelector(`.timeline-marker[data-year="${year}"]`);
+            selectedContent.classList.remove('hidden');
+            selectedMarker.classList.add('active');
+
+            gsap.fromTo(selectedContent, {
+                opacity: 0,
+                x: 20
+            }, {
+                opacity: 1,
+                x: 0,
+                duration: 0.5,
+                ease: "power3.out",
+                onComplete: () => {
+                    selectedContent.classList.add('active');
+                }
+            });
+        }
+
+        // Clickable markers
+        markers.forEach(marker => {
+            marker.addEventListener('click', () => {
+                const year = parseInt(marker.getAttribute('data-year'));
+                const index = years.indexOf(year);
+                gsap.to(slider, {
+                    y: snapPoints[index],
+                    duration: 0.5,
+                    ease: "power3.out"
+                });
+                updateTimeline(year);
+            });
+        });
+
+        // Initialize with 2024
+        updateTimeline(2024);
     </script>
 </body>
 

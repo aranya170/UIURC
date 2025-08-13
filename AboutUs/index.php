@@ -255,15 +255,16 @@ include_once '../_settings/config.php';
                                         d="M9 5l7 7-7 7" />
                                 </svg>
                             </button></a>
-
-                        <button
-                            class="bg-gray-600 text-white px-5 py-2 rounded-md hover:bg-gray-700 transition-all duration-300 flex items-center space-x-2 m-2">
-                            <span>Explore Developers</span>
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 5l7 7-7 7" />
-                            </svg>
-                        </button>
+                        <a href="\Executive\Devs.php">
+                            <button
+                                class="bg-gray-600 text-white px-5 py-2 rounded-md hover:bg-gray-700 transition-all duration-300 flex items-center space-x-2 m-2">
+                                <span>Explore Developers</span>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>

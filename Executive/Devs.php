@@ -106,6 +106,10 @@ include_once '../_settings/config.php';
     }
 
     @media (max-width: 640px) {
+        main {
+            padding-top: 120rem;
+        }
+
         .modal-content {
             flex-direction: column;
             padding: 24px;
@@ -139,11 +143,8 @@ include_once '../_settings/config.php';
     <?php include ABSPATH . '_includes/header.php'; ?>
 
     <main class="container mx-auto px-4 py-12">
-        <section class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Our Developers</h1>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                Discover the skilled developers powering the UIU Robotics Club's innovative projects.
-            </p>
+        <section class="mb-12 pt-9">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4 pt-5">Our Developers</h1>
         </section>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -164,59 +165,6 @@ include_once '../_settings/config.php';
                             class="fas fa-globe fa-lg"></i></a>
                 </div>
             </div>
-
-            <!-- Developer 2 -->
-            <div class="developer-container">
-                <img src="https://cse.uiu.ac.bd/wp-content/uploads/sites/3/2024/04/F-H-min-1-240x300.jpg"
-                    alt="Fahim Hafiz" class="developer-img rounded-full w-52 h-52 mx-auto object-cover"
-                    onclick="openModal('modal-fahim')">
-                <span class="click-text">Click for Details</span>
-                <h3 class="text-xl font-semibold text-gray-800 mt-4">Fahim Hafiz</h3>
-                <p class="text-gray-600">Faculty Moderator / Developer</p>
-                <div class="mt-3 flex justify-center space-x-6">
-                    <a href="https://github.com/fahimhafiz" class="text-gray-600 hover:text-primary"><i
-                            class="fab fa-github fa-lg"></i></a>
-                    <a href="https://www.linkedin.com/in/fahim-hafiz-47b3a5154"
-                        class="text-gray-600 hover:text-primary"><i class="fab fa-linkedin fa-lg"></i></a>
-                    <a href="https://fahimhafiz.com" class="text-gray-600 hover:text-primary"><i
-                            class="fas fa-globe fa-lg"></i></a>
-                </div>
-            </div>
-
-            <!-- Developer 3 -->
-            <div class="developer-container">
-                <img src="/assets/img/Executive/abid.jpg" alt="Md. Abid Hossain"
-                    class="developer-img rounded-full w-52 h-52 mx-auto object-cover" onclick="openModal('modal-abid')">
-                <span class="click-text">Click for Details</span>
-                <h3 class="text-xl font-semibold text-gray-800 mt-4">Md. Abid Hossain</h3>
-                <p class="text-gray-600">Robotics Developer</p>
-                <div class="mt-3 flex justify-center space-x-6">
-                    <a href="https://github.com/Abidh56" class="text-gray-600 hover:text-primary"><i
-                            class="fab fa-github fa-lg"></i></a>
-                    <a href="https://www.linkedin.com/in/abidhossain" class="text-gray-600 hover:text-primary"><i
-                            class="fab fa-linkedin fa-lg"></i></a>
-                    <a href="https://abidhossain.com" class="text-gray-600 hover:text-primary"><i
-                            class="fas fa-globe fa-lg"></i></a>
-                </div>
-            </div>
-
-            <!-- Developer 4 -->
-            <div class="developer-container">
-                <img src="https://avatars.githubusercontent.com/u/12345678?v=4" alt="Sifat Ali"
-                    class="developer-img rounded-full w-52 h-52 mx-auto object-cover"
-                    onclick="openModal('modal-sifat')">
-                <span class="click-text">Click for Details</span>
-                <h3 class="text-xl font-semibold text-gray-800 mt-4">Sifat Ali</h3>
-                <p class="text-gray-600">Front-End Developer</p>
-                <div class="mt-3 flex justify-center space-x-6">
-                    <a href="https://github.com/SifatAli0081" class="text-gray-600 hover:text-primary"><i
-                            class="fab fa-github fa-lg"></i></a>
-                    <a href="https://www.linkedin.com/in/sifat-ali" class="text-gray-600 hover:text-primary"><i
-                            class="fab fa-linkedin fa-lg"></i></a>
-                    <a href="https://sifatali.com" class="text-gray-600 hover:text-primary"><i
-                            class="fas fa-globe fa-lg"></i></a>
-                </div>
-            </div>
         </div>
 
         <!-- Modals -->
@@ -225,7 +173,7 @@ include_once '../_settings/config.php';
             <div class="modal-content">
                 <div class="modal-image">
                     <img src="/assets/img/Executive/aranya.jpg" alt="Aranya Kishor Das"
-                        class="rounded-full w-48 h-48 object-cover">
+                        class="rounded-full w-98 h-98 object-cover">
                 </div>
                 <div class="modal-details">
                     <h3 class="text-3xl font-semibold mb-2">
@@ -240,13 +188,13 @@ include_once '../_settings/config.php';
                             <svg class="inline-block">
                                 <use xlink:href="#icon-phone"></use>
                             </svg>
-                            +880 123 456 7890
+                            +880 130 091 9276
                         </p>
                         <p class="text-sm">
                             <svg class="inline-block">
                                 <use xlink:href="#icon-mail"></use>
                             </svg>
-                            aranya.akd@gamil.com
+                            aranya.akd@gmail.com
                         </p>
                     </div>
                     <div class="social-links">
