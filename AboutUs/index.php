@@ -41,8 +41,6 @@ include_once '../_settings/config.php';
         box-shadow: 0 10px 20px 273F4F;
     }
 
-    .gradient-bg {}
-
     .timeline-container {
         overflow-x: auto;
         white-space: nowrap;

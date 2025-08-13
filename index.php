@@ -845,16 +845,17 @@ include_once '_settings/config.php';
                 <img class="rounded-xl" src="/assets/img/companies/tensorflow.png" alt="TensorFlow">
             </div>
             <div
-                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img class="rounded-xl" src="/assets/img/companies/MarsRover.jpg">
+                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-full max-w-[200px] overflow-hidden">
+                <img class="rounded-full w-full h-full object-cover" src="/assets/img/companies/MarsRover.jpg">
             </div>
+
             <div
                 class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
                 <img class="rounded-xl" src="https://www.anttrobotics.com/assets/images/logo/logo-main.png">
             </div>
             <div
-                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img class="rounded-xl" src="/assets/img/companies/RobotonBD.jpg">
+                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-full max-w-[200px] overflow-hidden]">
+                <img class="rounded-full w-full h-full object-cover" src="/assets/img/companies/RobotonBD.jpg">
             </div>
         </div>
     </section>

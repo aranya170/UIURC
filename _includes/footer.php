@@ -57,7 +57,7 @@
                 <p class="text-gray-300 text-sm sm:text-base text-center sm:text-left">Email: <a
                         href="mailto:robotics@uiu.ac.bd" class="hover:text-blue-400 transition">robotics@uiu.ac.bd</a>
                 </p>
-                <p class="text-gray-300 text-sm sm:text-base text-center sm:text-left">Phone: +8801843-279875</p>
+                <p class="text-gray-300 text-sm sm:text-base text-center sm:text-left">Phone: +8801716695699</p>
                 <p class="text-gray-300 text-sm sm:text-base text-center sm:text-left">Address: United International
                     University, Dhaka, Bangladesh</p>
                 <div class="flex space-x-4 mt-4 justify-center sm:justify-start">
