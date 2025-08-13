@@ -143,7 +143,7 @@ include_once '../_settings/config.php';
             location: "Room 631 & 632",
             details: "The most awaited Phase 2 of Spring 2025 Trimester’s Recruitment Session is finally back on track! This time it isn’t just a regular meet-up, it’s a special alumni reunion + interactive meet-&-greet designed to inspire, connect, and guide!",
             image: "/assets/img/Events/Meet&Greet.jpg",
-            link: "/Iftar/index.php"
+            link: "/MeetAndGreet/index.php"
         }, {
             heading: "Majlish-e-Ifter",
             time: "March 17, 2025",

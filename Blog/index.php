@@ -8,32 +8,38 @@ include_once '../_settings/config.php';
 <head>
     <?php include ABSPATH . '_includes/head.php'; ?>
     <style>
-    /* Custom animations */
-    .fade-in {
-        animation: fadeIn 0.6s ease-out;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(15px);
+        /* Custom animations */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
         }
 
-        to {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-    }
 
-    /* Smooth hover effect */
-    .card-hover {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        @media (max-width: 640px) {
+            main {
+                padding-top: 4rem;
+            }
+        }
 
-    .card-hover:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
+        /* Smooth hover effect */
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 
@@ -43,7 +49,7 @@ include_once '../_settings/config.php';
     <!-- Main Content -->
     <main class="container mx-auto px-6 py-16 max-w-6xl">
         <div class="flex justify-between items-center mb-8">
-            <h1 class="text-2xl font-bold text-gray-900">Featured Article</h1>
+            <h1 class="text-2xl font-bold text-gray-900 pt-5">Featured Article</h1>
             <a href="AllBlogs.php"
                 class="text-blue-500 font-medium hover:text-blue-600 transition-colors duration-200">See All
                 Articles</a>

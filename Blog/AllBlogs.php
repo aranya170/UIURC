@@ -26,6 +26,12 @@ include_once '../_settings/config.php';
         }
     }
 
+    @media (max-width: 640px) {
+        main {
+            padding-top: 4rem;
+        }
+    }
+
     /* Smooth hover effect */
     .card-hover {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -44,7 +50,7 @@ include_once '../_settings/config.php';
     <!-- Main Content -->
     <!-- Main Content -->
     <main class="container mx-auto px-6 py-16 max-w-6xl">
-        <h1 class="text-3xl font-bold text-gray-900 mb-8">All Blogs</h1>
+        <h1 class="text-3xl font-bold text-gray-900 mb-8 pt-5">All Blogs</h1>
 
         <!-- Blog Posts Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
