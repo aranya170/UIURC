@@ -12,6 +12,9 @@ include_once '../_settings/config.php';
 
 <body class="bg-gray-100 font-sans">
     <?php include ABSPATH . '_includes/header.php'; ?>
+        <br>
+        <br>
+        <br>
 
     <div class="container mx-auto p-4">
         <section class="bg-white p-6 rounded-lg shadow-lg mb-6">

@@ -135,6 +135,16 @@ include_once '../_settings/config.php';
         .click-text {
             font-size: 1rem;
         }
+
+        #modal-aranya .modal-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* center vertically */
+            padding: 2rem 1.5rem;
+        }
+
+
     }
     </style>
 </head>
@@ -149,14 +159,14 @@ include_once '../_settings/config.php';
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             <!-- Developer 1 -->
-            <div class="developer-container">
+            <div class="developer-container mt-5">
                 <img src="/assets/img/Executive/aranya.jpg" alt="Aranya Kishor Das"
                     class="developer-img rounded-full w-52 h-52 mx-auto object-cover"
                     onclick="openModal('modal-aranya')">
                 <span class="click-text">Click for Details</span>
                 <h3 class="text-xl font-semibold text-gray-800 mt-4">Aranya Kishor Das</h3>
                 <p class="text-gray-600">Project Manager and Full Stack Developer</p>
-                <div class="mt-3 flex justify-center space-x-6">
+                <div class="mt-3 justify-center">
                     <a href="https://github.com/aranya170" class="text-gray-600 hover:text-primary"><i
                             class="fab fa-github fa-lg"></i></a>
                     <a href="https://www.linkedin.com/in/aranyakishor01/" class="text-gray-600 hover:text-primary"><i
@@ -173,9 +183,9 @@ include_once '../_settings/config.php';
             <div class="modal-content">
                 <div class="modal-image">
                     <img src="/assets/img/Executive/aranya.jpg" alt="Aranya Kishor Das"
-                        class="rounded-full w-98 h-98 object-cover">
+                        class="rounded-full w-98 h-98 object-cover mt-8">
                 </div>
-                <div class="modal-details">
+                <div class="modal-details mt-10">
                     <h3 class="text-3xl font-semibold mb-2">
                         <span class="text-primary">Aranya</span> <span class="text-gray-800">Kishor Das</span>
                     </h3>
@@ -198,7 +208,7 @@ include_once '../_settings/config.php';
                         </p>
                     </div>
                     <div class="social-links">
-                        <div class="flex justify-end space-x-6">
+                        <div class="justify-end">
                             <a href="https://github.com/aranya170" class="text-primary hover:text-primary"><i
                                     class="fab fa-github fa-2x"></i></a>
                             <a href="https://www.linkedin.com/in/aranyakishor01/"
