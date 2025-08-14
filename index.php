@@ -8,6 +8,40 @@ include_once '_settings/config.php';
 <head>
     <?php include ABSPATH . '_includes/head.php'; ?>
     <style>
+    .carousel-container {
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+    }
+
+    .carousel-track {
+        display: flex;
+        flex-wrap: nowrap;
+        animation: scroll 20s linear infinite;
+        gap: 8.5rem;
+        /* Increased gap between icons */
+    }
+
+    .carousel-track:hover {
+        animation-play-state: paused;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+
+    /* Ensure the duplicated items for infinite scroll */
+    .carousel-track>div {
+        flex: 0 0 auto;
+    }
+
     .nav-arrow-right .ellipsis-content {
         font-size: 1.5rem;
         /* Adjust to match arrow size */
@@ -478,7 +512,7 @@ include_once '_settings/config.php';
                 {
                     heading: "TechTrove",
                     time: "July 6-9, 2024",
-                    location: "Lobby Area",
+                    location: "630",
                     image: "assets/img/Events/Techtrove.jpg",
                     link: "https://www.facebook.com/events/1216987649676468"
                 }
@@ -831,31 +865,82 @@ include_once '_settings/config.php';
             </div>
         </div>
 
-        <div class="flex flex-row flex-wrap items-center justify-around gap-3 mt-10">
-            <div
-                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img class="rounded-xl" src="https://preneurlab.ca/assets/images/logo.png">
-            </div>
-            <div
-                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img class="rounded-xl" src="/assets/img/companies/cansat.jpg">
-            </div>
-            <div
-                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img class="rounded-xl" src="/assets/img/companies/tensorflow.png" alt="TensorFlow">
-            </div>
-            <div
-                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-full max-w-[200px] overflow-hidden">
-                <img class="rounded-full w-full h-full object-cover" src="/assets/img/companies/MarsRover.jpg">
-            </div>
-
-            <div
-                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img class="rounded-xl" src="https://www.anttrobotics.com/assets/images/logo/logo-main.png">
-            </div>
-            <div
-                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-full max-w-[200px] overflow-hidden]">
-                <img class="rounded-full w-full h-full object-cover" src="/assets/img/companies/RobotonBD.jpg">
+        <div class="carousel-container flex flex-row items-center justify-around mt-10">
+            <div class="carousel-track">
+                <!-- Original logos -->
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
+                    <img class="rounded-xl" src="https://preneurlab.ca/assets/images/logo.png" alt="PreneurLab">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
+                    <img class="rounded-xl" src="/assets/img/companies/cansat.jpg" alt="CanSat">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
+                    <img class="rounded-xl" src="/assets/img/companies/tensorflow.png" alt="TensorFlow">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-full max-w-[200px] overflow-hidden">
+                    <img class="rounded-full w-full h-full object-cover" src="/assets/img/companies/MarsRover.jpg"
+                        alt="Mars Rover">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
+                    <img class="rounded-xl" src="https://www.anttrobotics.com/assets/images/logo/logo-main.png"
+                        alt="Antt Robotics">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-full max-w-[200px] overflow-hidden">
+                    <img class="rounded-full w-full h-full object-cover" src="/assets/img/companies/RobotonBD.jpg"
+                        alt="Roboton BD">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
+                    <img class="rounded-full" src="\assets\img\companies\txbd.jpg" alt="TXBD">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-full max-w-[200px] overflow-hidden">
+                    <img class="rounded-full w-full h-full object-cover" src="/assets/img/companies/ictob.jpg"
+                        alt="ICT Olympiad Bangladesh">
+                </div>
+                <!-- Duplicated logos for seamless scroll -->
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
+                    <img class="rounded-xl" src="https://preneurlab.ca/assets/images/logo.png" alt="PreneurLab">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
+                    <img class="rounded-xl" src="/assets/img/companies/cansat.jpg" alt="CanSat">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
+                    <img class="rounded-xl" src="/assets/img/companies/tensorflow.png" alt="TensorFlow">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-full max-w-[200px] overflow-hidden">
+                    <img class="rounded-full w-full h-full object-cover" src="/assets/img/companies/MarsRover.jpg"
+                        alt="Mars Rover">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
+                    <img class="rounded-xl" src="https://www.anttrobotics.com/assets/images/logo/logo-main.png"
+                        alt="Antt Robotics">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-full max-w-[200px] overflow-hidden">
+                    <img class="rounded-full w-full h-full object-cover" src="/assets/img/companies/RobotonBD.jpg"
+                        alt="Roboton BD">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
+                    <img class="rounded-full" src="\assets\img\companies\txbd.jpg" alt="TXBD">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-full max-w-[200px] overflow-hidden">
+                    <img class="rounded-full w-full h-full object-cover" src="/assets/img/companies/ictob.jpg"
+                        alt="ICT Olympiad Bangladesh">
+                </div>
             </div>
         </div>
     </section>

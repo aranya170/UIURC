@@ -163,15 +163,15 @@ include_once '../_settings/config.php';
                 <img src="/assets/img/Executive/aranya.jpg" alt="Aranya Kishor Das"
                     class="developer-img rounded-full w-52 h-52 mx-auto object-cover"
                     onclick="openModal('modal-aranya')">
-                <span class="click-text">Click for Details</span>
+                <span class="click-text" onclick="openModal('modal-aranya')">Click for Details</span>
                 <h3 class="text-xl font-semibold text-gray-800 mt-4">Aranya Kishor Das</h3>
                 <p class="text-gray-600">Project Manager and Full Stack Developer</p>
                 <div class="mt-3 justify-center">
-                    <a href="https://github.com/aranya170" class="text-gray-600 hover:text-primary"><i
+                    <a href="https://github.com/aranya170" class="text-gray-600 hover:text-blue-800"><i
                             class="fab fa-github fa-lg"></i></a>
-                    <a href="https://www.linkedin.com/in/aranyakishor01/" class="text-gray-600 hover:text-primary"><i
+                    <a href="https://www.linkedin.com/in/aranyakishor01/" class="text-gray-600 hover:text-blue-800"><i
                             class="fab fa-linkedin fa-lg"></i></a>
-                    <a href="https://aranyaportfolio.web.app/" class="text-gray-600 hover:text-primary"><i
+                    <a href="https://aranyaportfolio.web.app/" class="text-gray-600 hover:text-blue-800"><i
                             class="fas fa-globe fa-lg"></i></a>
                 </div>
             </div>
@@ -209,11 +209,11 @@ include_once '../_settings/config.php';
                     </div>
                     <div class="social-links">
                         <div class="justify-end">
-                            <a href="https://github.com/aranya170" class="text-primary hover:text-primary"><i
+                            <a href="https://github.com/aranya170" class=" hover:text-blue-800"><i
                                     class="fab fa-github fa-2x"></i></a>
-                            <a href="https://www.linkedin.com/in/aranyakishor01/"
-                                class="text-primary hover:text-primary"><i class="fab fa-linkedin fa-2x"></i></a>
-                            <a href="https://aranyaportfolio.web.app/" class="text-primary hover:text-primary"><i
+                            <a href="https://www.linkedin.com/in/aranyakishor01/" class="hover:text-blue-800"><i
+                                    class="fab fa-linkedin fa-2x"></i></a>
+                            <a href="https://aranyaportfolio.web.app/" class=" hover:text-blue-800"><i
                                     class="fas fa-globe fa-2x"></i></a>
                         </div>
                     </div>
