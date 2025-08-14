@@ -8,38 +8,38 @@ include_once '../_settings/config.php';
 <head>
     <?php include ABSPATH . '_includes/head.php'; ?>
     <style>
-        /* Custom animations */
-        .fade-in {
-            animation: fadeIn 0.6s ease-out;
+    /* Custom animations */
+    .fade-in {
+        animation: fadeIn 0.6s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(15px);
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
+    }
 
-        @media (max-width: 640px) {
-            main {
-                padding-top: 4rem;
-            }
+    @media (max-width: 640px) {
+        main {
+            padding-top: 4rem;
         }
+    }
 
-        /* Smooth hover effect */
-        .card-hover {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    /* Smooth hover effect */
+    .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        .card-hover:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
+    .card-hover:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
     </style>
 </head>
 
@@ -48,6 +48,7 @@ include_once '../_settings/config.php';
 
     <!-- Main Content -->
     <main class="container mx-auto px-6 py-16 max-w-6xl">
+        <br>
         <div class="flex justify-between items-center mb-8">
             <h1 class="text-2xl font-bold text-gray-900 pt-5">Featured Article</h1>
             <a href="AllBlogs.php"

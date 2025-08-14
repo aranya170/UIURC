@@ -14,8 +14,9 @@ include_once '../_settings/config.php';
     <?php include ABSPATH . '_includes/header.php'; ?>
 
     <div class="container mx-auto p-4">
-
-
+        <br>
+        <br>
+        <br>
         <section class="bg-white p-6 rounded-lg shadow-lg mb-6">
             <!-- Author, Date, and Tags -->
             <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4">

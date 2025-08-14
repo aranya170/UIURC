@@ -46,9 +46,7 @@ include_once '../_settings/config.php';
 
 <body class="bg-gray-50 font-sans leading-normal tracking-normal">
     <?php include ABSPATH . '_includes/header.php'; ?>
-
-    <!-- Main Content -->
-    <!-- Main Content -->
+    <br>
     <main class="container mx-auto px-6 py-16 max-w-6xl">
         <h1 class="text-3xl font-bold text-gray-900 mb-8 pt-5">All Blogs</h1>
 
