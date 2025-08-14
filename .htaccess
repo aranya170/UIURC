@@ -1,0 +1,32 @@
+<IfModule mod_rewrite.c>
+    # Deny access to all directories
+    Options -Indexes
+
+    RewriteEngine On
+    RewriteBase /
+
+    # Redirect requests with index.php to the same path without index.php
+    RewriteCond %{THE_REQUEST} /index\.php [NC]
+    RewriteRule ^(.*)index\.php$ /$1 [R=301,NC,L]
+
+    # Redirect *.php to the same path without .php
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+    # Check if the request is a GET request
+    RewriteCond %{REQUEST_METHOD} GET
+    # Match files or folders that start with an underscore
+    RewriteCond %{REQUEST_URI} /_ [NC]
+    # Return a 404 Not Found response
+    RewriteRule .* - [R=404,L]
+
+    # Rewrite rule for /r/view.php?id=id-of-the-query to render as /r/id-of-the-query
+    # RewriteRule ^r/([0-9]+)$ /r/view.php?id=$1 [R=301,NC,L]
+
+</IfModule>
+
+# Set the error pages
+ErrorDocument 404 /error/404.php
+ErrorDocument 403 /error/403.php
+ErrorDocument 500 /error/500.php
