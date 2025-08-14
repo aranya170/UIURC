@@ -12,17 +12,42 @@ include_once '../_settings/config.php';
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-    .executive-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        min-height: 350px;
+    .developer-container {
+        position: relative;
+        text-align: center;
+        transition: transform 0.3s ease;
     }
 
-    .executive-card:hover {
+    .developer-container:hover {
         transform: translateY(-10px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        background-color: #f9fafb;
+    }
+
+    .developer-img {
+        transition: filter 0.3s ease;
+    }
+
+    .developer-container:hover .developer-img {
+        filter: blur(4px);
+    }
+
+    .click-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 1rem;
+        font-weight: 500;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 8px 16px;
+        border-radius: 6px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        cursor: default;
+    }
+
+    .developer-container:hover .click-text {
+        opacity: 1;
     }
 
     .section-title {
@@ -102,43 +127,6 @@ include_once '../_settings/config.php';
         transform: translateX(0);
     }
 
-    .profile-img {
-        border-radius: 50%;
-        width: 200px;
-        height: 200px;
-        object-fit: cover;
-        margin: 0 auto;
-    }
-
-    .card-content {
-        flex: 1 1 auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        min-height: 180px;
-    }
-
-    .go-back-btn {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background-color: #4B5563;
-        color: white;
-        padding: 8px 16px;
-        border-radius: 6px;
-        font-size: 1rem;
-        font-weight: 500;
-        transition: background-color 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        z-index: 1000;
-    }
-
-    .go-back-btn:hover {
-        background-color: #6B7280;
-    }
-
     @media (max-width: 640px) {
         main {
             padding-top: 4rem;
@@ -196,26 +184,9 @@ include_once '../_settings/config.php';
             -webkit-text-fill-color: initial;
         }
 
-        .executive-card {
-            min-height: 280px;
-        }
-
-        .profile-img {
+        .developer-img {
             width: 120px;
             height: 120px;
-            margin-top: 4px;
-        }
-
-        .card-content {
-            padding: 4px;
-            min-height: 120px;
-        }
-
-        .go-back-btn {
-            top: 10px;
-            right: 10px;
-            padding: 6px 12px;
-            font-size: 0.875rem;
         }
 
         h1.section-title {
@@ -265,152 +236,178 @@ include_once '../_settings/config.php';
                     <!-- Current Committee Section -->
                     <div class="timeline-content" data-year="2024">
                         <h3 class="text-3xl font-semibold section-title mb-8 text-center">Current Committee</h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
                             <!-- Supervisor -->
-                            <a href="#"
-                                class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                            <div class="developer-container mt-5">
                                 <img src="https://cse.uiu.ac.bd/wp-content/uploads/sites/3/2024/04/F-H-min-1-240x300.jpg"
-                                    alt="Fahim Hafiz" class="profile-img mt-6">
-                                <div class="p-6 text-center card-content">
-                                    <h3 class="text-xl font-semibold text-gray-800">Fahim Hafiz</h3>
-                                    <p class="text-gray-600 font-medium">Faculty Moderator</p>
+                                    alt="Fahim Hafiz" class="developer-img rounded-full w-52 h-52 mx-auto object-cover">
+                                <span class="click-text">View Details</span>
+                                <h3 class="text-xl font-semibold text-gray-800 mt-4">Fahim Hafiz</h3>
+                                <p class="text-gray-600">Faculty Moderator</p>
+                                <div class="mt-3 justify-center flex space-x-4">
+                                    <a href="https://github.com/fahimhafiz" class="text-gray-600 hover:text-blue-800"><i
+                                            class="fab fa-github fa-lg"></i></a>
+                                    <a href="https://www.linkedin.com/in/fahim-hafiz-47b3a5154"
+                                        class="text-gray-600 hover:text-blue-800"><i
+                                            class="fab fa-linkedin fa-lg"></i></a>
+                                    <a href="https://fahimhafiz.com" class="text-gray-600 hover:text-blue-800"><i
+                                            class="fas fa-globe fa-lg"></i></a>
                                 </div>
-                            </a>
+                            </div>
 
                             <!-- President -->
-                            <a href="#"
-                                class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
-                                <img src="/assets/img/Executive/tanim.jpg" alt="Junayed Tanim" class="profile-img mt-6">
-                                <div class="p-6 text-center card-content">
-                                    <h3 class="text-xl font-semibold text-gray-800">Junayed Tanim</h3>
-                                    <p class="text-gray-600 font-medium">President</p>
+                            <div class="developer-container mt-5">
+                                <img src="/assets/img/Executive/tanim.jpg" alt="Junayed Tanim"
+                                    class="developer-img rounded-full w-52 h-52 mx-auto object-cover">
+                                <span class="click-text">View Details</span>
+                                <h3 class="text-xl font-semibold text-gray-800 mt-4">Junayed Tanim</h3>
+                                <p class="text-gray-600">President</p>
+                                <div class="mt-3 justify-center flex space-x-4">
                                 </div>
-                            </a>
+                            </div>
 
                             <!-- Vice President -->
-                            <a href=""
-                                class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                            <div class="developer-container mt-5">
                                 <img src="/assets/img/Executive/Bodi.jpg" alt="Md Bodiuzzaman Shikder"
-                                    class="profile-img mt-6">
-                                <div class="p-6 text-center card-content">
-                                    <h3 class="text-xl font-semibold text-gray-800">Md Bodiuzzaman Shikder</h3>
-                                    <p class="text-gray-600 font-medium">Vice President</p>
+                                    class="developer-img rounded-full w-52 h-52 mx-auto object-cover">
+                                <span class="click-text">View Details</span>
+                                <h3 class="text-xl font-semibold text-gray-800 mt-4">Md Bodiuzzaman Shikder</h3>
+                                <p class="text-gray-600">Vice President</p>
+                                <div class="mt-3 justify-center flex space-x-4">
                                 </div>
-                            </a>
+                            </div>
 
                             <!-- General Secretary -->
-                            <a href=""
-                                class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                            <div class="developer-container mt-5">
                                 <img src="/assets/img/Executive/borsha.jpg" alt="Faria Rakib Borsha"
-                                    class="profile-img mt-6">
-                                <div class="p-6 text-center card-content">
-                                    <h3 class="text-xl font-semibold text-gray-800">Faria Rakib Borsha</h3>
-                                    <p class="text-gray-600 font-medium">General Secretary</p>
+                                    class="developer-img rounded-full w-52 h-52 mx-auto object-cover">
+                                <span class="click-text">View Details</span>
+                                <h3 class="text-xl font-semibold text-gray-800 mt-4">Faria Rakib Borsha</h3>
+                                <p class="text-gray-600">General Secretary</p>
+                                <div class="mt-3 justify-center flex space-x-4">
                                 </div>
-                            </a>
+                            </div>
 
                             <!-- Asst. General Secretary -->
-                            <a href=""
-                                class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
-                                <img src="/assets/img/Executive/Fahad.jpg" alt="Fahad Rahman" class="profile-img mt-6">
-                                <div class="p-6 text-center card-content">
-                                    <h3 class="text-xl font-semibold text-gray-800">Fahad Rahman</h3>
-                                    <p class="text-gray-600 font-medium">Asst. General Secretary</p>
+                            <div class="developer-container mt-5">
+                                <img src="/assets/img/Executive/Fahad.jpg" alt="Fahad Rahman"
+                                    class="developer-img rounded-full w-52 h-52 mx-auto object-cover">
+                                <span class="click-text">View Details</span>
+                                <h3 class="text-xl font-semibold text-gray-800 mt-4">Fahad Rahman</h3>
+                                <p class="text-gray-600">Asst. General Secretary</p>
+                                <div class="mt-3 justify-center flex space-x-4">
                                 </div>
-                            </a>
+                            </div>
 
                             <!-- Treasurer -->
-                            <a href=""
-                                class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                            <div class="developer-container mt-5">
                                 <img src="/assets/img/Executive/Hamjah.jpg" alt="Md. Rashique Hamjah Chowdhury"
-                                    class="profile-img mt-6">
-                                <div class="p-6 text-center card-content">
-                                    <h3 class="text-xl font-semibold text-gray-800">Md. Rashique Hamjah Chowdhury</h3>
-                                    <p class="text-gray-600 font-medium">Treasurer</p>
+                                    class="developer-img rounded-full w-52 h-52 mx-auto object-cover">
+                                <span class="click-text">View Details</span>
+                                <h3 class="text-xl font-semibold text-gray-800 mt-4">Md. Rashique Hamjah Chowdhury</h3>
+                                <p class="text-gray-600">Treasurer</p>
+                                <div class="mt-3 justify-center flex space-x-4">
                                 </div>
-                            </a>
+                            </div>
                         </div>
                     </div>
 
                     <!-- 2022-2023 Committee -->
                     <div class="timeline-content hidden" data-year="2022">
                         <h3 class="text-3xl font-semibold section-title mb-8 text-center">2022-2023 Committee</h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
                             <!-- Vice President -->
-                            <a href=""
-                                class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                            <div class="developer-container mt-5">
                                 <img src="/assets/img/Executive/abirsir.jpg" alt="Md. Abir Hassan"
-                                    class="profile-img mt-6">
-                                <div class="p-6 text-center card-content">
-                                    <h3 class="text-xl font-semibold text-gray-800">Md. Abir Hassan</h3>
-                                    <p class="text-gray-600 font-medium">Vice President</p>
+                                    class="developer-img rounded-full w-52 h-52 mx-auto object-cover">
+                                <span class="click-text">View Details</span>
+                                <h3 class="text-xl font-semibold text-gray-800 mt-4">Md. Abir Hassan</h3>
+                                <p class="text-gray-600">Faculty Moderator</p>
+                                <div class="mt-3 justify-center flex space-x-4">
                                 </div>
-                            </a>
+                            </div>
 
                             <!-- President -->
-                            <a href=""
-                                class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                            <div class="developer-container mt-5">
                                 <img src="/assets/img/Executive/Miftah.jpg" alt="Miftahul Islam Mazumdar"
-                                    class="profile-img mt-6">
-                                <div class="p-6 text-center card-content">
-                                    <h3 class="text-xl font-semibold text-gray-800">Miftahul Islam Mazumdar</h3>
-                                    <p class="text-gray-600 font-medium">President</p>
+                                    class="developer-img rounded-full w-52 h-52 mx-auto object-cover">
+                                <span class="click-text">View Details</span>
+                                <h3 class="text-xl font-semibold text-gray-800 mt-4">Miftahul Islam Mazumdar</h3>
+                                <p class="text-gray-600">President</p>
+                                <div class="mt-3 justify-center flex space-x-4">
                                 </div>
-                            </a>
+                            </div>
 
                             <!-- Vice President -->
-                            <a href=""
-                                class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                            <div class="developer-container mt-5">
                                 <img src="/assets/img/Executive/abid.jpg" alt="Md. Abid Hossain"
-                                    class="profile-img mt-6">
-                                <div class="p-6 text-center card-content">
-                                    <h3 class="text-xl font-semibold text-gray-800">Md. Abid Hossain</h3>
-                                    <p class="text-gray-600 font-medium">Vice President</p>
+                                    class="developer-img rounded-full w-52 h-52 mx-auto object-cover">
+                                <span class="click-text">View Details</span>
+                                <h3 class="text-xl font-semibold text-gray-800 mt-4">Md. Abid Hossain</h3>
+                                <p class="text-gray-600">Vice President</p>
+                                <div class="mt-3 justify-center flex space-x-4">
+                                    <a href="https://github.com/Abidh56" class="text-gray-600 hover:text-blue-800"><i
+                                            class="fab fa-github fa-lg"></i></a>
+                                    <a href="https://www.linkedin.com/in/abidhossain"
+                                        class="text-gray-600 hover:text-blue-800"><i
+                                            class="fab fa-linkedin fa-lg"></i></a>
+                                    <a href="https://abidhossain.com" class="text-gray-600 hover:text-blue-800"><i
+                                            class="fas fa-globe fa-lg"></i></a>
                                 </div>
-                            </a>
+                            </div>
 
                             <!-- General Secretary -->
-                            <a href=""
-                                class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                            <div class="developer-container mt-5">
                                 <img src="/assets/img/Executive/hasib.jpg" alt="Md. Shad Hasib Talukder"
-                                    class="profile-img mt-6">
-                                <div class="p-6 text-center card-content">
-                                    <h3 class="text-xl font-semibold text-gray-800">Md. Shad Hasib Talukder</h3>
-                                    <p class="text-gray-600 font-medium">General Secretary</p>
+                                    class="developer-img rounded-full w-52 h-52 mx-auto object-cover">
+                                <span class="click-text">View Details</span>
+                                <h3 class="text-xl font-semibold text-gray-800 mt-4">Md. Shad Hasib Talukder</h3>
+                                <p class="text-gray-600">General Secretary</p>
+                                <div class="mt-3 justify-center flex space-x-4">
                                 </div>
-                            </a>
+                            </div>
 
                             <!-- Asst. General Secretary -->
-                            <a href=""
-                                class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                            <div class="developer-container mt-5">
                                 <img src="/assets/img/Executive/maria.jpg" alt="Maria Talukder"
-                                    class="profile-img mt-6">
-                                <div class="p-6 text-center card-content">
-                                    <h3 class="text-xl font-semibold text-gray-800">Maria Talukder</h3>
-                                    <p class="text-gray-600 font-medium">Asst. General Secretary</p>
+                                    class="developer-img rounded-full w-52 h-52 mx-auto object-cover">
+                                <span class="click-text">View Details</span>
+                                <h3 class="text-xl font-semibold text-gray-800 mt-4">Maria Talukder</h3>
+                                <p class="text-gray-600">Asst. General Secretary</p>
+                                <div class="mt-3 justify-center flex space-x-4">
                                 </div>
-                            </a>
+                            </div>
 
                             <!-- Treasurer -->
-                            <a href=""
-                                class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
-                                <img src="/assets/img/Executive/niloya.jpg" alt="Niloya Roy" class="profile-img mt-6">
-                                <div class="p-6 text-center card-content">
-                                    <h3 class="text-xl font-semibold text-gray-800">Niloya Roy</h3>
-                                    <p class="text-gray-600 font-medium">Treasurer</p>
+                            <div class="developer-container mt-5">
+                                <img src="/assets/img/Executive/niloya.jpg" alt="Niloya Roy"
+                                    class="developer-img rounded-full w-52 h-52 mx-auto object-cover">
+                                <span class="click-text">View Details</span>
+                                <h3 class="text-xl font-semibold text-gray-800 mt-4">Niloya Roy</h3>
+                                <p class="text-gray-600">Treasurer</p>
+                                <div class="mt-3 justify-center flex space-x-4">
                                 </div>
-                            </a>
+                            </div>
+                            <div class="developer-container mt-5">
+                                <img src="/assets/img/Executive/Hamjah.jpg" alt="Md. Rashique Hamjah Chowdhury"
+                                    class="developer-img rounded-full w-52 h-52 mx-auto object-cover">
+                                <span class="click-text">View Details</span>
+                                <h3 class="text-xl font-semibold text-gray-800 mt-4">Md. Rashique Hamjah Chowdhury</h3>
+                                <p class="text-gray-600">Asst. Treasurer</p>
+                                <div class="mt-3 justify-center flex space-x-4">
+                                </div>
+                            </div>
 
                             <!-- Webmaster -->
-                            <a href=""
-                                class="executive-card bg-white rounded-lg shadow-lg overflow-hidden animate-card">
+                            <div class="developer-container mt-5">
                                 <img src="/assets/img/Executive/abdullah.jpg" alt="Abdullah Al Masud"
-                                    class="profile-img mt-6">
-                                <div class="p-6 text-center card-content">
-                                    <h3 class="text-xl font-semibold text-gray-800">Abdullah Al Masud</h3>
-                                    <p class="text-gray-600 font-medium">Webmaster</p>
+                                    class="developer-img rounded-full w-52 h-52 mx-auto object-cover">
+                                <span class="click-text">View Details</span>
+                                <h3 class="text-xl font-semibold text-gray-800 mt-4">Abdullah Al Masud</h3>
+                                <p class="text-gray-600">Webmaster</p>
+                                <div class="mt-3 justify-center flex space-x-4">
                                 </div>
-                            </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -421,8 +418,8 @@ include_once '../_settings/config.php';
     <?php include ABSPATH . '_includes/footer.php'; ?>
 
     <script>
-    // GSAP animations for cards
-    gsap.from(".animate-card", {
+    // GSAP animations for developer containers
+    gsap.from(".developer-container", {
         opacity: 0,
         y: 50,
         duration: 1,

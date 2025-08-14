@@ -165,49 +165,49 @@
         </div>
 
         <script>
-            const photos = [{
-                    src: "img/1.jpg",
-                    alt: "Event Photo 1"
-                },
-                {
-                    src: "img/2.jpg",
-                    alt: "Event Photo 2"
-                },
-                {
-                    src: "img/3.jpg",
-                    alt: "Event Photo 3"
-                },
-                {
-                    src: "img/4.jpg",
-                    alt: "Event Photo 4"
-                },
-                {
-                    src: "img/5.jpg",
-                    alt: "Event Photo 5"
-                }
-            ];
+        const photos = [{
+                src: "img/1.jpg",
+                alt: "Event Photo 1"
+            },
+            {
+                src: "img/2.jpg",
+                alt: "Event Photo 2"
+            },
+            {
+                src: "img/3.jpg",
+                alt: "Event Photo 3"
+            },
+            {
+                src: "img/4.jpg",
+                alt: "Event Photo 4"
+            },
+            {
+                src: "img/5.jpg",
+                alt: "Event Photo 5"
+            }
+        ];
 
-            const gallery = document.getElementById('gallery');
+        const gallery = document.getElementById('gallery');
 
-            photos.forEach(photo => {
-                const item = document.createElement('div');
-                item.className = 'group relative w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2';
+        photos.forEach(photo => {
+            const item = document.createElement('div');
+            item.className = 'group relative w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2';
 
-                const img = document.createElement('img');
-                img.src = photo.src;
-                img.alt = photo.alt;
-                img.loading = 'lazy';
-                img.className =
-                    'w-full h-64 object-cover rounded-xl shadow-md transition-transform duration-300 group-hover:scale-105 cursor-pointer';
-                img.onerror = () => {
-                    img.src = 'https://via.placeholder.com/400x300?text=Image+Not+Found';
-                };
+            const img = document.createElement('img');
+            img.src = photo.src;
+            img.alt = photo.alt;
+            img.loading = 'lazy';
+            img.className =
+                'w-full h-64 object-cover rounded-xl shadow-md transition-transform duration-300 group-hover:scale-105 cursor-pointer';
+            img.onerror = () => {
+                img.src = 'https://via.placeholder.com/400x300?text=Image+Not+Found';
+            };
 
-                const overlay = document.createElement('div');
-                overlay.className =
-                    'absolute inset-0 flex items-center justify-center pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300 rounded-xl';
+            const overlay = document.createElement('div');
+            overlay.className =
+                'absolute inset-0 flex items-center justify-center pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300 rounded-xl';
 
-                overlay.innerHTML = `
+            overlay.innerHTML = `
                 <div class="w-full h-full backdrop-blur-sm bg-transparent flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300">
                     <a href="${photo.src}" target="_blank" title="View Full Image"
                        class="bg-white text-primary px-4 py-2 rounded-md hover:bg-opacity-90 transition-colors">
@@ -220,52 +220,11 @@
                 </div>
             `;
 
-                item.appendChild(img);
-                item.appendChild(overlay);
-                gallery.appendChild(item);
-            });
+            item.appendChild(img);
+            item.appendChild(overlay);
+            gallery.appendChild(item);
+        });
         </script>
-    </section>
-
-
-    <section class="w-[85%] max-w-[1440px] mx-auto mt-20">
-        <div class="text-nowrap flex items-center flex-row justify-center gap-[22px] text-primary">
-            <span class="font-display text-md sm:text-xl md:text-2xl lg:text-4xl text-nowrap font-semibold uppercase">
-                :: Supported by
-            </span>
-            <div class="relative w-full h-[2px] bg-[#F0F0F0]">
-                <div class="bg-primary absolute -top-[3px] left-0 bottom-0 w-[8px] h-[8px] rounded-full">
-                </div>
-            </div>
-        </div>
-
-        <div class="flex flex-row flex-wrap items-center justify-around gap-3 mt-10">
-            <div
-                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img src="/assets/img/companies/united.png">
-            </div>
-            <div
-                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img src="/assets/img/companies/ici.png">
-            </div>
-            <div
-                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img src="/assets/img/companies/PRAN.png">
-            </div>
-            <div
-                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Government_Seal_of_Bangladesh.svg/2048px-Government_Seal_of_Bangladesh.svg.png">
-            </div>
-            <div
-                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img src="/assets/img/companies/shurokkha.png">
-            </div>
-            <div
-                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img src="/assets/img/companies/startech.png">
-            </div>
-        </div>
     </section>
 
     <?php include ABSPATH . '_includes/footer.php'; ?>
