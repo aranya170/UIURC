@@ -107,7 +107,7 @@ function errorPage($error_code = 000)
                 <h1>$error_message</h1>
                 <p>Something went wrong.</p>
                 <hr>
-                <address>Blood Lagbe</address>
+                <address>UIU Robotics Club</address>
                 ";
     }
     exit();

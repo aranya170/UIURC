@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" style="display:none" class="z-10">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" style="display:none" class="z-10">
     <symbol id="special_placeholder" viewBox="0 0 629 372">
         <g clip-path="url(#clip0_17_759)">
             <path

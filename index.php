@@ -8,6 +8,40 @@ include_once '_settings/config.php';
 <head>
     <?php include ABSPATH . '_includes/head.php'; ?>
     <style>
+    .carousel-container {
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+    }
+
+    .carousel-track {
+        display: flex;
+        flex-wrap: nowrap;
+        animation: scroll 20s linear infinite;
+        gap: 8.5rem;
+        /* Increased gap between icons */
+    }
+
+    .carousel-track:hover {
+        animation-play-state: paused;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+
+    /* Ensure the duplicated items for infinite scroll */
+    .carousel-track>div {
+        flex: 0 0 auto;
+    }
+
     .nav-arrow-right .ellipsis-content {
         font-size: 1.5rem;
         /* Adjust to match arrow size */
@@ -26,13 +60,120 @@ include_once '_settings/config.php';
         display: none;
     }
     </style>
+    <style>
+    /* Styling the scroll-to-top button */
+    .scroll-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: none;
+        /* Hidden by default */
+        justify-content: center;
+        align-items: center;
+        width: 2.5rem;
+        /* Increased from 2rem for larger button */
+        height: 2.5rem;
+        /* Increased from 2rem for larger button */
+        background-color: #ff0303;
+        /* Primary color, adjust as needed */
+        color: white;
+        border-radius: 50%;
+        font-weight: bold;
+        font-size: 18px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        z-index: 1000;
+        /* Ensures button stays on top */
+    }
+
+    .scroll-to-top:hover {
+        background-color: #0E1E2D;
+        /* Hover color */
+    }
+
+    .scroll-to-top.visible {
+        display: flex;
+        /* Show when scrolled */
+    }
+    </style>
+    <style>
+    @media (max-width: 640px) {
+        section {
+            padding-left: 1rem;
+            padding-right: 2rem;
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+            margin-left: 0.5rem;
+            margin-right: 1.5rem;
+        }
+
+        .w-full.sm\:w-1\/2 {
+            padding: 0.5rem;
+        }
+
+        .mx-2 {
+            margin-left: 0.75rem;
+            margin-right: 1.25rem;
+            border-radius: 0.75rem;
+        }
+
+        #photo-carousel {
+            overflow: hidden;
+            border-radius: 0.75rem;
+        }
+    }
+    </style>
 </head>
 
 <body>
+
+    <?php include '_includes/scroll-to-top.php'; ?>
+    <a id="scrollToTop" class="scroll-to-top" title="Go to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 15 15">
+            <path fill="currentColor"
+                d="M8.293 2.293a1 1 0 0 1 1.414 0l4.5 4.5a1 1 0 0 1 0 1.414l-4.5 4.5a1 1 0 0 1-1.414-1.414L11 8.5H1.5a1 1 0 0 1 0-2H11L8.293 3.707a1 1 0 0 1 0-1.414"
+                transform="rotate(270 7.5 7.5)" />
+        </svg>
+    </a>
+    <script>
+    // Get the scroll-to-top button
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    // Function to check scroll position and toggle button visibility
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) { // Show button after scrolling 100px
+            scrollToTopBtn.classList.add('visible');
+        } else {
+            scrollToTopBtn.classList.remove('visible');
+        }
+    });
+
+    // Smooth scroll to top when button is clicked
+    scrollToTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Accessibility: Allow Enter or Space key to trigger scroll
+    scrollToTopBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    });
+    </script>
     <?php include ABSPATH . '_includes/header.php'; ?>
 
-    <section class="w-[95%] max-w-[1600px] mx-auto mt-20 px-4 sm:px-5 mb-16 flex flex-col-reverse sm:flex-row gap-8">
-        <div class="w-full sm:w-1/2 flex-1 pl-20 self-start flex-col justify-center items-center">
+    <section
+        class="w-full max-w-[1440px] mx-auto mt-20 px-2 sm:px-10 mb-16 py-10 flex flex-col sm:flex-row gap-4 justify-center p-2">
+        <!-- Text and SVG Container -->
+        <div class="w-full sm:w-1/2 flex-1 self-start flex flex-col justify-start items-start">
             <svg class="w-full sm:w-[400px] md:w-[500px] lg:w-[550px] max-w-full" viewBox="0 0 610 206" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -121,17 +262,19 @@ include_once '_settings/config.php';
                     fill="#FF3215" />
             </svg>
             <br>
-            <p class="w-[80%] max-w-[80%]">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, cumque!
-                Libero
-                quo expedita iusto
-                deleniti in alias voluptate sit veniam omnis dolores modi ratione illo voluptatibus, debitis consequatur
-                sunt numquam.</p>
-            <div class="flex flex-1 self-start justify-left items-left mt-4 gap-3">
+            <p class="w-[90%] max-w-full text-justify">
+                Welcome to the UIU Robotics Club, where innovation thrives at United
+                International University. We inspire passion for robotics through hands-on training, global
+                competitions, and cutting-edge research. Our members excel internationally, gaining recognition in Asia
+                and beyond while developing skills to shape the future of technology.
+            </p>
+
+            <div class="flex flex-1 self-start justify-center items-center mt-4 gap-3">
                 <span>
                     <p class="text-xl font-bold text-gray-800">Explore more</p>
                 </span>
                 <span>
-                    <a href="#"
+                    <a href="AboutUs\index.php"
                         class="flex justify-center items-center rounded-full bg-primary text-white font-bold text-[18px] w-[2rem] h-[2rem] cursor-pointer hover:bg-[#0E1E2D] transition duration-300 ease-in-out">
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">
                             <path fill="currentColor"
@@ -140,18 +283,101 @@ include_once '_settings/config.php';
                     </a>
                 </span>
             </div>
-
         </div>
-        <div class="w-full sm:w-1/2 rounded-xl overflow-hidden" style="aspect-ratio: 4/3; max-width: 700px;">
-            <img src="https://scontent.fdac11-1.fna.fbcdn.net/v/t39.30808-6/486164674_681504481209928_4526373125618018447_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFzRzYazoaNc5oVPS8DyvLCxOGkVUd9dBvE4aRVR310Gxek7IUsXFqPX7gbc_djfAMECb7rfYMdZcvoW_VWH2OM&_nc_ohc=ILVWHMj3rVgQ7kNvwFtWTL3&_nc_oc=Adke_vafMtUbAdXZOjaTJFxw6eRvX9HTsw0zt7232Jx38iBxQ0sI5CLmsXt0Gw5yxNs&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-1.fna&_nc_gid=VyClRV533GdlIRPYEw9uFw&oh=00_AfJu85uldHcr46JzLozp7j0b9ffjCm7kl-MQibOKZGQj7A&oe=683644C7"
-                alt="Group Photo" style="width: 100%; height: 100%; object-fit: cover;">
+        <!-- Carousel Container -->
+        <div class="w-full sm:w-1/2 rounded-xl overflow-hidden relative" style="aspect-ratio: 5/3; max-width: 800px;">
+            <div id="photo-carousel" class="relative w-full h-full">
+                <div id="carousel-images" class="flex h-full transition-transform duration-500 ease-in-out"></div>
+                <button id="prev-button"
+                    class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/30 backdrop-blur-sm rounded-full p-2 hover:bg-white/50 transition duration-300 focus:outline-none"
+                    aria-label="Previous image">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="next-button"
+                    class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/30 backdrop-blur-sm rounded-full p-2 hover:bg-white/50 transition duration-300 focus:outline-none"
+                    aria-label="Next image">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+                <div id="carousel-dots" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                </div>
+            </div>
         </div>
 
+        <script>
+        const images = [
+            "assets/img/Group/1.jpg",
+            "assets/img/Group/2.jpg",
+            "assets/img/Group/3.jpg"
+        ];
+
+        let currentIndex = 0;
+
+        function initializeCarousel() {
+            const carouselImages = document.getElementById('carousel-images');
+            const carouselDots = document.getElementById('carousel-dots');
+            const prevButton = document.getElementById('prev-button');
+            const nextButton = document.getElementById('next-button');
+
+            // Populate images
+            images.forEach((src, index) => {
+                const imgDiv = document.createElement('div');
+                imgDiv.className = 'w-full h-full flex-shrink-0';
+                imgDiv.innerHTML =
+                    `<img src="${src}" alt="Carousel image ${index + 1}" class="w-full h-full object-cover" />`;
+                carouselImages.appendChild(imgDiv);
+
+                // Populate dots
+                const dot = document.createElement('button');
+                dot.className =
+                    `w-3 h-3 rounded-full ${index === 0 ? 'bg-white/50 backdrop-blur-md' : 'bg-white/20 backdrop-blur-sm'} focus:outline-none`;
+                dot.setAttribute('aria-label', `Go to image ${index + 1}`);
+                dot.addEventListener('click', () => goToImage(index));
+                carouselDots.appendChild(dot);
+            });
+
+            function updateCarousel() {
+                carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+                const dots = carouselDots.children;
+                for (let i = 0; i < dots.length; i++) {
+                    dots[i].className =
+                        `w-3 h-3 rounded-full ${i === currentIndex ? 'bg-white/50 backdrop-blur-md' : 'bg-white/20 backdrop-blur-sm'} focus:outline-none`;
+                }
+            }
+
+            function goToImage(index) {
+                currentIndex = (index + images.length) % images.length;
+                updateCarousel();
+            }
+
+            prevButton.addEventListener('click', () => {
+                goToImage(currentIndex - 1);
+            });
+
+            nextButton.addEventListener('click', () => {
+                goToImage(currentIndex + 1);
+            });
+
+            document.getElementById('photo-carousel').addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') goToImage(currentIndex - 1);
+                if (e.key === 'ArrowRight') goToImage(currentIndex + 1);
+            });
+
+            updateCarousel();
+        }
+
+        window.addEventListener('load', initializeCarousel);
+        </script>
     </section>
-
-    <section class="w-[85%] max-w-[1440px] mx-auto mt-20 px-5">
+    <!-- Events -->
+    <section class="w-full max-w-[1440px] mx-auto mt-20 px-5">
         <div class="text-nowrap flex items-center flex-row justify-center gap-[22px] text-primary">
-            <span class="font-display text-md sm:text-xl md:text-2xl lg:text-4xl text-nowrap font-semibold uppercase">
+            <span class="font-display text-xl sm:text-xl md:text-2xl lg:text-4xl text-nowrap font-semibold uppercase">
                 :: Our Events
             </span>
             <div class="relative w-full h-[2px] bg-[#F0F0F0]">
@@ -160,284 +386,302 @@ include_once '_settings/config.php';
             </div>
         </div>
 
-
         <div class="container mx-auto p-4">
             <!-- Carousel Container -->
             <div class="carousel-container relative">
                 <!-- Navigation Arrows -->
+                <!-- Left Arrow -->
                 <button id="left-arrow"
-                    class="nav-arrow nav-arrow-left absolute left-0 top-1/2 transform -translate-y-1/2">
+                    class="nav-arrow nav-arrow-left absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 backdrop-blur-md rounded-full p-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                        class="w-6 h-6">
+                        class="w-6 h-6 text-black">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                     </svg>
                 </button>
-                <!-- Inside the carousel-container -->
+
+                <!-- Right Arrow -->
                 <button id="right-arrow"
-                    class="nav-arrow nav-arrow-right absolute right-0 top-1/2 transform -translate-y-1/2">
+                    class="nav-arrow nav-arrow-right absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 backdrop-blur-md rounded-full p-2">
                     <span class="arrow-content">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                            class="w-6 h-6">
+                            class="w-6 h-6 text-black">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                     </span>
-                    <span class="ellipsis-content hidden">...</span>
+                    <span id="more" class="ellipsis-content hidden md:block">
+                        <svg fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32.055 32.055" xml:space="preserve"
+                            class="w-6 h-6">
+                            <g>
+                                <path
+                                    d="M3.968,12.061C1.775,12.061,0,13.835,0,16.027c0,2.192,1.773,3.967,3.968,3.967c2.189,0,3.966-1.772,3.966-3.967
+                                C7.934,13.835,6.157,12.061,3.968,12.061z M16.233,12.061c-2.188,0-3.968,1.773-3.968,3.965c0,2.192,1.778,3.967,3.968,3.967
+                                s3.97-1.772,3.97-3.967C20.201,13.835,18.423,12.061,16.233,12.061z M28.09,12.061c-2.192,0-3.969,1.774-3.969,3.967
+                                c0,2.19,1.774,3.965,3.969,3.965c2.188,0,3.965-1.772,3.965-3.965S30.278,12.061,28.09,12.061z" />
+                            </g>
+                        </svg>
+                    </span>
                 </button>
+
 
                 <!-- Event Cards Container -->
                 <div id="events-container" class="scroll-container space-x-4 overflow-x-auto snap-x snap-mandatory">
                     <!-- Event cards or no events message will be inserted here -->
                 </div>
             </div>
-        </div>
 
-        <script defer>
-        const placeholderImage = "/assets/img/svg/banner.svg";
-
-        const staticEvents = [{
-                heading: "Majlish-e-Ifter",
-                time: "March 17, 2025",
-                location: "UIU Cafeteria",
-                image: "https://scontent.fdac11-2.fna.fbcdn.net/v/t39.30808-6/490027735_697422702951439_4002414821349991261_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=75d36f&_nc_eui2=AeFqXUPVyN0AqEtR3CBy1sbF2Ne4Cmso4frY17gKayjh-n6_c_hwPgoaW01JbkhLp1XUuw6eVAU5f9Vx5FPI75RU&_nc_ohc=acWyJljVp0MQ7kNvwF0j57L&_nc_oc=Adme6ovXR1TBFUimlKaxSHIuWyFQVIkwvtbzT6lvedhrVqRKbHfR8wEHlLrklWcS9i0&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-2.fna&_nc_gid=31XN1OvO91nZvlHhGr47KQ&oh=00_AfJhQ1djo6hpR3VxPCbiyQy5znLbYrfpP_29cmPjlunkuw&oe=68364C8A",
-                link: "/event/"
-            },
-            {
-                heading: "UIU CSE Fest",
-                time: "June 17-18, 2025",
-                location: "United International University",
-                image: "https://scontent.fdac11-1.fna.fbcdn.net/v/t39.30808-6/471726729_122110719038647360_4982353136851016130_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=108&ccb=1-7&_nc_sid=75d36f&_nc_eui2=AeELKWaNMVNbeG5P6edUQHy5ItpShxwbCq4i2lKHHBsKrhIZJoUNJXITXqeSvz3bYSAMlbCnwMHsuaDnfs_3ga87&_nc_ohc=tPM8gVwgqS8Q7kNvwEIaVMj&_nc_oc=AdnNiFqtn69CHc_qDZKAHAhZn-tqYauSsWqWNHM_KWeqTRy_rHeUAiI4wdssa__5Bt0&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-1.fna&_nc_gid=724xWw4HD4MwC0ichkgZTw&oh=00_AfIsrwQ8u8I2i9GbAozA37nIG3cdoNA58jh8cNUxQ2MEhA&oe=68363D08",
-                link: "/event/"
-            },
-            {
-                heading: "Rush Hour",
-                time: "December 4, 2024",
-                location: "UIU Gallery",
-                image: "https://scontent.fdac11-2.fna.fbcdn.net/v/t39.30808-6/484381367_677849471575429_2882193511448082183_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=75d36f&_nc_eui2=AeGog9IgGSrIF7oXp1xI1K9_6Gb3YOBnNbHoZvdg4Gc1sRlqc_XI4awDzQvEeu0Fg2z7YcXjhDvzOUEr9UZ3pzBw&_nc_ohc=83EiaYVXHDEQ7kNvwE3ezyQ&_nc_oc=AdmyxAZsAkGz46kzXS4ogMRGH-TRk-5YkLoANglk5zUgJ_o5W2yM-PL0vug7PqCpQEY&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-2.fna&_nc_gid=gStIfFzgyPb_Ruyl9h00-g&oh=00_AfIGOPJBrE3p2kZEKq6xFN7HZpfbFB6lr1iqopI7ODuKfg&oe=68362F25",
-                link: "/event/"
-            },
-            {
-                heading: "Research 101",
-                time: "Oct 9th, 2024",
-                location: "Room 126",
-                image: "https://scontent.fdac11-1.fna.fbcdn.net/v/t39.30808-6/484729646_677325414961168_8702768972533058128_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=75d36f&_nc_eui2=AeHJKrRBMaIfReqk84C8pOPJguQ4XsOdQheC5Dhew51CF54U1bHqSoSu8RmZVsUFUcHS7KSz2Ao01gEzi_RF9v8i&_nc_ohc=KkK-dZsPvJEQ7kNvwEX3RC3&_nc_oc=AdlWZC4OS1wd1B3E0l-YujASqMk_fgmvCBZT4eXPm3lka85FBJIO5-SaB4TtmA-x0Gk&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-1.fna&_nc_gid=mTF9WK95qAjSFqKK4I97JA&oh=00_AfJR44Ts7-_v2cLhJjMcfWsQaAid4XJ9g8_nlXOI7mNEfg&oe=68363DAC",
-                link: "/event/"
-            },
-            {
-                heading: "TechTrove",
-                time: "July 6-9, 2024",
-                location: "Lobby Area",
-                image: "https://scontent.fdac11-2.fna.fbcdn.net/v/t39.30808-6/482236483_675991651761211_3789288042738428016_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=106&ccb=1-7&_nc_sid=75d36f&_nc_eui2=AeEU77w3PcRPTJgNuoJgcloGrunoFDchk72u6egUNyGTvSPxrzCbyNRfqPSZZOrjQNsjIspjqhP8oSBdPU_kSYiL&_nc_ohc=0Zdb6k1DJjQQ7kNvwGAFs6L&_nc_oc=AdnXq_aUoSl3vlwqUr4EAyb4O7zD4PS7AtgxDoullUmWplsF88Dfg1-Ho9Oj0Fw1mPI&_nc_pt=1&_nc_zt=23&_nc_ht=scontent.fdac11-2.fna&_nc_gid=LnYFo_S_u4ySAYBelu5hbQ&oh=00_AfKcrVdhxZK8wHOGDoPQu2BHnNDiS7EJUf1Za829vV8zOQ&oe=68361B46",
-                link: "/event/"
+            <style>
+            /* Base styles for arrows */
+            .nav-arrow {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(255, 255, 255, 0.8);
+                border: none;
+                padding: 0.5rem;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: background 0.3s;
             }
-        ];
 
-        function renderEvents(events) {
-            const eventsContainer = document.getElementById('events-container');
-            eventsContainer.innerHTML = '';
+            .nav-arrow:hover {
+                background: rgba(255, 255, 255, 1);
+            }
 
-            if (events.length === 0) {
-                const noEventsMessage = document.createElement('div');
-                noEventsMessage.className = 'w-full text-center py-10';
-                noEventsMessage.innerHTML = `
-                <p class="text-2xl text-orange-500">No events are happening right now</p>
-            `;
-                eventsContainer.appendChild(noEventsMessage);
-            } else {
-                const isMobile = window.innerWidth <= 640; // Tailwind 'sm' breakpoint
-                const eventCards = [];
+            .nav-arrow:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
 
-                // Create event cards
-                events.forEach(event => {
-                    const eventCard = document.createElement('div');
-                    eventCard.className = 'event-card rounded-lg w-full sm:w-72 inline-block snap-center';
-                    eventCard.innerHTML = `
-                    <img src="${event.image || placeholderImage}" alt="Event" class="w-full h-48 object-cover rounded-t-lg">
-                    <div class="event-details m-4">
-                        <h2 class="text-sm sm:text-base font-bold text-gray-900">${event.heading}</h2>
-                        <p class="text-xs sm:text-sm text-gray-900 mt-0.5"><strong>Date</strong><br>${event.time}</p>
-                        <p class="text-xs sm:text-sm text-gray-900 mt-0.5"><strong>Location</strong><br>${event.location}</p>
-                        <button onclick="window.location.href='${event.link}'" class="event-details-button bg-red-500 text-white rounded-full p-2 sm:p-3 hover:bg-red-600">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 sm:w-6 h-5 sm:h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                            </svg>
-                        </button>
-                    </div>
-                `;
-                    eventCards.push(eventCard);
-                });
-
-                if (isMobile && events.length > 1) {
-                    // Add duplicate cards for infinite scrolling
-                    const lastCardClone = eventCards[eventCards.length - 1].cloneNode(true);
-                    const firstCardClone = eventCards[0].cloneNode(true);
-                    eventsContainer.appendChild(lastCardClone); // Prepend last card
-                    eventCards.forEach(card => eventsContainer.appendChild(card)); // Main cards
-                    eventsContainer.appendChild(firstCardClone); // Append first card
-                } else {
-                    // Non-mobile or single event: no duplicates
-                    eventCards.forEach(card => eventsContainer.appendChild(card));
+            /* Adjust arrow visibility: show on mobile and desktop */
+            @media (max-width: 767px) {
+                .nav-arrow {
+                    display: flex;
                 }
 
-                initializeCarousel();
+                .ellipsis-content {
+                    display: none !important;
+                }
             }
-        }
 
-        function initializeCarousel() {
-            const eventsContainer = document.getElementById('events-container');
-            const leftArrow = document.getElementById('left-arrow');
-            const rightArrow = document.getElementById('right-arrow');
-            const cardWidth = 304; // Width of each card including margin
-            const isMobile = window.innerWidth <= 640;
-            const numCards = staticEvents.length;
-            const maxIndex = isMobile && numCards > 1 ? numCards : numCards - 1;
-            let isScrolling = false;
+            @media (min-width: 768px) {
+                .nav-arrow {
+                    display: flex;
+                }
+            }
+            </style>
 
-            function updateArrows() {
-                const scrollLeft = eventsContainer.scrollLeft;
-                const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
+            <script>
+            const placeholderImage = "/assets/img/svg/banner.svg";
 
-                if (!isMobile || numCards <= 1) {
-                    // Finite scrolling for desktop or single card
-                    leftArrow.style.display = scrollLeft <= 5 ? 'none' : 'block';
-                    leftArrow.disabled = scrollLeft <= 5;
-                    rightArrow.style.display = scrollLeft >= maxScroll - 5 ? 'none' : 'block';
-                    rightArrow.disabled = scrollLeft >= maxScroll - 5;
+            const staticEvents = [{
+                    heading: "Meet and Greet",
+                    time: "August 2, 2025",
+                    location: "Room No. 630, 631",
+                    image: "assets/img/Events/Meet&Greet.jpg",
+                    link: "/MeetAndGreet/index.php"
+                },
+                {
+                    heading: "Majlish-e-Ifter",
+                    time: "March 17, 2025",
+                    location: "UIU Cafeteria",
+                    image: "assets/img/Events/Iftar.jpg",
+                    link: "/Iftar/index.php"
+                },
+                {
+                    heading: "UIU CSE Fest",
+                    time: "June 17-18, 2025",
+                    location: "United International University",
+                    image: "assets/img/Events/CSE_fest.jpg",
+                    link: "https://csefest.uiu.ac.bd/"
+                },
+                {
+                    heading: "Rush Hour",
+                    time: "December 4, 2024",
+                    location: "UIU Gallery",
+                    image: "assets/img/Events/Rush_hour.jpg",
+                    link: "/RushHour/index.php"
+                },
+                {
+                    heading: "Research 101",
+                    time: "Oct 9th, 2024",
+                    location: "Room 126",
+                    image: "assets/img/Events/Research 101.jpg",
+                    link: "/Research101/index.php"
+                },
+                {
+                    heading: "TechTrove",
+                    time: "July 6-9, 2024",
+                    location: "630",
+                    image: "assets/img/Events/Techtrove.jpg",
+                    link: "https://www.facebook.com/events/1216987649676468"
+                }
+            ];
+
+            function renderEvents(events) {
+                const eventsContainer = document.getElementById('events-container');
+                eventsContainer.innerHTML = '';
+
+                if (events.length === 0) {
+                    const noEventsMessage = document.createElement('div');
+                    noEventsMessage.className = 'w-full text-center py-10';
+                    noEventsMessage.innerHTML = `
+                        <p class="text-2xl text-orange-500">No events are happening right now</p>
+                    `;
+                    eventsContainer.appendChild(noEventsMessage);
                 } else {
-                    // Infinite scrolling: arrows always visible in mobile
-                    leftArrow.style.display = 'block';
+                    const isMobile = window.innerWidth <= 640; // Tailwind 'sm' breakpoint
+                    const eventCards = [];
+
+                    // Create event cards
+                    events.forEach(event => {
+                        const eventCard = document.createElement('div');
+                        eventCard.className = 'event-card rounded-lg w-full sm:w-72 inline-block snap-center';
+                        eventCard.innerHTML = `
+                            <img src="${event.image || placeholderImage}" alt="Event" class="w-full h-48 object-cover rounded-t-lg">
+                            <div class="event-details m-4">
+                                <h2 class="text-sm sm:text-base font-bold text-gray-900">${event.heading}</h2>
+                                <p class="text-xs sm:text-sm text-gray-900 mt-0.5"><strong>Date</strong><br>${event.time}</p>
+                                <p class="text-xs sm:text-sm text-gray-900 mt-0.5"><strong>Location</strong><br>${event.location}</p>
+                                <button onclick="window.location.href='${event.link}'" class="event-details-button bg-red-500 text-white rounded-full p-2 sm:p-3 hover:bg-red-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 sm:w-6 h-5 sm:h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </button>
+                            </div>
+                        `;
+                        eventCards.push(eventCard);
+                    });
+
+                    if (isMobile && events.length > 1) {
+                        // Add duplicate cards for infinite scrolling on mobile
+                        const lastCardClone = eventCards[eventCards.length - 1].cloneNode(true);
+                        const firstCardClone = eventCards[0].cloneNode(true);
+                        eventsContainer.appendChild(lastCardClone); // Prepend last card
+                        eventCards.forEach(card => eventsContainer.appendChild(card)); // Main cards
+                        eventsContainer.appendChild(firstCardClone); // Append first card
+                    } else {
+                        // Non-mobile: no duplicates
+                        eventCards.forEach(card => eventsContainer.appendChild(card));
+                    }
+
+                    // Initialize carousel based on device
+                    if (isMobile) {
+                        initializeMobileCarousel();
+                    } else {
+                        initializeDesktopCarousel();
+                    }
+                }
+            }
+
+            function initializeMobileCarousel() {
+                const eventsContainer = document.getElementById('events-container');
+                const leftArrow = document.getElementById('left-arrow');
+                const rightArrow = document.getElementById('right-arrow');
+                const cardWidth = 304; // Width of each card including margin
+                const numCards = staticEvents.length;
+                let isScrolling = false;
+
+                function updateArrows() {
+                    // Arrows always enabled for infinite scrolling on mobile
                     leftArrow.disabled = false;
-                    rightArrow.style.display = 'block';
                     rightArrow.disabled = false;
                 }
-            }
 
-            function scrollToIndex(index, instant = false) {
-                if (isScrolling) return;
-                isScrolling = true;
+                function scrollToIndex(index, instant = false) {
+                    if (isScrolling) return;
+                    isScrolling = true;
 
-                if (isMobile && numCards > 1) {
-                    // Handle infinite scrolling
-                    if (index < 0) {
-                        // Jump to the real last card (before duplicate first card)
-                        index = numCards - 1;
-                        eventsContainer.scrollTo({
-                            left: index * cardWidth,
-                            behavior: 'auto'
-                        });
-                    } else if (index > numCards) {
-                        // Jump to the real first card (after duplicate last card)
-                        index = 1;
-                        eventsContainer.scrollTo({
-                            left: index * cardWidth,
-                            behavior: 'auto'
-                        });
+                    if (numCards > 1) {
+                        // Handle infinite scrolling
+                        if (index < 0) {
+                            // Jump to the real last card (before duplicate first card)
+                            index = numCards - 1;
+                            eventsContainer.scrollTo({
+                                left: index * cardWidth,
+                                behavior: 'auto'
+                            });
+                        } else if (index > numCards) {
+                            // Jump to the real first card (after duplicate last card)
+                            index = 1;
+                            eventsContainer.scrollTo({
+                                left: index * cardWidth,
+                                behavior: 'auto'
+                            });
+                        }
+                    } else {
+                        // Clamp index if only one card
+                        index = Math.max(0, Math.min(index, numCards - 1));
                     }
-                } else {
-                    // Clamp index for non-mobile
-                    index = Math.max(0, Math.min(index, maxIndex));
+
+                    eventsContainer.scrollTo({
+                        left: index * cardWidth,
+                        behavior: instant ? 'auto' : 'smooth'
+                    });
+
+                    setTimeout(() => {
+                        isScrolling = false;
+                        updateArrows();
+                    }, instant ? 0 : 600);
                 }
 
-                eventsContainer.scrollTo({
-                    left: index * cardWidth,
-                    behavior: instant ? 'auto' : 'smooth'
+                function handleInfiniteScroll() {
+                    if (numCards <= 1) return;
+                    const scrollLeft = eventsContainer.scrollLeft;
+                    const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
+
+                    if (scrollLeft <= 0) {
+                        // At duplicate last card: jump to real last card
+                        scrollToIndex(numCards - 1, true);
+                    } else if (scrollLeft >= maxScroll - 5) {
+                        // At duplicate first card: jump to real first card
+                        scrollToIndex(1, true);
+                    }
+                }
+
+                leftArrow.addEventListener('click', () => {
+                    if (leftArrow.disabled || isScrolling) return;
+                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                    scrollToIndex(currentIndex - 1);
                 });
 
-                setTimeout(() => {
-                    isScrolling = false;
-                    updateArrows();
-                }, instant ? 0 : 600);
-            }
+                rightArrow.addEventListener('click', () => {
+                    if (rightArrow.disabled || isScrolling) return;
+                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                    scrollToIndex(currentIndex + 1);
+                });
 
-            function handleInfiniteScroll() {
-                if (!isMobile || numCards <= 1) return;
-                const scrollLeft = eventsContainer.scrollLeft;
-                const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
-
-                if (scrollLeft <= 0) {
-                    // At duplicate last card: jump to real last card
-                    scrollToIndex(numCards - 1, true);
-                } else if (scrollLeft >= maxScroll - 5) {
-                    // At duplicate first card: jump to real first card
-                    scrollToIndex(1, true);
-                }
-            }
-
-            leftArrow.addEventListener('click', () => {
-                if (leftArrow.disabled || isScrolling) return;
-                const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                scrollToIndex(currentIndex - 1);
-            });
-
-            rightArrow.addEventListener('click', () => {
-                if (rightArrow.disabled || isScrolling) return;
-                const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                scrollToIndex(currentIndex + 1);
-            });
-
-            // Handle touch scrolling
-            let startX, isDragging = false;
-            eventsContainer.addEventListener('touchstart', (e) => {
-                if (isScrolling) return;
-                startX = e.touches[0].clientX;
-                isDragging = true;
-            });
-
-            eventsContainer.addEventListener('touchmove', (e) => {
-                if (!isDragging || isScrolling) return;
-                const currentX = e.touches[0].clientX;
-                const diffX = startX - currentX;
-                const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                if (Math.abs(diffX) > 50) {
-                    if (diffX > 0) {
-                        // Swipe left: scroll to next card
-                        scrollToIndex(currentIndex + 1);
-                    } else if (diffX < 0) {
-                        // Swipe right: scroll to previous card
-                        scrollToIndex(currentIndex - 1);
+                eventsContainer.addEventListener('scroll', () => {
+                    if (!isScrolling) {
+                        updateArrows();
+                        handleInfiniteScroll();
                     }
-                    isDragging = false;
-                }
-            });
+                });
 
-            eventsContainer.addEventListener('touchend', () => {
-                isDragging = false;
-                if (!isScrolling) handleInfiniteScroll();
-            });
-
-            // Update arrows and check for infinite scroll on scroll
-            eventsContainer.addEventListener('scroll', () => {
-                if (!isScrolling) {
+                // Initial scroll position for infinite scroll
+                if (numCards > 1) {
+                    scrollToIndex(1, true); // Start at first real card
+                } else {
                     updateArrows();
-                    handleInfiniteScroll();
                 }
-            });
-
-            // Initial scroll position for mobile infinite scroll
-            if (isMobile && numCards > 1) {
-                scrollToIndex(1, true); // Start at first real card
-            } else {
-                updateArrows();
             }
-        }
 
-        function initializeCarousel() {
-            const eventsContainer = document.getElementById('events-container');
-            const leftArrow = document.getElementById('left-arrow');
-            const rightArrow = document.getElementById('right-arrow');
-            const rightArrowContent = rightArrow.querySelector('.arrow-content');
-            const rightEllipsisContent = rightArrow.querySelector('.ellipsis-content');
-            const cardWidth = 304; // Width of each card including margin
-            const isMobile = window.innerWidth <= 640;
-            const numCards = staticEvents.length;
-            const maxIndex = isMobile && numCards > 1 ? numCards : numCards - 1;
-            let isScrolling = false;
+            function initializeDesktopCarousel() {
+                const eventsContainer = document.getElementById('events-container');
+                const leftArrow = document.getElementById('left-arrow');
+                const rightArrow = document.getElementById('right-arrow');
+                const rightArrowContent = rightArrow.querySelector('.arrow-content');
+                const rightEllipsisContent = rightArrow.querySelector('.ellipsis-content');
+                const cardWidth = 304; // Width of each card including margin
+                const numCards = staticEvents.length;
+                const maxIndex = numCards - 1;
+                let isScrolling = false;
 
-            function updateArrows() {
-                const scrollLeft = eventsContainer.scrollLeft;
-                const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
+                function updateArrows() {
+                    const scrollLeft = eventsContainer.scrollLeft;
+                    const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
 
-                if (!isMobile || numCards <= 1) {
-                    // Finite scrolling for desktop or single card
+                    // Finite scrolling for desktop
                     leftArrow.style.display = scrollLeft <= 5 ? 'none' : 'block';
                     leftArrow.disabled = scrollLeft <= 5;
 
@@ -452,133 +696,99 @@ include_once '_settings/config.php';
                         rightEllipsisContent.classList.add('hidden');
                         rightArrow.disabled = false;
                     }
-                } else {
-                    // Infinite scrolling: arrows always visible in mobile
-                    leftArrow.style.display = 'block';
-                    leftArrow.disabled = false;
-                    rightArrowContent.classList.remove('hidden');
-                    rightEllipsisContent.classList.add('hidden');
-                    rightArrow.disabled = false;
                 }
-            }
 
-            function scrollToIndex(index, instant = false) {
-                if (isScrolling) return;
-                isScrolling = true;
+                function scrollToIndex(index, instant = false) {
+                    if (isScrolling) return;
+                    isScrolling = true;
 
-                if (isMobile && numCards > 1) {
-                    // Handle infinite scrolling
-                    if (index < 0) {
-                        index = numCards - 1;
-                        eventsContainer.scrollTo({
-                            left: index * cardWidth,
-                            behavior: 'auto'
-                        });
-                    } else if (index > numCards) {
-                        index = 1;
-                        eventsContainer.scrollTo({
-                            left: index * cardWidth,
-                            behavior: 'auto'
-                        });
-                    }
-                } else {
-                    // Clamp index for non-mobile
+                    // Clamp index for desktop
                     index = Math.max(0, Math.min(index, maxIndex));
+
+                    eventsContainer.scrollTo({
+                        left: index * cardWidth,
+                        behavior: instant ? 'auto' : 'smooth'
+                    });
+
+                    setTimeout(() => {
+                        isScrolling = false;
+                        updateArrows();
+                    }, instant ? 0 : 600);
                 }
 
-                eventsContainer.scrollTo({
-                    left: index * cardWidth,
-                    behavior: instant ? 'auto' : 'smooth'
+                leftArrow.addEventListener('click', () => {
+                    if (leftArrow.disabled || isScrolling) return;
+                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                    scrollToIndex(currentIndex - 1);
                 });
 
-                setTimeout(() => {
-                    isScrolling = false;
-                    updateArrows();
-                }, instant ? 0 : 600);
-            }
-
-            function handleInfiniteScroll() {
-                if (!isMobile || numCards <= 1) return;
-                const scrollLeft = eventsContainer.scrollLeft;
-                const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
-
-                if (scrollLeft <= 0) {
-                    scrollToIndex(numCards - 1, true);
-                } else if (scrollLeft >= maxScroll - 5) {
-                    scrollToIndex(1, true);
-                }
-            }
-
-            leftArrow.addEventListener('click', () => {
-                if (leftArrow.disabled || isScrolling) return;
-                const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                scrollToIndex(currentIndex - 1);
-            });
-
-            rightArrow.addEventListener('click', () => {
-                if (rightArrow.disabled || isScrolling) return;
-                const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                if (!isMobile && rightEllipsisContent.classList.contains('hidden')) {
-                    // Right arrow: scroll right
-                    scrollToIndex(currentIndex + 1);
-                } else if (!isMobile) {
-                    // Ellipsis: scroll left
-                    scrollToIndex(currentIndex - 1);
-                } else {
-                    // Mobile: always scroll right
-                    scrollToIndex(currentIndex + 1);
-                }
-            });
-
-            // Handle touch scrolling
-            let startX, isDragging = false;
-            eventsContainer.addEventListener('touchstart', (e) => {
-                if (isScrolling) return;
-                startX = e.touches[0].clientX;
-                isDragging = true;
-            });
-
-            eventsContainer.addEventListener('touchmove', (e) => {
-                if (!isDragging || isScrolling) return;
-                const currentX = e.touches[0].clientX;
-                const diffX = startX - currentX;
-                const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
-                if (Math.abs(diffX) > 50) {
-                    if (diffX > 0) {
+                rightArrow.addEventListener('click', () => {
+                    if (rightArrow.disabled || isScrolling) return;
+                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                    if (rightEllipsisContent.classList.contains('hidden')) {
+                        // Right arrow: scroll right
                         scrollToIndex(currentIndex + 1);
-                    } else if (diffX < 0) {
+                    } else {
+                        // Ellipsis: scroll left
                         scrollToIndex(currentIndex - 1);
                     }
+                });
+
+                // Handle touch scrolling
+                let startX, isDragging = false;
+                eventsContainer.addEventListener('touchstart', (e) => {
+                    if (isScrolling) return;
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                });
+
+                eventsContainer.addEventListener('touchmove', (e) => {
+                    if (!isDragging || isScrolling) return;
+                    const currentX = e.touches[0].clientX;
+                    const diffX = startX - currentX;
+                    const currentIndex = Math.round(eventsContainer.scrollLeft / cardWidth);
+                    if (Math.abs(diffX) > 50) {
+                        if (diffX > 0) {
+                            scrollToIndex(currentIndex + 1);
+                        } else if (diffX < 0) {
+                            scrollToIndex(currentIndex - 1);
+                        }
+                        isDragging = false;
+                    }
+                });
+
+                eventsContainer.addEventListener('touchend', () => {
                     isDragging = false;
-                }
-            });
+                });
 
-            eventsContainer.addEventListener('touchend', () => {
-                isDragging = false;
-                if (!isScrolling) handleInfiniteScroll();
-            });
+                eventsContainer.addEventListener('scroll', () => {
+                    if (!isScrolling) {
+                        updateArrows();
+                    }
+                });
 
-            eventsContainer.addEventListener('scroll', () => {
-                if (!isScrolling) {
-                    updateArrows();
-                    handleInfiniteScroll();
-                }
-            });
-
-            if (isMobile && numCards > 1) {
-                scrollToIndex(1, true);
-            } else {
                 updateArrows();
             }
-        }
 
-        window.onload = () => renderEvents(staticEvents);
-        </script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const moreSpan = document.getElementById('more');
+                const moreSvg = moreSpan.querySelector('svg');
+
+                moreSvg.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    if (!moreSpan.classList.contains('hidden')) {
+                        window.location.href = '/All_Events/index.php';
+                    }
+                });
+            });
+
+            window.onload = () => renderEvents(staticEvents);
+            </script>
     </section>
-
-    <section class="w-[85%] max-w-[1440px] mx-auto mt-20 px-5">
+    <!-- What we do -->
+    <section class="w-full max-w-[1440px] mx-auto mt-20 px-5">
         <div class="text-nowrap flex items-center flex-row justify-center gap-[22px] text-primary">
-            <span class="font-display text-md sm:text-xl md:text-2xl lg:text-4xl text-nowrap font-semibold uppercase">
+            <span class="font-display text-xl sm:text-2xl md:text-2xl lg:text-4xl text-nowrap font-semibold uppercase">
                 :: What do we do?
             </span>
             <div class="relative w-full h-[2px] bg-[#F0F0F0]">
@@ -593,18 +803,26 @@ include_once '_settings/config.php';
                     src="/assets/img/svg/community.svg">
 
                 <div class="flex flex-col">
-                    <p class="text-3xl text-primary mb-2">Community</p>
-                    <p class="text-md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam harum fuga
-                        eligendi error ad commodi!</p>
+                    <p class="text-primary mb-2 text-md sm:text-xl md:text-2xl lg:text-4xl">Community</p>
+                    <p class="text-md sm:text-sml">The UIU Robotics Club creates a supportive environment by organizing
+                        programs,
+                        workshops, and competitions that connect students, teachers, and employers, fostering a sense of
+                        community around robotics and embedded systems. Events like INNOBOTICS-2020 and Ideastorm-2021
+                        bring together multidisciplinary students, promoting collaboration and teamwork, which helps
+                        members build lasting connections.</p>
                 </div>
             </div>
             <div class="flex flex-col sm:flex-row max-w-[600px] gap-8">
                 <img class="mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px]" src="/assets/img/svg/career.svg">
 
                 <div class="flex flex-col">
-                    <p class="text-3xl text-primary mb-2">Career opportunity</p>
-                    <p class="text-md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam harum fuga
-                        eligendi error ad commodi!</p>
+                    <p class="text-primary mb-2 text-md sm:text-xl md:text-2xl lg:text-4xl">Career opportunity
+                    </p>
+                    <p class="text-md sm:text-sm">The club enhances career prospects by developing technical skills
+                        through project
+                        work and providing exposure to industry connections. Achievements like the UIU Mars Rover Team's
+                        first place in Asia at the University Rover Challenge 2022 showcase how members gain practical
+                        experience, potentially opening doors to future employment in robotics and related fields.</p>
                 </div>
             </div>
             <div class="flex flex-col sm:flex-row max-w-[600px] gap-8">
@@ -612,26 +830,33 @@ include_once '_settings/config.php';
                     src="/assets/img/svg/team-leader.svg">
 
                 <div class="flex flex-col">
-                    <p class="text-3xl text-primary mb-2">Leadership</p>
-                    <p class="text-md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam harum fuga
-                        eligendi error ad commodi!</p>
+                    <p class="text-primary mb-2 text-md sm:text-xl md:text-2xl lg:text-4xl">Leadership</p>
+                    <p class="text-md sm:text-sm">Leadership is fostered by encouraging members to organize national and
+                        global
+                        competitions, such as INNOBOTICS, and participate in research endeavors. These roles help
+                        students build confidence and organizational skills, preparing them for leadership positions in
+                        their future careers.</p>
                 </div>
             </div>
             <div class="flex flex-col sm:flex-row max-w-[600px] gap-8">
-                <img class="mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px]" src="/assets/img/svg/door.svg">
+                <img class="mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px]" src="\assets\img\svg\manuals.png">
 
                 <div class="flex flex-col">
-                    <p class="text-3xl text-primary mb-2">Community</p>
-                    <p class="text-md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam harum fuga
-                        eligendi error ad commodi!</p>
+                    <p class="text-primary mb-2 text-md sm:text-xl md:text-2xl lg:text-4xl">Guidelines and
+                        Resources</p>
+                    <p class="text-md sm:text-sm">The club provides guidelines through training workshops, like
+                        "Electronics &
+                        Basic Robotics," and resources such as the Robotics Starter Kitbox in Beginner, Standard, and
+                        Advanced packages, ensuring members have structured support to start and excel in robotics
+                        projects.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="w-[85%] max-w-[1440px] mx-auto mt-20 px-5">
+    <section class="w-full max-w-[1440px] mx-auto mt-20 px-5">
         <div class="text-nowrap flex items-center flex-row justify-center gap-[22px] text-primary">
-            <span class="font-display text-md sm:text-xl md:text-2xl lg:text-4xl text-nowrap font-semibold uppercase">
+            <span class="font-display text-xl sm:text-2xl md:text-2xl lg:text-4xl text-nowrap font-semibold uppercase">
                 :: Brands we work with
             </span>
             <div class="relative w-full h-[2px] bg-[#F0F0F0]">
@@ -640,31 +865,82 @@ include_once '_settings/config.php';
             </div>
         </div>
 
-        <div class="flex flex-row flex-wrap items-center justify-around gap-3 mt-10">
-            <div
-                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img src="/assets/img/companies/united.png">
-            </div>
-            <div
-                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img src="/assets/img/companies/ici.png">
-            </div>
-            <div
-                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img src="/assets/img/companies/PRAN.png">
-            </div>
-            <div
-                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Government_Seal_of_Bangladesh.svg/2048px-Government_Seal_of_Bangladesh.svg.png">
-            </div>
-            <div
-                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img src="/assets/img/companies/shurokkha.png">
-            </div>
-            <div
-                class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
-                <img src="/assets/img/companies/startech.png">
+        <div class="carousel-container flex flex-row items-center justify-around mt-10">
+            <div class="carousel-track">
+                <!-- Original logos -->
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
+                    <img class="rounded-xl" src="https://preneurlab.ca/assets/images/logo.png" alt="PreneurLab">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
+                    <img class="rounded-xl" src="/assets/img/companies/cansat.jpg" alt="CanSat">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
+                    <img class="rounded-xl" src="/assets/img/companies/tensorflow.png" alt="TensorFlow">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-full max-w-[200px] overflow-hidden">
+                    <img class="rounded-full w-full h-full object-cover" src="/assets/img/companies/MarsRover.jpg"
+                        alt="Mars Rover">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
+                    <img class="rounded-xl" src="https://www.anttrobotics.com/assets/images/logo/logo-main.png"
+                        alt="Antt Robotics">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-full max-w-[200px] overflow-hidden">
+                    <img class="rounded-full w-full h-full object-cover" src="/assets/img/companies/RobotonBD.jpg"
+                        alt="Roboton BD">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
+                    <img class="rounded-full" src="\assets\img\companies\txbd.jpg" alt="TXBD">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-full max-w-[200px] overflow-hidden">
+                    <img class="rounded-full w-full h-full object-cover" src="/assets/img/companies/ictob.jpg"
+                        alt="ICT Olympiad Bangladesh">
+                </div>
+                <!-- Duplicated logos for seamless scroll -->
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
+                    <img class="rounded-xl" src="https://preneurlab.ca/assets/images/logo.png" alt="PreneurLab">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
+                    <img class="rounded-xl" src="/assets/img/companies/cansat.jpg" alt="CanSat">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
+                    <img class="rounded-xl" src="/assets/img/companies/tensorflow.png" alt="TensorFlow">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-full max-w-[200px] overflow-hidden">
+                    <img class="rounded-full w-full h-full object-cover" src="/assets/img/companies/MarsRover.jpg"
+                        alt="Mars Rover">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
+                    <img class="rounded-xl" src="https://www.anttrobotics.com/assets/images/logo/logo-main.png"
+                        alt="Antt Robotics">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-full max-w-[200px] overflow-hidden">
+                    <img class="rounded-full w-full h-full object-cover" src="/assets/img/companies/RobotonBD.jpg"
+                        alt="Roboton BD">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-xl max-w-[200px]">
+                    <img class="rounded-full" src="\assets\img\companies\txbd.jpg" alt="TXBD">
+                </div>
+                <div
+                    class="flex items-center justify-around mx-auto my-2 w-[98px] sm:w-[112px] h-[98px] sm:h-[112px] rounded-full max-w-[200px] overflow-hidden">
+                    <img class="rounded-full w-full h-full object-cover" src="/assets/img/companies/ictob.jpg"
+                        alt="ICT Olympiad Bangladesh">
+                </div>
             </div>
         </div>
     </section>
