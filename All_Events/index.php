@@ -183,7 +183,55 @@ include_once '../_settings/config.php';
             details: "In today's fast-paced world, robotics is revolutionizing industries and shaping our future. Whether it's healthcare, manufacturing, or everyday life, understanding robotics is essential for staying ahead. Robotics equips you with problem-solving skills, creativity, and technical expertise.",
             image: "/assets/img/Events/Techtrove.jpg",
             link: "#"
-        }
+        },
+        {
+            heading: "Success Σeet: Academy to Industry",
+            time: "Jun 23, 2024",
+            location: "Multipurpose Hall",
+            details: "Unavailable",
+            image: "/assets/img/Events/1.jpg",
+            link: "#"
+        },
+        {
+            heading: "ML Olympiad 2024",
+            time: "March 18, 2024",
+            location: "Online",
+            details: "Unavailable",
+            image: "/assets/img/Events/2.jpg",
+            link: "#"
+        },
+        {
+            heading: "Deep Insights of Google Gemini AI",
+            time: "Feb 19, 2024",
+            location: "Unavailable",
+            details: "Unavailable",
+            image: "/assets/img/Events/3.jpg",
+            link: "#"
+        },
+        {
+            heading: "Symptronic: Exclusive Electronics Workshop Powered by UIU Mars Rover",
+            time: "Feb 9, 2024",
+            location: "Unavailable",
+            details: "Unavailable",
+            image: "/assets/img/Events/4.jpg",
+            link: "#"
+        },
+        {
+            heading: "3D Modeling Workshop",
+            time: "Oct 3, 2023",
+            location: "Unavailable",
+            details: "Unavailable",
+            image: "/assets/img/Events/6.jpg",
+            link: "#"
+        },
+        {
+            heading: "Road To Massachusetts Institute of Technology (MIT)",
+            time: "Jul 9, 2023",
+            location: "Unavailable",
+            details: "Unavailable",
+            image: "/assets/img/Events/7.jpg",
+            link: "#"
+        },
     ];
 
     function renderUpcomingEvents(events) {
