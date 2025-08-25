@@ -1,121 +1,233 @@
-<?php include ABSPATH.'_includes/svg.php'; ?>
+<style>
+    html,
+    body {
+        overflow-x: hidden;
+        font-family: 'Exo 2', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
 
-<header class="w-full h-[100px] bg-grey-100 relative flex justify-between">
-    <div class="logo-slab w-full max-w-[305px] flex items-center justify-center">
-        <img src="/assets/img/logo/Icon.png" alt="Logo" class="logo-slab__img" />
+    @media (max-width: 1024px) {
+
+        html,
+        body {
+            overflow-x: hidden;
+        }
+    }
+
+    .main-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .main-btn:hover .pulse {
+        fill: #F79B72;
+    }
+
+    .main-btn:focus {
+        outline: none;
+    }
+
+    @media (max-width: 640px) {
+
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            touch-action: pan-y;
+            /* Restrict touch scrolling to vertical only */
+        }
+
+        .navbar {
+            width: 100%;
+            max-width: 100vw;
+            /* Ensure navbar doesn't exceed viewport width */
+            overflow-x: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .navbar-svg {
+            width: 100%;
+            max-width: 100vw;
+            /* Force SVG to stay within viewport */
+            height: auto;
+            max-height: 80px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            /* Prevent SVG content from overflowing */
+        }
+
+        /* Ensure nut icons stay within viewport */
+        .nut-icon-top-right,
+        .nut-icon-middle-right {
+            left: calc(100% - 20px);
+            /* Keep icons within viewport */
+        }
+
+        /* Prevent horizontal scrolling for all navbar children */
+        .navbar * {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Ensure mobile menu stays within bounds */
+        .mobile-menu {
+            max-width: 160px;
+            right: 10px;
+            overflow-x: hidden;
+        }
+    }
+</style>
+
+<body class="sm:mt-0 mt-[160px] sm:pt-0 pt-[10px]">
+    <hr class="w-full -z-10 bg-black h-[2px] absolute top-[78.5px] -translate-y-[1px] sm:block hidden">
+
+    <nav class="w-[625px] h-[143px] p-0 m-0 relative sm:w-[625px] sm:h-[143px] w-full h-auto" style="z-index: 20;">
+        <svg xmlns="http://www.w3.org/2000/svg" class="absolute top-0 left-0 w-full h-auto" viewBox="0 0 625 143"
+            preserveAspectRatio="xMinYMin meet">
+            <path fill="#0c1723"
+                d="M625 0v79.396H304.73a61.195 61.195 0 01-.844.557c-8.001 5.649-25.531 18.001-31.642 22.269-3.847 2.682-5.59 5.761-6.26 8.197v15.621A15.896 15.896 0 01250 142.366H0V0h625z" />
+        </svg>
+
+        <svg fill="#000000" width="15px" height="15px" class="absolute top-[10px] left-[10px] z-10 hidden sm:block"
+            viewBox="0 0 24 24" id="nut-2" data-name="Flat Color" xmlns="http://www.w3.org/2000/svg">
+            <path id="primary"
+                d="M20,6.2,13,2.26a2,2,0,0,0-2,0L4,6.19A2,2,0,0,0,3,7.94v8.12A2,2,0,0,0,4,17.8l7,3.94a2,2,0,0,0,2,0l7-3.93a2,2,0,0,0,1-1.75V7.94A2,2,0,0,0,20,6.2ZM12,15a3,3,0,1,1,3-3A3,3,0,0,1,12,15Z"
+                style="fill: #fff;"></path>
+        </svg>
+        <svg fill="#000000" width="15px" height="15px" class="absolute top-[110px] left-[10px] z-10 hidden sm:block"
+            viewBox="0 0 24 24" id="nut-2" data-name="Flat Color" xmlns="http://www.w3.org/2000/svg">
+            <path id="primary"
+                d="M20,6.2,13,2.26a2,2,0,0,0-2,0L4,6.19A2,2,0,0,0,3,7.94v8.12A2,2,0,0,0,4,17.8l7,3.94a2,2,0,0,0,2,0l7-3.93a2,2,0,0,0,1-1.75V7.94A2,2,0,0,0,20,6.2ZM12,15a3,3,0,1,1,3-3A3,3,0,0,1,12,15Z"
+                style="fill: #fff;"></path>
+        </svg>
+        <svg fill="#000000" width="15px" height="15px" class="absolute top-[110px] left-[240px] z-10 hidden sm:block"
+            viewBox="0 0 24 24" id="nut-2" data-name="Flat Color" xmlns="http://www.w3.org/2000/svg">
+            <path id="primary"
+                d="M20,6.2,13,2.26a2,2,0,0,0-2,0L4,6.19A2,2,0,0,0,3,7.94v8.12A2,2,0,0,0,4,17.8l7,3.94a2,2,0,0,0,2,0l7-3.93a2,2,0,0,0,1-1.75V7.94A2,2,0,0,0,20,6.2ZM12,15a3,3,0,1,1,3-3A3,3,0,0,1,12,15Z"
+                style="fill: #fff;"></path>
+        </svg>
+        <svg fill="#000000" width="15px" height="15px" class="absolute top-[10px] left-[600px] z-10 hidden sm:block"
+            viewBox="0 0 24 24" id="nut-2" data-name="Flat Color" xmlns="http://www.w3.org/2000/svg">
+            <path id="primary"
+                d="M20,6.2,13,2.26a2,2,0,0,0-2,0L4,6.19A2,2,0,0,0,3,7.94v8.12A2,2,0,0,0,4,17.8l7,3.94a2,2,0,0,0,2,0l7-3.93a2,2,0,0,0,1-1.75V7.94A2,2,0,0,0,20,6.2ZM12,15a3,3,0,1,1,3-3A3,3,0,0,1,12,15Z"
+                style="fill: #fff;"></path>
+        </svg>
+        <svg fill="#000000" width="15px" height="15px" class="absolute top-[55px] left-[600px] z-10 hidden sm:block"
+            viewBox="0 0 24 24" id="nut-2" data-name="Flat Color" xmlns="http://www.w3.org/2000/svg">
+            <path id="primary"
+                d="M20,6.2,13,2.26a2,2,0,0,0-2,0L4,6.19A2,2,0,0,0,3,7.94v8.12A2,2,0,0,0,4,17.8l7,3.94a2,2,0,0,0,2,0l7-3.93a2,2,0,0,0,1-1.75V7.94A2,2,0,0,0,20,6.2ZM12,15a3,3,0,1,1,3-3A3,3,0,0,1,12,15Z"
+                style="fill: #fff;"></path>
+        </svg>
+        <a href="\index.php">
+            <img src="\assets\img\logo\Icon.png"
+                class="absolute sm:top-[25px] sm:left-[70px] top-[10px] left-[40px] z-10 sm:h-20 sm:w-20 h-16 w-16"
+                alt="">
+        </a>
+
+
+    </nav>
+
+    <div id="fullMenu" class="hidden lg:flex items-center justify-center gap-[30px] absolute top-[25px] right-10">
+        <a href="\index.php"
+            class="text-[#262626] hover:text-[#ff0302] text-lg font-medium relative transition-colors duration-300 group">
+            Home
+        </a>
+        <a href="\All_Events\index.php"
+            class="text-[#262626] hover:text-[#ff0302] text-lg font-medium relative transition-colors duration-300 group">
+            Events
+        </a>
+        <a href="\Achievements\index.php"
+            class="text-[#262626] hover:text-[#ff0302] text-lg font-medium relative transition-colors duration-300 group">
+            Achievements
+        </a>
+        <a href="\Blog\index.php"
+            class="text-[#262626] hover:text-[#ff0302] text-lg font-medium relative transition-colors duration-300 group">
+            Blog
+        </a>
+        <a href="\AboutUs\index.php"
+            class="text-[#262626] hover:text-[#ff0302] text-lg font-medium relative transition-colors duration-300 group">
+            About Us
+        </a>
     </div>
-    <div class="logo-slab_tail">
-        <span class="hidden">
-            <?= SITE_NAME ?? 'UIURC' ?>
-        </span>
-    </div>
-    <hr class="hidden sm:block w-full -z-10 bg-black h-[2px] absolute top-[47px] -translate-y-1/2">
-    <div class="navbar-slab flex flex-col items-top justify-start">
-        <div class="h-[47px] flex items-center justify-end">
 
-            <div class="hidden sm:flex items-center justify-center mx-5">
-                <a href="https://www.facebook.com/uiurobotics" class="rounded-full border-3 me-5">
-                    <svg class="m-0.5 w-7 rounded-full" viewBox="0 0 16 16" fill="#000" xmlns="http://www.w3.org/2000/svg">
-                        <use xlink:href="#facebook"></use>
-                    </svg>
-                </a>
-                <a href="https://www.linkedin.com/company/uiu-robotics/" class="rounded-full border-3 me-5">
-                    <svg class="m-0.5 w-7 rounded-full" viewBox="0 0 16 16" fill="#000" xmlns="http://www.w3.org/2000/svg">
-                        <use xlink:href="#linkedin-full"></use>
-                    </svg>
-                </a>
-                <a href="https://www.youtube.com/@uiu.robotics" class="rounded-full border-3 me-5">
-                    <svg class="m-0.5 w-7 rounded-full" viewBox="0 0 16 16" fill="#000" xmlns="http://www.w3.org/2000/svg">
-                        <use xlink:href="#youtube-full"></use>
-                    </svg>
-                </a> 
-            </div>
-
-            <button id="sidebar-button" data-sidebar-status="close" class="w-[47px] h-[47px] bg-primary flex items-center justify-center md:hidden z-1000" type="button">
-                <svg class="navbar-open__icon" width="24" height="24" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
-                    <use xlink:href="#hamburger"></use>
+    <!-- Sidebar Button -->
+    <div class="lg:hidden absolute top-[8px] right-2 z-20">
+        <div class="bg-[#0c1723] p-2 rounded-md">
+            <button id="sidebar-button" data-sidebar-status="close" class="text-white focus:outline-none">
+                <!-- Hamburger Icon -->
+                <svg id="hamburger-icon" class="w-8 h-8 block" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+                <!-- Close Icon -->
+                <svg id="close-icon" class="w-8 h-8 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
         </div>
-        <div class="h-[53px] hidden md:flex items-center justify-end">
-            <div class="flex items-center justify-center mx-5">
-                <a href="https://www.facebook.com/uiurobotics" class="me-4 text-sm md:text-lg xl:text:2xl">
-                   Home
-                </a>
-                <a href="https://www.linkedin.com/company/uiu-robotics/" class="me-4 text-sm md:text-lg xl:text:2xl">
-                   About Us
-                </a>
-                <a href="https://www.linkedin.com/company/uiu-robotics/" class="me-4 text-sm md:text-lg xl:text:2xl">
-                    Events
-                </a>
-                <a href="https://www.linkedin.com/company/uiu-robotics/" class="me-4 text-sm md:text-lg xl:text:2xl">
-                    Acheivements
-                </a>
-                <a href="https://www.linkedin.com/company/uiu-robotics/" class="me-4 text-sm md:text-lg xl:text:2xl">
-                    <svg width="8rem" viewBox="0 0 215 65" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0 16.878L17.986 0H6.469C2.896 0 0 2.91 0 6.5V16.878Z" fill="#FF3215"/>
-                        <path d="M215 32.262C215.002 30.965 214.615 29.697 213.891 28.6212C213.166 27.5454 212.137 26.7109 210.934 26.225C210.481 25.889 210.056 25.595 209.706 25.365C205.447 22.319 201.182 19.2807 196.912 16.25C195.041 14.93 194.401 13.373 194.265 12.323V6.5C194.265 2.91 191.368 0 187.796 0H19.751L0 18.534V58.5C0 62.09 2.896 65 6.469 65H208.531C212.104 65 215 62.09 215 58.5V32.262Z" fill="#D9D9D9"/>
-                        <path d="M13.5457 47.8764V55.9731C13.5457 56.7602 15.0031 56.7786 15.0031 55.9731V47.8764C15.0031 46.9642 13.5457 46.9641 13.5457 47.8764Z" stroke="black"/>
-                        <path d="M8.99298 48.9299V54.8966C8.99299 55.4767 10.4504 55.4902 10.4504 54.8966V48.9299C10.4504 48.2577 8.99298 48.2577 8.99298 48.9299Z" stroke="black"/>
-                        <path d="M17.9055 48.9299V54.8966C17.9055 55.4767 19.3629 55.4902 19.3629 54.8966V48.9299C19.3629 48.2577 17.9055 48.2577 17.9055 48.9299Z" stroke="black"/>
-
-                        <text x="50" y="40" font-size="24" fill="black">Contact Us</text>
-                    </svg>
-                </a>
-            </div>
-        </div>
     </div>
-</header>
 
-<div id="sidebar-slab" class="fixed top-0 right-0 bottom-0 left-0 w-full h-full bg-[#404040] text-white z-10 transform transition-transform duration-700 translate-x-full overflow-y-auto">
-    <div class="flex flex-col justify-center h-full mt-[100px]">
-        <nav class="h-full flex flex-col justify-center  items-center  xs:gap-[30px] gap-[50px]">
-            <a href="/" class="w-full text-center text-sm font-sans font-medium px-[50px] hover:text-primary text-gray">
-                Home
-                <hr class="w-full h-[2px] mt-[26px] hover:text-primary">
-            </a>
-            <a href="#" class="w-full text-center text-sm font-sans font-medium px-[50px] hover:text-primary text-gray">
-                About us
-                <hr class="w-full h-[2px] mt-[26px] hover:text-primary">
-            </a>
-            <a href="#" class="w-full text-center text-sm font-sans font-medium px-[50px] hover:text-primary text-primary">
-                Events
-                <hr class="w-full h-[2px] mt-[26px] hover:text-primary">
-            </a>
-            <a href="#" class="w-full text-center text-sm font-sans font-medium px-[50px] hover:text-primary text-gray">
-                Achievements
-                <hr class="w-full h-[2px] mt-[26px] hover:text-primary">
-            </a>
-            <a href="#" class="w-full text-center text-sm font-sans font-medium px-[50px] hover:text-primary text-gray">
-                Contact us
-                <hr class="w-full h-[2px] mt-[26px] hover:text-primary">
-            </a>
+    <!-- Sidebar Panel -->
+    <div id="sidebar-slab"
+        class="fixed top-0 right-0 bottom-0 left-0 w-full h-full bg-[#1e2939] text-white z-10 transform transition-transform duration-700 translate-x-full overflow-hidden flex items-center justify-center">
+
+        <nav class="flex flex-col items-center gap-[40px] w-full px-[50px]">
+            <!-- Link Group -->
+            <div class="w-full text-center group">
+                <a href="\index.php" class="text-sm font-sans font-medium text-gray-300 hover:text-red-500">Home</a>
+                <hr class="w-full h-[2px] mt-[10px] bg-white transition-colors duration-300 group-hover:bg-red-500">
+            </div>
+            <div class="w-full text-center group">
+                <a href="\All_Events\index.php"
+                    class="text-sm font-sans font-medium text-gray-300 hover:text-red-500">Events</a>
+                <hr class="w-full h-[2px] mt-[10px] bg-white transition-colors duration-300 group-hover:bg-red-500">
+            </div>
+            <div class="w-full text-center group">
+                <a href="\Achievements\index.php"
+                    class="text-sm font-sans font-medium text-gray-300 hover:text-red-500">Achievements</a>
+                <hr class="w-full h-[2px] mt-[10px] bg-white transition-colors duration-300 group-hover:bg-red-500">
+            </div>
+            <div class="w-full text-center group">
+                <a href="\Blog\index.php"
+                    class="text-sm font-sans font-medium text-gray-300 hover:text-red-500">Blog</a>
+                <hr class="w-full h-[2px] mt-[10px] bg-white transition-colors duration-300 group-hover:bg-red-500">
+            </div>
+            <div class="w-full text-center group">
+                <a href="\AboutUs\index.php"
+                    class="text-sm font-sans font-medium text-gray-300 hover:text-red-500">About us</a>
+                <hr class="w-full h-[2px] mt-[10px] bg-white transition-colors duration-300 group-hover:bg-red-500">
+            </div>
         </nav>
     </div>
-</div>
 
-<script>
-    const body = document.querySelector('body');
-    const sidebarButton = document.getElementById('sidebar-button');
-    const sidebarSlab = document.getElementById('sidebar-slab');
-    sidebarButton.addEventListener('click', () => {
-        const sidebarStatus = sidebarButton.getAttribute('data-sidebar-status');
-        if (sidebarStatus === 'close') {
-            sidebarSlab.classList.remove('translate-x-full');
-            sidebarSlab.classList.add('translate-x-0');
-            body.classList.add('overflow-hidden');
-            // href link change to close
-            sidebarButton.children[0].children[0].setAttribute('xlink:href', '#close');
-            sidebarButton.setAttribute('data-sidebar-status', 'open');
-        }
-        if (sidebarStatus === 'open') {
-            console.log('close');
-            sidebarSlab.classList.add('translate-x-full');
-            sidebarSlab.classList.remove('translate-x-0');
-            body.classList.remove('overflow-hidden');
-            // href link change to open
-            sidebarButton.children[0].children[0].setAttribute('xlink:href', '#hamburger');
-            sidebarButton.setAttribute('data-sidebar-status', 'close');
-        }
-    });
-</script>
+    <!-- Toggle Script -->
+    <script>
+        const body = document.querySelector('body');
+        const sidebarButton = document.getElementById('sidebar-button');
+        const sidebarSlab = document.getElementById('sidebar-slab');
+
+        sidebarButton.addEventListener('click', () => {
+            const status = sidebarButton.getAttribute('data-sidebar-status');
+            if (status === 'close') {
+                sidebarSlab.classList.remove('translate-x-full');
+                sidebarSlab.classList.add('translate-x-0');
+                body.classList.add('overflow-hidden');
+                sidebarButton.setAttribute('data-sidebar-status', 'open');
+            } else {
+                sidebarSlab.classList.add('translate-x-full');
+                sidebarSlab.classList.remove('translate-x-0');
+                body.classList.remove('overflow-hidden');
+                sidebarButton.setAttribute('data-sidebar-status', 'close');
+            }
+        });
+    </script>
